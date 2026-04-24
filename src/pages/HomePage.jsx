@@ -44,19 +44,31 @@ function HomePage() {
 
     const heroSlides = [
         {
-            title: "Authentic Delhi Street Food",
-            subtitle: "Experience the vibrant flavors of Delhi's finest chaats and traditional dishes",
-            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/hero-1.png')"
+            tag: "🏆 Award Winning",
+            title: "Authentic",
+            titleAccent: "Delhi Street Food",
+            subtitle: "Experience the vibrant flavors of Delhi's finest chaats and traditional dishes, crafted with passion.",
+            img: "/images/hero-1.png",
+            highlight: "Chole Bhature",
+            highlightImg: "/images/Snacks/Chole Bhature.png"
         },
         {
-            title: "Food Served With Love",
-            subtitle: "Every dish prepared with care and passion by our expert chefs",
-            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/hero-2.png')"
+            tag: "❤️ Served With Love",
+            title: "Every Bite,",
+            titleAccent: "A Delhi Story",
+            subtitle: "Every dish prepared with care and passion by our expert chefs, keeping alive the tradition.",
+            img: "/images/hero-2.png",
+            highlight: "Raj Kachori",
+            highlightImg: "/images/Raj Kachori.png"
         },
         {
-            title: "Over 50 Delicious Items",
-            subtitle: "From traditional chaats to royal thalis - taste the magic of Delhi",
-            bg: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/images/hero-3.png')"
+            tag: "✨ 120+ Menu Items",
+            title: "Taste the",
+            titleAccent: "Magic of Delhi",
+            subtitle: "From traditional chaats to royal thalis — over 120 authentic items to satisfy every craving.",
+            img: "/images/hero-3.png",
+            highlight: "Purani Delhi Biryani",
+            highlightImg: "/images/Biriyani/Purani Delhi Chicken Biryani.png"
         }
     ];
 
@@ -96,37 +108,107 @@ function HomePage() {
 
     return (
         <div className="home-page">
-            {/* Hero Slider */}
-            <section className="hero-slider">
+            {/* Hero Section — Premium Split Layout */}
+            <section className="hero-section">
+                {/* Background images with Ken Burns effect */}
                 {heroSlides.map((slide, index) => (
                     <div
                         key={index}
-                        className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
+                        className={`hero-bg-layer ${index === currentSlide ? 'active' : ''}`}
                         style={{
-                            background: slide.bg,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeat'
+                            backgroundImage: `url('${slide.img}')`,
                         }}
-                    >
-                        <div className="hero-content">
-                            <h1 className="hero-title">{slide.title}</h1>
-                            <p className="hero-subtitle">{slide.subtitle}</p>
-                            <div className="hero-buttons">
-                                <Link to="/menu" className="btn btn-primary">View Menu</Link>
-                                <Link to="/about" className="btn btn-secondary">About Us</Link>
+                    />
+                ))}
+
+                {/* Dark cinematic overlay */}
+                <div className="hero-overlay" />
+
+                {/* Content */}
+                <div className="hero-inner container">
+                    {/* LEFT: Text content */}
+                    <div className="hero-text-col">
+                        {/* Slide tag / pill */}
+                        <div className="hero-tag">
+                            {heroSlides[currentSlide].tag}
+                        </div>
+
+                        <h1 className="hero-heading">
+                            <span className="hero-heading-main">{heroSlides[currentSlide].title}</span>
+                            <br />
+                            <span className="hero-heading-accent">{heroSlides[currentSlide].titleAccent}</span>
+                        </h1>
+
+                        <p className="hero-desc">{heroSlides[currentSlide].subtitle}</p>
+
+                        {/* Social proof row */}
+                        <div className="hero-social-proof">
+                            <div className="hero-stars">⭐⭐⭐⭐⭐ <span>5.0 on Google</span></div>
+                            <div className="hero-divider-dot" />
+                            <div className="hero-review-count">5,000+ Happy Customers</div>
+                        </div>
+
+                        {/* CTA Buttons */}
+                        <div className="hero-cta-row">
+                            <Link to="/menu" className="hero-btn-primary">
+                                <span>Explore Menu</span>
+                                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </Link>
+                            <Link to="/contact" className="hero-btn-ghost">Book a Table</Link>
+                        </div>
+
+                        {/* Slide progress dots */}
+                        <div className="hero-dots">
+                            {heroSlides.map((_, i) => (
+                                <button
+                                    key={i}
+                                    className={`hero-dot ${i === currentSlide ? 'active' : ''}`}
+                                    onClick={() => setCurrentSlide(i)}
+                                    aria-label={`Slide ${i + 1}`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* RIGHT: Floating food card */}
+                    <div className="hero-visual-col">
+                        <div className="hero-food-card">
+                            <div className="hero-food-card-img">
+                                <img
+                                    src={heroSlides[currentSlide].highlightImg}
+                                    alt={heroSlides[currentSlide].highlight}
+                                />
+                            </div>
+                            <div className="hero-food-card-info">
+                                <span className="hero-food-card-label">Today's Special</span>
+                                <h3 className="hero-food-card-name">{heroSlides[currentSlide].highlight}</h3>
+                                <Link to="/menu" className="hero-food-card-cta">Order Now →</Link>
+                            </div>
+                        </div>
+
+                        {/* Floating badges */}
+                        <div className="hero-badge hero-badge-nyt">
+                            <span className="badge-emoji">🏆</span>
+                            <div>
+                                <div className="badge-title">NYT Top 50</div>
+                                <div className="badge-sub">Best Indian Restaurant</div>
+                            </div>
+                        </div>
+
+                        <div className="hero-badge hero-badge-rating">
+                            <span className="badge-emoji">⭐</span>
+                            <div>
+                                <div className="badge-title">5.0 Rating</div>
+                                <div className="badge-sub">Google Reviews</div>
                             </div>
                         </div>
                     </div>
-                ))}
-                <div className="slider-dots">
-                    {heroSlides.map((_, index) => (
-                        <button
-                            key={index}
-                            className={`dot ${index === currentSlide ? 'active' : ''}`}
-                            onClick={() => setCurrentSlide(index)}
-                        />
-                    ))}
+                </div>
+
+                {/* Scroll indicator */}
+                <div className="hero-scroll-indicator">
+                    <span>Scroll to explore</span>
+                    <div className="scroll-mouse"><div className="scroll-wheel" /></div>
                 </div>
             </section>
 
