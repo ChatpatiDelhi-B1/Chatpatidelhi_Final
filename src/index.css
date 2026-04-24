@@ -938,37 +938,43 @@ h6 {
 
 /* Buttons */
 .btn {
-    display: inline-block;
-    padding: 1rem 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2.2rem;
     font-family: var(--font-body);
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
-    border-radius: var(--radius-md);
+    border-radius: 50px;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.02em;
 }
 
 .btn-primary {
-    background: var(--accent-gold);
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #b8961e 100%);
     color: var(--white);
+    box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
 }
 
 .btn-primary:hover {
-    background: #B8921F;
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    background: linear-gradient(135deg, #e8c34a 0%, #c9a52a 100%);
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--white);
-    border: 2px solid var(--white);
+    color: var(--primary-maroon);
+    border: 2px solid var(--primary-maroon);
 }
 
 .btn-secondary:hover {
-    background: var(--white);
-    color: var(--primary-maroon);
+    background: var(--primary-maroon);
+    color: var(--white);
+    transform: translateY(-2px);
 }
 
 .btn-full {
@@ -982,13 +988,25 @@ h6 {
 
 .section-title {
     text-align: center;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 3.5rem;
+}
+
+.section-subtitle {
+    display: block;
+    color: var(--accent-gold);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.8rem;
+    text-align: center;
 }
 
 .section-title h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
     color: var(--primary-maroon);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
 }
 
 .section-description {
@@ -996,7 +1014,8 @@ h6 {
     max-width: 700px;
     margin: 0 auto;
     color: var(--gray);
-    font-size: 1.125rem;
+    font-size: 1.15rem;
+    line-height: 1.7;
 }
 
 /* Menu Section */
@@ -1053,14 +1072,15 @@ h6 {
     background: var(--white);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 .badge-hot {
@@ -1167,10 +1187,11 @@ h6 {
 }
 
 .about-card {
-    background: var(--cream);
-    padding: var(--spacing-md);
+    background: var(--white);
+    padding: 3rem;
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .about-card h3 {
@@ -1186,14 +1207,14 @@ h6 {
 }
 
 .about-single-card {
-    background: var(--cream);
-    padding: var(--spacing-lg);
+    background: var(--white);
+    padding: 4rem 3rem;
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .about-single-card h3 {
@@ -1262,16 +1283,17 @@ h6 {
 
 .value-card {
     text-align: center;
-    padding: var(--spacing-md);
+    padding: 2.5rem 2rem;
     background: var(--white);
     border-radius: var(--radius-lg);
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-sm);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .value-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 .value-icon {
@@ -2679,16 +2701,7 @@ body {
     overflow: hidden;
 }
 
-.section-subtitle {
-    display: block;
-    color: var(--accent-gold);
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 0.5rem;
-    text-align: center;
-}
+
 
 .founder-row {
     display: flex;
