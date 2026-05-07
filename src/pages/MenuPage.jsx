@@ -1,15 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { categories, menuItems } from '../data/menuData';
+import { categories } from '../data/menuData';
 import '../index.css';
 import '../dietary.css';
 
 
 function MenuPage() {
+    const [menuItems, setMenuItems] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
     const [dietaryFilter, setDietaryFilter] = useState('all'); // 'all', 'veg', 'non-veg'
     const [sizzlingFilter, setSizzlingFilter] = useState('all'); // 'all', 'veg', 'non-veg' for sizzling section
+
+    useEffect(() => {
+        const fetchMenuItems = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/menu');
+                if (response.ok) {
+                    const data = await response.json();
+                    setMenuItems(data);
+                } else {
+                    console.error('Failed to fetch menu items');
+                }
+            } catch (error) {
+                console.error('Error fetching menu items:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchMenuItems();
+    }, []);
 
     const isVeg = (item) => {
         if (item.veg !== undefined) return item.veg;

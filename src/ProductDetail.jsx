@@ -1,7 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { addToCart } from './utils/cart';
-import { menuItems as allMenuItems } from './data/menuData';
 import './index.css';
 import './enhanced-styles.css';
 
@@ -1275,6 +1274,33 @@ const richProductData = [
 
 function ProductDetail() {
     const { id } = useParams();
+    const [allMenuItems, setAllMenuItems] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchMenuItems = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/menu');
+                if (response.ok) {
+                    const data = await response.json();
+                    setAllMenuItems(data);
+                } else {
+                    console.error('Failed to fetch menu items');
+                }
+            } catch (error) {
+                console.error('Error fetching menu items:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchMenuItems();
+    }, []);
+
+    if (loading) {
+        return <div style={{ padding: '150px 20px', textAlign: 'center', fontSize: '1.2rem', color: '#8B1538' }}>Loading product details...</div>;
+    }
+
     const basicProduct = allMenuItems.find(item => item.id === parseInt(id));
     const richInfo = richProductData.find(item => item.id === parseInt(id));
 

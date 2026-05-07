@@ -25,13 +25,25 @@ function Counter({ end, suffix = "", duration = 2000 }) {
 function HomePage() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [reviewSlide, setReviewSlide] = useState(0);
+    const [menuItems, setMenuItems] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    // Auto slide hero
+    // Fetch menu items for dynamic content
     useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % 3);
-        }, 5000);
-        return () => clearInterval(timer);
+        const fetchItems = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/menu');
+                if (response.ok) {
+                    const data = await response.json();
+                    setMenuItems(data);
+                }
+            } catch (error) {
+                console.error('Failed to fetch items:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchItems();
     }, []);
 
     // Auto slide reviews
@@ -229,11 +241,11 @@ function HomePage() {
             </section>
 
             {/* Signature Dishes Section */}
-            <section className="section signature-section">
+            <section id="signature" className="section signature-section">
                 <div className="container">
                     <div className="section-title">
-                        <span className="section-subtitle">Must Try Specialties</span>
                         <h2>Chef's Signature Selection</h2>
+                        <p>Our most celebrated dishes, perfected over generations in the heart of Delhi.</p>
                     </div>
 
                     <div className="signature-grid">
@@ -256,7 +268,7 @@ function HomePage() {
                             </div>
                             <div className="sig-info">
                                 <h3>Royal Raj Kachori</h3>
-                                <p>The king of chaats. A crispy large kachori filled with sprouts, potatoes, chutneys, and chilled yogurt.</p>
+                                <p>The king of chaats. A crispy large kachori bowl filled with sprouts, potatoes, chutneys, and chilled yogurt.</p>
                                 <Link to="/menu" className="sig-link">View Details →</Link>
                             </div>
                         </div>
@@ -275,6 +287,7 @@ function HomePage() {
                     </div>
                 </div>
             </section>
+
             <section id="about" className="section about-section">
                 <div className="container">
                     <div className="section-title">
