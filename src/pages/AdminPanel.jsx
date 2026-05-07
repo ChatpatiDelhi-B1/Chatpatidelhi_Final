@@ -143,42 +143,67 @@ const AdminPanel = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="login-container">
+      <div className="login-container" style={{ backgroundImage: "url('/images/admin-bg.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="login-overlay"></div>
         <div className="login-box">
-          <div className="login-header">
-            <h2>Chatpati Admin</h2>
-            <p>Please login to manage your menu</p>
+          <div className="login-brand">
+            <div className="logo-large">CPD</div>
+            <h2>Chatpati Delhi</h2>
+            <span className="brand-tagline">Authentic Flavors, Royal Management</span>
           </div>
+          
+          <div className="login-header">
+            <h3>Admin Dashboard</h3>
+            <p>Access your culinary control center</p>
+          </div>
+
           <form className="login-form" onSubmit={(e) => {
             e.preventDefault();
             if (formData.username === 'admin@chatpatidelhi.com' && formData.password === 'Chatpati@2026') {
               setIsAuthenticated(true);
             } else {
-              alert('Invalid credentials');
+              showNotification('Invalid credentials provided', 'error');
             }
           }}>
             <div className="form-group">
-              <input 
-                type="text" 
-                placeholder="Username" 
-                value={formData.username}
-                onChange={(e) => setFormData({...formData, username: e.target.value})} 
-                required
-              />
+              <label>Administrator Email</label>
+              <div className="input-with-icon">
+                <span className="input-icon">📧</span>
+                <input 
+                  type="text" 
+                  placeholder="admin@chatpatidelhi.com" 
+                  value={formData.username}
+                  onChange={(e) => setFormData({...formData, username: e.target.value})} 
+                  required
+                />
+              </div>
             </div>
             <div className="form-group">
-              <input 
-                type="password" 
-                placeholder="Password" 
-                value={formData.password}
-                onChange={(e) => setFormData({...formData, password: e.target.value})} 
-                required
-              />
+              <label>Security Password</label>
+              <div className="input-with-icon">
+                <span className="input-icon">🔒</span>
+                <input 
+                  type="password" 
+                  placeholder="••••••••••••" 
+                  value={formData.password}
+                  onChange={(e) => setFormData({...formData, password: e.target.value})} 
+                  required
+                />
+              </div>
             </div>
-            <button type="submit" className="login-btn">Login to Dashboard</button>
+            <button type="submit" className="login-btn">
+              <span>Sign In to Dashboard</span>
+              <span className="btn-arrow">→</span>
+            </button>
           </form>
+
           <div className="login-footer">
-            <p>© 2026 Chatpati Delhi</p>
+            <p>© 2026 Chatpati Delhi Hospitality Group</p>
+            <div className="footer-links">
+              <span>Security Policy</span>
+              <span className="dot">•</span>
+              <span>Support</span>
+            </div>
           </div>
         </div>
       </div>
