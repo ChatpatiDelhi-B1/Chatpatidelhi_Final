@@ -63,15 +63,23 @@ const AdminPanel = () => {
     setShowModal(true);
   };
 
-  const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this item?')) {
-      try {
-        await fetch(`/api/menu/${id}`, { method: 'DELETE' });
-        showNotification('Item deleted successfully');
-        fetchItems();
-      } catch (err) {
-        showNotification('Failed to delete item', 'error');
-      }
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [deleteTargetId, setDeleteTargetId] = useState(null);
+
+  const handleDeleteClick = (id) => {
+    setDeleteTargetId(id);
+    setShowConfirmModal(true);
+  };
+
+  const confirmDelete = async () => {
+    try {
+      await fetch(`/api/menu/${deleteTargetId}`, { method: 'DELETE' });
+      showNotification('Item deleted successfully');
+      setShowConfirmModal(false);
+      setDeleteTargetId(null);
+      fetchItems();
+    } catch (err) {
+      showNotification('Failed to delete item', 'error');
     }
   };
 
@@ -298,7 +306,7 @@ const AdminPanel = () => {
                     </td>
                     <td className="actions-cell">
                       <button className="btn-icon edit" title="Edit" onClick={() => handleEdit(item)}>✏️</button>
-                      <button className="btn-icon delete" title="Delete" onClick={() => handleDelete(item.id)}>🗑️</button>
+                      <button className="btn-icon delete" title="Delete" onClick={() => handleDeleteClick(item.id)}>🗑️</button>
                     </td>
                   </tr>
                 ))}
@@ -399,6 +407,24 @@ const AdminPanel = () => {
                 <button type="submit" className="btn-primary">Save Changes</button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+      {showConfirmModal && (
+        <div className="modal-backdrop">
+          <div className="modal-container confirm-modal">
+            <div className="modal-header">
+              <h2>Confirm Deletion</h2>
+              <button className="close-modal" onClick={() => setShowConfirmModal(false)}>✕</button>
+            </div>
+            <div className="modal-body" style={{ padding: '2rem', textAlign: 'center' }}>
+              <div className="confirm-icon" style={{ fontSize: '3rem', marginBottom: '1rem' }}>⚠️</div>
+              <p>Are you sure you want to delete this item? This action cannot be undone.</p>
+            </div>
+            <div className="modal-footer" style={{ justifyContent: 'center', gap: '1rem' }}>
+              <button className="btn-secondary" onClick={() => setShowConfirmModal(false)}>Cancel</button>
+              <button className="btn-primary delete-confirm-btn" style={{ background: '#e74c3c' }} onClick={confirmDelete}>Yes, Delete</button>
+            </div>
           </div>
         </div>
       )}

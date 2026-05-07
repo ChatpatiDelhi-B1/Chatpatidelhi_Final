@@ -562,3 +562,8 @@
   from { top: -50px; opacity: 0; }
   to { top: 20px; opacity: 1; }
 }
+
+.confirm-modal { max-width: 400px; }
+.delete-confirm-btn:hover { background: #c0392b !important; }
+.confirm-icon { animation: pulse 2s infinite; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
