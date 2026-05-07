@@ -1621,3 +1621,574 @@
         font-size: 1rem;
     }
 }
+
+/* ============================================
+   ROYAL CONTACT PAGE STYLES
+============================================ */
+
+.royal-contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+    align-items: stretch;
+    margin-bottom: 5rem;
+}
+
+@media (max-width: 900px) {
+    .royal-contact-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+/* === LEFT MASCOT PANEL === */
+.royal-contact-mascot-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(145deg, #160f0a 0%, #0b0705 100%);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+}
+
+.royal-mascot-img-wrapper {
+    width: 280px;
+    height: 280px;
+    margin-bottom: 1.5rem;
+    animation: mascotBounce 2.8s ease-in-out infinite;
+}
+
+.royal-mascot-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 12px 24px rgba(0,0,0,0.7));
+}
+
+.royal-mascot-tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #D4AF37;
+    margin-bottom: 0.5rem;
+}
+
+.royal-mascot-subtitle {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Contact Info Cards */
+.royal-contact-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    text-align: left;
+}
+
+.royal-contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.royal-contact-card:hover {
+    border-color: rgba(212, 175, 55, 0.45);
+    transform: translateX(5px);
+    background: rgba(212, 175, 55, 0.06);
+}
+
+.royal-contact-card-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.royal-contact-card-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #D4AF37;
+    margin-bottom: 0.2rem;
+}
+
+.royal-contact-card-value {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Social Links */
+.royal-social-pill {
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    color: #D4AF37;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.royal-social-pill svg {
+    transition: transform 0.3s ease;
+}
+
+.royal-social-pill:hover {
+    background: #D4AF37;
+    color: #0b0705;
+    transform: translateY(-3px);
+}
+
+.royal-social-pill:hover svg {
+    transform: scale(1.1);
+}
+
+/* Form Card */
+.royal-contact-form-card {
+    background: linear-gradient(145deg, #160f0a 0%, #0b0705 100%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    padding: 2.5rem;
+    height: 100%;
+}
+
+.royal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.royal-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+@media (max-width: 600px) {
+    .royal-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.royal-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.royal-form-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(212, 175, 55, 0.8);
+    font-weight: 500;
+}
+
+.royal-form-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    color: #fff;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.royal-form-input:focus {
+    border-color: #D4AF37;
+    background: rgba(212, 175, 55, 0.08);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+}
+
+.royal-form-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.royal-form-textarea {
+    resize: vertical;
+    min-height: 140px;
+    font-family: inherit;
+}
+
+.royal-form-success {
+    background: rgba(46, 204, 113, 0.1);
+    border: 1px solid rgba(46, 204, 113, 0.3);
+    color: #2ecc71;
+    padding: 1.2rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.royal-btn-primary {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8921F 100%);
+    color: #0b0705;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.royal-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+    background: linear-gradient(135deg, #e5c05b 0%, #d4af37 100%);
+}
+
+.royal-btn-primary:active {
+    transform: translateY(-1px);
+}
+
+@keyframes mascotBounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+}
+
+/* Map Section */
+.royal-map-section {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+/* Real Google Maps embed */
+.royal-map-embed-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.royal-map-embed-wrapper iframe {
+    display: block;
+    width: 100%;
+    height: 420px;
+    border: none;
+}
+
+/* --- FLOATING WHATSAPP BUTTON --- */
+.royal-whatsapp-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    z-index: 9999;
+    transition: all 0.3s ease;
+    animation: waBounce 3s ease-in-out infinite;
+}
+
+.royal-whatsapp-float:hover {
+    transform: scale(1.12);
+    box-shadow: 0 8px 28px rgba(37, 211, 102, 0.7);
+}
+
+@keyframes waBounce {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.07); }
+}
+
+/* Tooltip on WhatsApp button */
+.royal-whatsapp-float::before {
+    content: 'Chat with us!';
+    position: absolute;
+    right: 70px;
+    background: #1a1a1a;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.royal-whatsapp-float:hover::before {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .royal-whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    .royal-map-embed-wrapper iframe {
+        height: 300px;
+    }
+    .royal-namaste-mascot {
+        width: 75px;
+        height: 75px;
+        top: -60px;
+        right: 16px;
+    }
+    .royal-mascot-img-wrapper {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+/* ============================================
+   ROYAL PRESS / ARTICLES PAGE STYLES
+============================================ */
+
+/* Hero Press Block */
+.royal-press-hero {
+    background: linear-gradient(145deg, #1a0f07 0%, #0b0705 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    padding: 3.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.royal-press-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top center, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+}
+
+.royal-press-hero-outlet {
+    font-family: 'Georgia', serif;
+    font-size: 1.8rem;
+    color: white;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.royal-press-hero-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #D4AF37, #B8921F);
+    color: #0b0705;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2.5rem;
+}
+
+.royal-press-hero-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+    color: #D4AF37;
+    line-height: 1.6;
+    font-style: italic;
+    margin: 0 0 2rem;
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.royal-press-hero-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+}
+
+.royal-press-hero-sep {
+    color: #D4AF37;
+    font-size: 0.6rem;
+}
+
+/* Context block */
+.royal-press-context {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.royal-press-context-inner {
+    max-width: 720px;
+    border-left: 3px solid rgba(212, 175, 55, 0.4);
+    padding-left: 2rem;
+}
+
+.royal-press-context-quote {
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    line-height: 1.8;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.royal-press-context-attr {
+    color: #D4AF37;
+    font-size: 0.85rem;
+}
+
+/* Press Cards Grid */
+.royal-press-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 5rem;
+    align-items: stretch;
+}
+
+@media (max-width: 900px) {
+    .royal-press-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.royal-press-card {
+    background: linear-gradient(145deg, #160f0a 0%, #0b0705 100%);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    height: 100%;
+}
+
+.royal-press-card:hover {
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+.royal-press-card-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
+}
+
+.royal-press-card-outlet {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: white;
+    line-height: 1.2;
+}
+
+.royal-press-card-badge {
+    background: rgba(212, 175, 55, 0.12);
+    color: #D4AF37;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 0.25rem 0.8rem;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.royal-press-card-quote {
+    color: rgba(255,255,255,0.65);
+    font-style: italic;
+    line-height: 1.75;
+    font-size: 0.95rem;
+    margin: 0;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.royal-press-card-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    padding-top: 1rem;
+    margin-top: auto;
+}
+
+.royal-press-card-author {
+    color: #D4AF37;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.royal-press-card-date {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.8rem;
+}
+
+/* CTA Section */
+.royal-press-cta {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    margin-bottom: 2rem;
+}
+
+.royal-press-cta h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.royal-press-cta p {
+    color: rgba(255,255,255,0.55);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+}
+
+.royal-press-cta-outline {
+    display: inline-block;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    color: #D4AF37;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.royal-press-cta-outline:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: #D4AF37;
+}
+
