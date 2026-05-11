@@ -160,21 +160,21 @@ const AdminPanel = () => {
             
             <div className="feature-list">
               <div className="feature-item">
-                <span className="feature-icon">+</span>
+                <span className="feature-icon">✨</span>
                 <span>Real-time Menu Updates</span>
               </div>
               <div className="feature-item">
-                <span className="feature-icon">+</span>
+                <span className="feature-icon">📊</span>
                 <span>Product Statistics</span>
               </div>
               <div className="feature-item">
-                <span className="feature-icon">+</span>
+                <span className="feature-icon">🛡️</span>
                 <span>Secure Access Control</span>
               </div>
             </div>
           </div>
           <div className="panel-footer">
-            <p>(c) 2026 Chatpati Delhi Hospitality Group | Version 2.0</p>
+            <p>© 2026 Chatpati Delhi Hospitality Group | Version 2.0</p>
           </div>
         </div>
 
@@ -208,7 +208,7 @@ const AdminPanel = () => {
                 <label>Password</label>
                 <input 
                   type="password" 
-                  placeholder="********" 
+                  placeholder="••••••••••••" 
                   value={formData.password}
                   onChange={(e) => setFormData({...formData, password: e.target.value})} 
                   required
@@ -224,7 +224,7 @@ const AdminPanel = () => {
 
               <button type="submit" className="login-btn-premium">
                 <span>Sign In to Dashboard</span>
-                <span className="btn-arrow">-&gt;</span>
+                <span className="btn-arrow">→</span>
               </button>
             </form>
           </div>
@@ -248,11 +248,11 @@ const AdminPanel = () => {
           <h3>Admin Panel</h3>
         </div>
         <nav className="sidebar-nav">
-          <button className="nav-item active">Menu Items</button>
-          <button className="nav-item">Statistics</button>
-          <button className="nav-item">Settings</button>
+          <button className="nav-item active">📦 Menu Items</button>
+          <button className="nav-item">📊 Statistics</button>
+          <button className="nav-item">⚙️ Settings</button>
           <div className="sidebar-divider"></div>
-          <button className="nav-item logout" onClick={() => setIsAuthenticated(false)}>Logout</button>
+          <button className="nav-item logout" onClick={() => setIsAuthenticated(false)}>🚪 Logout</button>
         </nav>
       </aside>
 
@@ -271,21 +271,21 @@ const AdminPanel = () => {
 
         <section className="stats-row">
           <div className="stat-card">
-            <div className="stat-icon">Dishes</div>
+            <div className="stat-icon">🍲</div>
             <div className="stat-info">
               <span className="stat-label">Total Dishes</span>
               <span className="stat-value">{items.length}</span>
             </div>
           </div>
           <div className="stat-card">
-            <div className="stat-icon veg">Veg</div>
+            <div className="stat-icon veg">🌿</div>
             <div className="stat-info">
               <span className="stat-label">Vegetarian</span>
               <span className="stat-value">{items.filter(i => i.veg).length}</span>
             </div>
           </div>
           <div className="stat-card">
-            <div className="stat-icon hot">Hot</div>
+            <div className="stat-icon hot">🔥</div>
             <div className="stat-info">
               <span className="stat-label">Featured</span>
               <span className="stat-value">{items.filter(i => i.hot).length}</span>
@@ -295,7 +295,7 @@ const AdminPanel = () => {
 
         <section className="management-controls">
           <div className="search-bar">
-            <span className="search-icon">Search</span>
+            <span className="search-icon">🔍</span>
             <input 
               type="text" 
               placeholder="Search by name or category..." 
@@ -336,7 +336,7 @@ const AdminPanel = () => {
                     <td>
                       <div className="item-cell">
                         <div className="item-preview">
-                          {(item.image && (item.image.startsWith('/') || item.image.startsWith('http'))) ? <img src={item.image} alt="" /> : <span>{item.image || 'Img'}</span>}
+                          {(item.image && (item.image.startsWith('/') || item.image.startsWith('http'))) ? <img src={item.image} alt="" /> : <span>{item.image || '🥘'}</span>}
                         </div>
                         <div className="item-text">
                           <strong>{item.name}</strong>
@@ -353,8 +353,8 @@ const AdminPanel = () => {
                       </div>
                     </td>
                     <td className="actions-cell">
-                      <button className="btn-icon edit" title="Edit" onClick={() => handleEdit(item)}>Edit</button>
-                      <button className="btn-icon delete" title="Delete" onClick={() => handleDeleteClick(item.id)}>Del</button>
+                      <button className="btn-icon edit" title="Edit" onClick={() => handleEdit(item)}>✏️</button>
+                      <button className="btn-icon delete" title="Delete" onClick={() => handleDeleteClick(item.id)}>🗑️</button>
                     </td>
                   </tr>
                 ))}
@@ -374,7 +374,7 @@ const AdminPanel = () => {
           <div className="modal-container">
             <div className="modal-header">
               <h2>{editingId ? 'Edit Menu Item' : 'Add New Menu Item'}</h2>
-              <button className="close-modal" onClick={() => setShowModal(false)}>Close</button>
+              <button className="close-modal" onClick={() => setShowModal(false)}>✕</button>
             </div>
             <form onSubmit={handleSubmit} className="modal-form">
               <div className="form-grid">
@@ -413,11 +413,11 @@ const AdminPanel = () => {
                     <input 
                       type="text" 
                       value={formData.image} 
-                      placeholder="/images/dish.png"
+                      placeholder="/images/dish.png or 🥘"
                       onChange={(e) => setFormData({...formData, image: e.target.value})} 
                     />
                     <div className="file-input-wrapper">
-                      <div className="file-input-btn">Upload File</div>
+                      <div className="file-input-btn">📁 Upload</div>
                       <input type="file" accept="image/*" onChange={handleFileUpload} />
                     </div>
                   </div>
@@ -463,10 +463,10 @@ const AdminPanel = () => {
           <div className="modal-container confirm-modal">
             <div className="modal-header">
               <h2>Confirm Deletion</h2>
-              <button className="close-modal" onClick={() => setShowConfirmModal(false)}>Close</button>
+              <button className="close-modal" onClick={() => setShowConfirmModal(false)}>✕</button>
             </div>
             <div className="modal-body" style={{ padding: '2rem', textAlign: 'center' }}>
-              <div className="confirm-icon" style={{ fontSize: '3rem', marginBottom: '1rem' }}>Warning!</div>
+              <div className="confirm-icon" style={{ fontSize: '3rem', marginBottom: '1rem' }}>⚠️</div>
               <p>Are you sure you want to delete this item? This action cannot be undone.</p>
             </div>
             <div className="modal-footer" style={{ justifyContent: 'center', gap: '1rem' }}>
