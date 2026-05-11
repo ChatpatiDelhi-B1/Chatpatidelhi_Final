@@ -122,7 +122,7 @@ export default function CartPanel({ open, onClose }) {
                         {items.map((it, index) => (
                             <div key={`${it.id}-${it.spiceLevel || 'none'}-${index}`} className="cart-item">
                                 <div className="ci-image">
-                                    {it.image && (it.image.startsWith('/') || it.image.startsWith('http')) ? (
+                                    {it.image && (it.image.startsWith('/') || it.image.startsWith('http') || it.image.startsWith('data:')) ? (
                                         <img src={it.image} alt={it.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} />
                                     ) : (
                                         <span style={{ fontSize: '2rem' }}>{it.image || '🍽️'}</span>

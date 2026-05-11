@@ -334,10 +334,10 @@ function Home() {
                             <div key={item.id} className="product-card">
                                 {item.hot && <span className="badge-hot">Hot</span>}
                                 <div className="product-image">
-                                    {item.image.startsWith('/') || item.image.startsWith('http') ? (
+                                    {item.image.startsWith('/') || item.image.startsWith('http') || item.image.startsWith('data:') ? (
                                         <img src={item.image} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                     ) : (
-                                        <span className="product-emoji">{item.image}</span>
+                                        <span className="product-emoji">{item.image || '🥘'}</span>
                                     )}
                                 </div>
                                 <div className="product-info">

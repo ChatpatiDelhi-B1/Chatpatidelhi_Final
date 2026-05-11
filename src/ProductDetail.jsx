@@ -1354,7 +1354,7 @@ function ProductDetail() {
 
     // Product images (for demo, using emoji variations or single image)
     const imageVal = product.image || '🥘';
-    const productImages = (typeof imageVal === 'string' && (imageVal.startsWith('/') || imageVal.startsWith('http')))
+    const productImages = (typeof imageVal === 'string' && (imageVal.startsWith('/') || imageVal.startsWith('http') || imageVal.startsWith('data:')))
         ? [imageVal, imageVal, imageVal]
         : [imageVal, '🥘', '🍽️'];
 
@@ -1389,10 +1389,10 @@ function ProductDetail() {
                     {/* Left: Product Image */}
                     <div className="royal-detail-image-section">
                         <div className="royal-detail-main-image">
-                            {productImages[selectedImage].startsWith('/') || productImages[selectedImage].startsWith('http') ? (
+                            {productImages[selectedImage].startsWith('/') || productImages[selectedImage].startsWith('http') || productImages[selectedImage].startsWith('data:') ? (
                                 <img src={productImages[selectedImage]} alt={product.name} />
                             ) : (
-                                <span className="royal-detail-emoji">{productImages[selectedImage]}</span>
+                                <span className="royal-detail-emoji">{productImages[selectedImage] || '🥘'}</span>
                             )}
                             {product.hot && <span className="royal-badge-hot">Spicy</span>}
                         </div>
@@ -1405,10 +1405,10 @@ function ProductDetail() {
                                     className={`royal-detail-thumbnail ${selectedImage === index ? 'active' : ''}`}
                                     onClick={() => setSelectedImage(index)}
                                 >
-                                    {img.startsWith('/') || img.startsWith('http') ? (
+                                    {img.startsWith('/') || img.startsWith('http') || img.startsWith('data:') ? (
                                         <img src={img} alt={`${product.name} view ${index + 1}`} />
                                     ) : (
-                                        img
+                                        img || '🥘'
                                     )}
                                 </div>
                             ))}
@@ -1519,10 +1519,10 @@ function ProductDetail() {
                             {relatedProducts.map((item) => (
                                 <div key={item.id} className="royal-product-card">
                                     <div className="royal-product-img-wrapper">
-                                        {item.image.startsWith('/') || item.image.startsWith('http') ? (
+                                        {item.image.startsWith('/') || item.image.startsWith('http') || item.image.startsWith('data:') ? (
                                             <img src={item.image} alt={item.name} />
                                         ) : (
-                                            <span className="royal-product-emoji">{item.image}</span>
+                                            <span className="royal-product-emoji">{item.image || '🥘'}</span>
                                         )}
                                     </div>
                                     <div className="royal-product-info">
