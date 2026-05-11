@@ -130,16 +130,42 @@ const AdminPanel = () => {
     const file = e.target.files[0];
     if (!file) return;
 
-    showNotification('Processing image...', 'info');
+    showNotification('Compressing and processing image...', 'info');
 
-    // Convert file to Base64 to bypass missing /api/upload endpoint on static/serverless hosts
     const reader = new FileReader();
-    reader.onloadend = () => {
-      setFormData({ ...formData, image: reader.result });
-      showNotification('Image uploaded successfully!');
-    };
-    reader.onerror = () => {
-      showNotification('Failed to read image file', 'error');
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        // Create canvas for compression
+        const canvas = document.createElement('canvas');
+        let width = img.width;
+        let height = img.height;
+
+        // Max dimensions
+        const MAX_SIZE = 1200;
+        if (width > height) {
+          if (width > MAX_SIZE) {
+            height *= MAX_SIZE / width;
+            width = MAX_SIZE;
+          }
+        } else {
+          if (height > MAX_SIZE) {
+            width *= MAX_SIZE / height;
+            height = MAX_SIZE;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // Convert to compressed Base64 (0.7 quality)
+        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7);
+        setFormData({ ...formData, image: compressedBase64 });
+        showNotification('Image compressed and ready!');
+      };
+      img.src = event.target.result;
     };
     reader.readAsDataURL(file);
   };
