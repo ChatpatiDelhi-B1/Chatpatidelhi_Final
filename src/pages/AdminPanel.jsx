@@ -160,21 +160,21 @@ const AdminPanel = () => {
             
             <div className="feature-list">
               <div className="feature-item">
-                <span className="feature-icon">âœ¨</span>
+                <span className="feature-icon">+</span>
                 <span>Real-time Menu Updates</span>
               </div>
               <div className="feature-item">
-                <span className="feature-icon">ðŸ“Š</span>
+                <span className="feature-icon">+</span>
                 <span>Product Statistics</span>
               </div>
               <div className="feature-item">
-                <span className="feature-icon">ðŸ›¡ï¸</span>
+                <span className="feature-icon">+</span>
                 <span>Secure Access Control</span>
               </div>
             </div>
           </div>
           <div className="panel-footer">
-            <p>Â© 2026 Chatpati Delhi Hospitality Group | Version 2.0</p>
+            <p>(c) 2026 Chatpati Delhi Hospitality Group | Version 2.0</p>
           </div>
         </div>
 
@@ -208,7 +208,7 @@ const AdminPanel = () => {
                 <label>Password</label>
                 <input 
                   type="password" 
-                  placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" 
+                  placeholder="********" 
                   value={formData.password}
                   onChange={(e) => setFormData({...formData, password: e.target.value})} 
                   required
@@ -224,7 +224,7 @@ const AdminPanel = () => {
 
               <button type="submit" className="login-btn-premium">
                 <span>Sign In to Dashboard</span>
-                <span className="btn-arrow">â†’</span>
+                <span className="btn-arrow">-&gt;</span>
               </button>
             </form>
           </div>
