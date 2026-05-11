@@ -8,10 +8,19 @@ import { dirname, join } from 'path';
 import fs from 'fs/promises';
 import multer from 'multer';
 
+dotenv.config();
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-dotenv.config();
+// Ensure uploads directory exists
+const UPLOADS_DIR = join(__dirname, 'public/uploads');
+try {
+  await fs.mkdir(UPLOADS_DIR, { recursive: true });
+  console.log('Uploads directory ready:', UPLOADS_DIR);
+} catch (err) {
+  console.error('Error creating uploads directory:', err.message);
+}
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -81,14 +90,8 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
   res.json({ imageUrl: `/uploads/${req.file.filename}` });
 });
 
-app.post('/api/menu', upload.single('imageFile'), async (req, res) => {
-  let { name, price, category, image, hot, description, veg } = req.body;
-  
-  // If a physical file was uploaded, use its path instead of the text field
-  if (req.file) {
-    image = `/uploads/${req.file.filename}`;
-  }
-
+app.post('/api/menu', async (req, res) => {
+  const { name, price, category, image, hot, description, veg } = req.body;
   try {
     const result = await pool.query(
       'INSERT INTO menu_items (name, price, category, image, hot, description, veg) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
@@ -101,15 +104,9 @@ app.post('/api/menu', upload.single('imageFile'), async (req, res) => {
   }
 });
 
-app.put('/api/menu/:id', upload.single('imageFile'), async (req, res) => {
+app.put('/api/menu/:id', async (req, res) => {
   const { id } = req.params;
-  let { name, price, category, image, hot, description, veg } = req.body;
-
-  // If a physical file was uploaded, use its path instead of the text field
-  if (req.file) {
-    image = `/uploads/${req.file.filename}`;
-  }
-
+  const { name, price, category, image, hot, description, veg } = req.body;
   try {
     const result = await pool.query(
       'UPDATE menu_items SET name = $1, price = $2, category = $3, image = $4, hot = $5, description = $6, veg = $7 WHERE id = $8 RETURNING *',

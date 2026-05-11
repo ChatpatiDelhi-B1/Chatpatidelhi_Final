@@ -110,19 +110,10 @@ const AdminPanel = () => {
     try {
       showNotification('Saving changes...', 'info');
       
-      // Use FormData for binary file upload
-      const submitData = new FormData();
-      Object.keys(formData).forEach(key => {
-        if (key === '_file') {
-          submitData.append('imageFile', formData[key]);
-        } else {
-          submitData.append(key, formData[key]);
-        }
-      });
-
       const res = await fetch(url, {
         method,
-        body: submitData
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
       });
       
       if (res.ok) {
@@ -132,18 +123,11 @@ const AdminPanel = () => {
         setFormData({ name: '', price: '', category: 'chaat', image: '', hot: false, description: '', veg: true, username: '', password: '' });
         fetchItems();
       } else {
-        const text = await res.text();
-        let errorMsg = 'Error saving item';
-        try {
-          const data = JSON.parse(text);
-          errorMsg = data.error || errorMsg;
-        } catch(e) {
-          errorMsg = text.substring(0, 50) || errorMsg;
-        }
-        showNotification(errorMsg, 'error');
+        const errData = await res.json();
+        showNotification(errData.error || 'Error saving item', 'error');
       }
     } catch (err) {
-      showNotification('Connection error', 'error');
+      showNotification('Error saving item', 'error');
     }
   };
 
@@ -151,9 +135,43 @@ const AdminPanel = () => {
     const file = e.target.files[0];
     if (!file) return;
 
-    // Store the file object for binary upload
-    setFormData({ ...formData, _file: file, image: file.name });
-    showNotification(`Photo "${file.name}" selected!`);
+    showNotification('Compressing for fast upload...', 'info');
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let width = img.width;
+        let height = img.height;
+
+        // Aggressive compression for Vercel (800px max)
+        const MAX_SIZE = 800;
+        if (width > height) {
+          if (width > MAX_SIZE) {
+            height *= MAX_SIZE / width;
+            width = MAX_SIZE;
+          }
+        } else {
+          if (height > MAX_SIZE) {
+            width *= MAX_SIZE / height;
+            height = MAX_SIZE;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // High compression (0.6 quality) to stay well under Vercel limits
+        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.6);
+        setFormData({ ...formData, image: compressedBase64 });
+        showNotification('Image ready!');
+      };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
   };
 
   const filteredItems = items.filter(item => {
