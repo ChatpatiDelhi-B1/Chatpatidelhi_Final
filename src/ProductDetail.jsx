@@ -6,7 +6,7 @@ import './index.css';
 import './enhanced-styles.css';
 
 // Rich data with detailed descriptions for specific items
-const richProductData = [
+export const richProductData = [
     {
         id: 1,
         fullDescription: 'Experience the authentic taste of Delhi with our handcrafted Bhara Samosas. Each samosa features a perfectly crispy, golden-brown exterior made from refined flour, encasing a flavorful filling of seasoned potatoes, green peas, and aromatic Indian spices.',
@@ -1325,6 +1325,7 @@ function ProductDetail() {
     const product = basicProduct ? {
         ...basicProduct,
         ...(richInfo || {}),
+        menuDescription: basicProduct.description, // Preserve the exact menu description
         rating: richInfo?.rating || 4.5,
         reviews: richInfo?.reviews || '50+',
         features: richInfo?.features || ['✓ Authentic Taste', '✓ Fresh Ingredients', '✓ Served Hot'],
@@ -1419,19 +1420,35 @@ function ProductDetail() {
                     <div className="royal-detail-info-section">
                         <h1 className="royal-detail-title">{product.name}</h1>
 
-                        <div className="royal-detail-desc">
-                            {product.fullDescription || product.description}
+                        <div className="royal-price-box" style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '2rem', justifyContent: 'flex-start' }}>
+                            <div className="royal-price" style={{ fontSize: '2.5rem', color: '#D4AF37' }}>
+                                {product.variants ? product.variants[selectedVariant].price : product.price}
+                            </div>
+                            
+                            {/* Rating & Reviews moved here */}
+                            <div className="product-rating" style={{ display: 'flex', alignItems: 'center' }}>
+                                <div className="stars" style={{ color: '#D4AF37' }}>
+                                    {'⭐'.repeat(Math.floor(product.rating))}
+                                    {product.rating % 1 !== 0 && '⭐'}
+                                </div>
+                                <span className="rating-text" style={{ color: '#fff', marginLeft: '10px' }}>{product.rating}/5.0</span>
+                                <span className="review-count" style={{ color: 'rgba(255,255,255,0.5)', marginLeft: '10px' }}>({product.reviews} reviews)</span>
+                            </div>
                         </div>
 
-                        {/* Rating & Reviews */}
-                        <div className="product-rating" style={{ marginBottom: '2rem' }}>
-                            <div className="stars" style={{ color: '#D4AF37' }}>
-                                {'⭐'.repeat(Math.floor(product.rating))}
-                                {product.rating % 1 !== 0 && '⭐'}
-                            </div>
-                            <span className="rating-text" style={{ color: '#fff', marginLeft: '10px' }}>{product.rating}/5.0</span>
-                            <span className="review-count" style={{ color: 'rgba(255,255,255,0.5)', marginLeft: '10px' }}>({product.reviews} reviews)</span>
+                        <div className="royal-detail-desc" dangerouslySetInnerHTML={{ __html: product.menuDescription }}>
                         </div>
+
+                        {product.fullDescription && product.fullDescription !== stripHtml(product.menuDescription) && (
+                            <div className="royal-detail-section" style={{ borderTop: '1px solid rgba(212, 175, 55, 0.1)', marginTop: '2rem', paddingTop: '2rem' }}>
+                                <h3 className="royal-detail-section-title">Detailed Explanation</h3>
+                                <div className="royal-detail-full-desc" style={{ lineHeight: '1.8', color: 'rgba(255,255,255,0.9)', fontSize: '1.1rem' }}>
+                                    {product.fullDescription}
+                                </div>
+                            </div>
+                        )}
+
+
 
                         {/* Ingredients Section */}
                         {product.ingredients && product.ingredients.length > 0 && (
@@ -1502,12 +1519,7 @@ function ProductDetail() {
                             </div>
                         )}
 
-                        {/* Quantity Selector & Price */}
-                        <div className="royal-price-box" style={{ justifyContent: 'flex-start' }}>
-                            <div className="royal-price">
-                                {product.variants ? product.variants[selectedVariant].price : product.price}
-                            </div>
-                        </div>
+
                     </div>
                 </div>
 

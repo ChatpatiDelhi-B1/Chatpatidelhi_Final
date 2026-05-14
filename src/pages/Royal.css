@@ -2271,103 +2271,106 @@
    ROYAL ABOUT PAGE STYLES
 ============================================ */
 
-.royal-about-grid {
+/* About Group Section */
+.royal-about-group-section {
     display: flex;
     flex-direction: column;
-    gap: 8rem;
-    margin-bottom: 8rem;
-}
-
-.royal-founder-row {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
     gap: 4rem;
+    max-width: 1000px;
+    margin: 0 auto 8rem;
     align-items: center;
 }
 
-.royal-founder-reverse {
-    direction: rtl;
-}
-
-.royal-founder-reverse>* {
-    direction: ltr;
-}
-
-.royal-founder-image-col {
-    position: relative;
-}
-
-.royal-founder-image-frame {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-}
-
-.royal-founder-img {
+.royal-about-group-image {
     width: 100%;
-    height: 600px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.6s ease;
+    max-width: 900px;
 }
 
-.royal-founder-row:hover .royal-founder-img {
-    transform: scale(1.05);
+.royal-image-frame {
+    position: relative;
+    padding: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
-.royal-founder-accent {
+.royal-image-frame::before {
+    content: '';
     position: absolute;
-    inset: 0;
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    margin: 15px;
-    pointer-events: none;
-    z-index: 2;
-}
-
-.royal-founder-content-col {
-    padding: 2rem;
-}
-
-.royal-founder-pre {
-    color: #D4AF37;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 0.85rem;
-    margin-bottom: 0.5rem;
-    display: block;
-}
-
-.royal-founder-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    color: #fff;
-    margin-bottom: 1rem;
-}
-
-.royal-founder-divider {
-    width: 60px;
-    height: 3px;
-    background: #D4AF37;
-    margin-bottom: 2rem;
-}
-
-.royal-founder-bio {
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.8;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-}
-
-.royal-founder-quote {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.4rem;
-    color: #D4AF37;
+    top: -10px;
+    left: -10px;
+    width: 40px;
+    height: 40px;
+    border-top: 2px solid #D4AF37;
     border-left: 2px solid #D4AF37;
-    padding-left: 1.5rem;
-    margin: 0;
 }
+
+.royal-image-frame::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+    border-bottom: 2px solid #D4AF37;
+    border-right: 2px solid #D4AF37;
+}
+
+.royal-group-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    filter: contrast(1.05) brightness(0.95);
+}
+
+.royal-about-text-content {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.8;
+}
+
+.royal-about-lead {
+    font-size: 1.4rem;
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.royal-about-lead::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+}
+
+.royal-founders-description {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+}
+
+.royal-founders-description p strong {
+    color: #D4AF37;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+}
+
+.royal-about-conclusion {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #D4AF37;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 
 /* Mission Section */
 .royal-mission-section {

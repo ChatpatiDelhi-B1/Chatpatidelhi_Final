@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import './index.css'
 import { addToCart } from './utils/cart'
 import { menuItems as localMenuItems } from './data/menuData'
+import { richProductData } from './ProductDetail'
 
 function App() {
     const [scrolled, setScrolled] = useState(false);
@@ -418,13 +419,26 @@ function App() {
 
                                 <div className="modal-section">
                                     <h3>Description</h3>
-                                    <p>{selectedProduct.description}</p>
+                                    <div dangerouslySetInnerHTML={{ __html: selectedProduct.description }}></div>
                                 </div>
 
-                                <div className="modal-section">
-                                    <h3>Details</h3>
-                                    <p>Authentic Delhi-style {selectedProduct.name.toLowerCase()} prepared with traditional recipes and fresh ingredients. Perfect for food lovers who appreciate genuine flavors.</p>
-                                </div>
+                                {(() => {
+                                    const richInfo = richProductData.find(p => p.id === Number(selectedProduct.id));
+                                    if (richInfo && richInfo.fullDescription) {
+                                        return (
+                                            <div className="modal-section" style={{ borderTop: '1px solid rgba(212, 175, 55, 0.1)', marginTop: '1.5rem', paddingTop: '1.5rem' }}>
+                                                <h3>Detailed Explanation</h3>
+                                                <p style={{ lineHeight: '1.6', color: 'rgba(255,255,255,0.9)' }}>{richInfo.fullDescription}</p>
+                                            </div>
+                                        );
+                                    }
+                                    return (
+                                        <div className="modal-section">
+                                            <h3>Details</h3>
+                                            <p>Authentic Delhi-style {selectedProduct.name.toLowerCase()} prepared with traditional recipes and fresh ingredients. Perfect for food lovers who appreciate genuine flavors.</p>
+                                        </div>
+                                    );
+                                })()}
 
                                 <div className="modal-info-box">
                                     <div className="info-row">

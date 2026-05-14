@@ -1,83 +1,56 @@
 import '../index.css';
 import './Royal.css';
 
-const founders = [
-    {
-        name: 'Hema Singh',
-        title: 'Founder & Culinary Creator',
-        image: '/images/hema-singh.jpg',
-        bio: 'Hema Singh is the heart and soul of Chatpati Delhi. As the creative force behind our signature masalas and authentic recipes, she brings over 18 years of culinary experience rooted in tradition and passion. Every spice blend, every aroma, and every flavor reflects her dedication to preserving authentic Indian taste while delivering unforgettable dining experiences.',
-        quote: '“Food should feel like home.”',
-        reverse: false
-    },
-    {
-        name: 'Jimmy Poonawalla',
-        title: 'Founder & Operations Director',
-        image: '/images/jimmy-poonamwala.jpg',
-        bio: 'With over 18 years of experience in hospitality and restaurant management, Jimmy ensures that every guest at Chatpati Delhi feels valued and welcomed. As the operational backbone of the restaurant, he manages daily operations, team leadership, and service excellence. His focus on quality, consistency, and customer satisfaction keeps the restaurant running smoothly.',
-        quote: '“Hospitality is not a service — it’s a responsibility.”',
-        reverse: true
-    },
-    {
-        name: 'Abhijith Pingle',
-        title: 'Founder & Catering Director',
-        image: '/images/abhijith-founder.jpg',
-        bio: 'Abhijith Pingle leads the catering division of Chatpati Delhi across the United States. With over 18 years in the food and service industry, including 13 years dedicated to catering and 3,000+ successfully executed events, he brings strategic planning, operational precision, and flawless execution to every occasion.',
-        quote: '“Precision, passion, and presentation define every event we deliver.”',
-        reverse: false
-    },
-    {
-        name: 'Pradeep Singh',
-        title: 'Founder',
-        image: '/images/pradeep-singh.jpg',
-        bio: 'Pradeep Singh, the visionary founder of Chatpati Delhi, is deeply involved in the restaurant’s daily operations, ensuring excellence in every detail. From maintaining authentic flavors to upholding the highest standards of service, he plays a pivotal role in delivering a refined dining experience. His dedication to quality has shaped Chatpati Delhi into a distinguished destination.',
-        quote: '“Quality is never an accident; it is always the result of high intention.”',
-        reverse: true
-    }
-];
-
 function AboutPage() {
     return (
         <div className="royal-menu-wrapper">
             <div className="container">
                 
                 {/* Hero Header */}
-                <div className="royal-title-container" style={{ marginBottom: '5rem' }}>
+                <div className="royal-title-container" style={{ marginBottom: '4rem' }}>
                     <span className="royal-subtitle">Our Journey</span>
                     <h1 className="royal-title">The People & The Passion</h1>
                     <div className="royal-title-divider"><span>✦</span></div>
-                    <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: '700px', margin: '2rem auto 0', lineHeight: '1.8', fontSize: '1.1rem' }}>
-                        Since 2021, we have been dedicated to bringing the soul-satisfying authentic tastes of Old Delhi's narrow lanes 
-                        to the heart of New Jersey. This is our story, driven by tradition and family.
-                    </p>
                 </div>
 
-                {/* Meet the Founders Section */}
-                <div className="royal-about-grid">
-                    {founders.map((founder, i) => (
-                        <div key={i} className={`royal-founder-row ${founder.reverse ? 'royal-founder-reverse' : ''}`}>
-                            <div className="royal-founder-image-col">
-                                <div className="royal-founder-image-frame">
-                                    <img 
-                                        src={founder.image} 
-                                        alt={founder.name} 
-                                        onError={(e) => { e.target.src = '/avatar.png'; }}
-                                        className="royal-founder-img"
-                                    />
-                                    <div className="royal-founder-accent"></div>
-                                </div>
-                            </div>
-                            <div className="royal-founder-content-col">
-                                <div className="royal-founder-info">
-                                    <span className="royal-founder-pre">{founder.title}</span>
-                                    <h2 className="royal-founder-name">{founder.name}</h2>
-                                    <div className="royal-founder-divider"></div>
-                                    <p className="royal-founder-bio">{founder.bio}</p>
-                                    <blockquote className="royal-founder-quote">{founder.quote}</blockquote>
-                                </div>
-                            </div>
+                {/* Group Section */}
+                <div className="royal-about-group-section">
+                    <div className="royal-about-group-image">
+                        <div className="royal-image-frame">
+                            <img 
+                                src="/images/about-group.jpg" 
+                                alt="Founders of Chatpati Delhi" 
+                                className="royal-group-img"
+                                onError={(e) => { e.target.src = '/avatar.png'; }}
+                            />
+                            <div className="royal-image-overlay"></div>
                         </div>
-                    ))}
+                    </div>
+                    
+                    <div className="royal-about-text-content">
+                        <p className="royal-about-lead">
+                            Welcome to Chatpati Delhi, a premier culinary destination where the soul of Old Delhi meets modern sophistication. Inspired by the bold, vibrant, and unapologetic flavors of India’s capital, we were founded with a singular vision: to bring the true essence of Indian street food to the United States.
+                        </p>
+                        
+                        <div className="royal-founders-description">
+                            <p>
+                                <strong>Jimmy Poonawala</strong> leads the restaurant’s day-to-day activities and manages tray orders, meticulously ensuring that every guest receives seamless, world-class service through operational excellence.
+                            </p>
+                            <p>
+                                <strong>Hema Singh</strong> is the creative force behind the kitchen, our culinary visionary known for inventing the restaurant’s signature spices and handcrafted masalas that bring authentic Indian flavors to every dish.
+                            </p>
+                            <p>
+                                <strong>Pradeep Singh</strong> oversees the restaurant’s daily operations with a relentless focus on efficiency, consistency, and delivering an outstanding guest experience that honors our high standards.
+                            </p>
+                            <p>
+                                <strong>Abhijit Pingle</strong> manages live stations and premium catering services across the USA, creating interactive and memorable culinary experiences that celebrate tradition and innovation for events of all scales.
+                            </p>
+                        </div>
+                        
+                        <p className="royal-about-conclusion">
+                            Together, the founders of Chatpati Delhi are redefining modern Indian dining by blending tradition, innovation, and unparalleled hospitality in every meal served.
+                        </p>
+                    </div>
                 </div>
 
                 {/* Mission & Legacy */}
@@ -128,3 +101,4 @@ function AboutPage() {
 }
 
 export default AboutPage;
+

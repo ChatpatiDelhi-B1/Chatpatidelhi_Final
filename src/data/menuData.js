@@ -79,7 +79,7 @@ export const menuItems = [
         "category": "chaat",
         "image": "/images/bhara-samosa.png",
         "hot": false,
-        "description": "Stuffed samosas"
+        "description": "Golden-crisp pastry shells generously stuffed with a savory spiced potato and pea filling, a timeless Delhi classic."
     },
     {
         "id": 2,
@@ -88,7 +88,7 @@ export const menuItems = [
         "category": "chaat",
         "image": "/images/chats/Khasta Kachori.png",
         "hot": false,
-        "description": "Crispy kachoris"
+        "description": "Flaky, deep-fried kachoris filled with a spicy lentil mixture, served with tangy tamarind chutney."
     },
     {
         "id": 3,
@@ -97,7 +97,7 @@ export const menuItems = [
         "category": "chaat",
         "image": "/images/chats/Jaypuri Pyaaz Kachori.png",
         "hot": false,
-        "description": "Onion kachori"
+        "description": "Traditional Jaipur-style kachori with a rich and spicy onion stuffing, perfectly fried to a golden crunch."
     },
     {
         "id": 4,
@@ -106,7 +106,7 @@ export const menuItems = [
         "category": "chaat",
         "image": "/images/Chandni Chowk Ke Bhalle.png",
         "hot": false,
-        "description": "Famous Delhi bhalla"
+        "description": "Soft, pillowy lentil dumplings soaked in creamy yogurt and topped with zesty chutneys and aromatic spices, straight from the heart of Delhi."
     },
     {
         "id": 5,
@@ -115,7 +115,7 @@ export const menuItems = [
         "category": "chaat",
         "image": "/images/chats/Churmuri Bhel.png",
         "hot": false,
-        "description": "Puffed rice mix"
+        "description": "A light and crunchy mix of puffed rice, savory sev, peanuts, and fresh vegetables tossed in tangy tamarind sauce."
     },
     {
         "id": 6,
@@ -124,7 +124,7 @@ export const menuItems = [
         "category": "chaat",
         "image": "/images/golgappa.jpeg",
         "hot": true,
-        "description": "Water-filled puri with options",
+        "description": "Crispy hollow puris served with a choice of flavored waters—spicy, tangy, or sweet—offering an explosion of flavor in every bite.",
         "variants": [
             {
                 "name": "6 Pcs",
@@ -147,7 +147,7 @@ export const menuItems = [
         "category": "chaat",
         "image": "/images/chats/Sev Puri Dahi Puri (SPDP).png",
         "hot": false,
-        "description": "Sev and dahi puri combo"
+        "description": "A delightful combination of sev-topped flat puris and yogurt-filled puffed puris, drizzled with sweet and spicy chutneys."
     },
     {
         "id": 8,
@@ -156,7 +156,7 @@ export const menuItems = [
         "category": "chaat",
         "image": "/images/chats/Papri Chaat'.png",
         "hot": false,
-        "description": "Crispy papri chaat"
+        "description": "Crunchy flour crackers topped with potatoes, chickpeas, chilled yogurt, and a medley of house-made chutneys."
     },
     {
         "id": 9,
@@ -165,7 +165,7 @@ export const menuItems = [
         "category": "chaat",
         "image": "/images/chats/Dahi Aloo Tikki.png",
         "hot": false,
-        "description": "Potato tikki with yogurt"
+        "description": "Golden pan-fried potato patties served with a generous layer of seasoned yogurt and tangy chaat masalas."
     },
     {
         "id": 10,
@@ -174,7 +174,7 @@ export const menuItems = [
         "category": "chaat",
         "image": "/images/Raj Kachori.png",
         "hot": true,
-        "description": "King size kachori"
+        "description": "The ultimate 'King of Chaat'—a large, crispy shell overflowing with a royal medley of potatoes, sprouts, chutneys, and yogurt."
     },
     {
         "id": 11,
@@ -183,7 +183,7 @@ export const menuItems = [
         "category": "chaat",
         "image": "/images/chats/Chola Tikki Chaat.png",
         "hot": false,
-        "description": "Chickpea tikki chaat"
+        "description": "Warm potato patties served with a hearty chickpea curry, garnished with onions, ginger, and fresh coriander."
     },
     {
         "id": 12,
@@ -192,7 +192,7 @@ export const menuItems = [
         "category": "chaat",
         "image": "/images/chats/Samosa Chaat.png",
         "hot": true,
-        "description": "Samosa with chole"
+        "description": "Deconstructed samosas topped with spicy chole, cool yogurt, and a blend of sweet and spicy chutneys."
     },
     {
         "id": 13,
@@ -210,7 +210,7 @@ export const menuItems = [
         "category": "chaat",
         "image": "/images/chats/Chutney Paneer Pakora.png",
         "hot": false,
-        "description": "Paneer pakoras"
+        "description": "Soft paneer cubes dipped in a spiced gram flour batter and fried until golden and crisp."
     },
     {
         "id": 16,
@@ -255,7 +255,7 @@ export const menuItems = [
         "category": "mumbai",
         "image": "/images/Mumbai Local/Bun Samosa.png",
         "hot": false,
-        "description": "Samosa in bun"
+        "description": "A classic street-style snack featuring a crispy samosa tucked inside a soft, butter-toasted bun with spicy chutneys."
     },
     {
         "id": 22,
@@ -264,7 +264,7 @@ export const menuItems = [
         "category": "mumbai",
         "image": "/images/Mumbai Local/Karjat Vada Pav.png",
         "hot": true,
-        "description": "Potato vada in pav"
+        "description": "The iconic Mumbai burger—spiced potato fritter (vada) sandwiched in a soft bun with dry garlic chutney."
     },
     {
         "id": 23,
@@ -273,7 +273,7 @@ export const menuItems = [
         "category": "mumbai",
         "image": "/images/Mumbai Local/Garlic Cheese Vada Pav.png",
         "hot": false,
-        "description": "Cheesy vada pav"
+        "description": "An indulgent twist on the classic Vada Pav, loaded with melted cheese and a punchy garlic kick."
     },
     {
         "id": 24,
@@ -282,7 +282,7 @@ export const menuItems = [
         "category": "mumbai",
         "image": "/images/Mumbai Local/Kacchi Dabeli.png",
         "hot": false,
-        "description": "Spicy dabeli"
+        "description": "A spicy, tangy potato mixture filled in a bun, garnished with pomegranate, peanuts, and thin sev."
     },
     {
         "id": 25,
@@ -291,7 +291,7 @@ export const menuItems = [
         "category": "mumbai",
         "image": "/images/Kadak Pav Bhaji.png",
         "hot": true,
-        "description": "Spicy pav bhaji"
+        "description": "A rich and spicy vegetable mash cooked with dollops of butter, served with crisp, butter-toasted pav."
     },
     {
         "id": 26,
@@ -300,7 +300,7 @@ export const menuItems = [
         "category": "mumbai",
         "image": "/images/Mumbai Local/Cheese Pav Bhaji (Amul).png",
         "hot": false,
-        "description": "Cheese pav bhaji"
+        "description": "Our signature spicy vegetable mash topped with a generous layer of melted Amul cheese."
     },
     {
         "id": 27,
@@ -318,7 +318,7 @@ export const menuItems = [
         "category": "mumbai",
         "image": "/images/Mumbai Local/Veg Keema Pav.png",
         "hot": false,
-        "description": "Veg keema with pav",
+        "description": "A flavorful vegetarian version of the classic keema, cooked with soy and peas, served with buttery pav.",
         "veg": true
     },
     {
@@ -357,7 +357,7 @@ export const menuItems = [
         "category": "snacks",
         "image": "/images/Snacks/Chole Bhature.png",
         "hot": true,
-        "description": "Chickpeas with bhatura"
+        "description": "Spicy, flavorful chickpea curry served with two oversized, fluffy deep-fried leavened breads."
     },
     {
         "id": 33,
@@ -366,7 +366,7 @@ export const menuItems = [
         "category": "snacks",
         "image": "/images/Snacks/Bedmi Aloo Puri.png",
         "hot": false,
-        "description": "Bedmi with aloo"
+        "description": "Traditional spiced lentil-stuffed puris served with a tangy and robust potato curry."
     },
     {
         "id": 34,
@@ -385,7 +385,7 @@ export const menuItems = [
         "category": "snacks",
         "image": "/images/Snacks/Sarson Ka Saag Makka Roti.png",
         "hot": false,
-        "description": "Mustard greens with cornbread"
+        "description": "A winter specialty of slow-cooked mustard greens tempered with garlic, served with maize flatbread."
     },
     {
         "id": 36,
@@ -412,7 +412,7 @@ export const menuItems = [
         "category": "sizzling",
         "image": "/images/sizzling/Sutli Chicken.png",
         "hot": true,
-        "description": "String-tied tandoori chicken"
+        "description": "Unique tandoori chicken delicacies, meticulously tied with string to lock in juices and flavors during the grilling process."
     },
     {
         "id": 38,
@@ -421,7 +421,7 @@ export const menuItems = [
         "category": "sizzling",
         "image": "/images/sizzling/Barrah Chicken.png",
         "hot": false,
-        "description": "Spicy chicken pieces"
+        "description": "Tender chicken pieces marinated in a bold blend of spices and grilled to smoky perfection in the clay oven."
     },
     {
         "id": 39,
@@ -430,7 +430,7 @@ export const menuItems = [
         "category": "sizzling",
         "image": "/images/sizzling/Chicken Malai.png",
         "hot": false,
-        "description": "Creamy chicken tikka"
+        "description": "Succulent chicken cubes marinated in a velvety cream and nut paste, grilled until lightly charred."
     },
     {
         "id": 40,
@@ -439,7 +439,7 @@ export const menuItems = [
         "category": "sizzling",
         "image": "/images/chicken chatpati.jpeg",
         "hot": true,
-        "description": "Spicy tandoori chicken"
+        "description": "Spicy and tangy tandoori chicken tossed in a secret blend of Chatpati Delhi spices."
     },
     {
         "id": 41,
@@ -458,7 +458,7 @@ export const menuItems = [
         "category": "sizzling",
         "image": "/images/Bhatti Paneer Sizzler.png",
         "hot": true,
-        "description": "Grilled paneer sizzler",
+        "description": "Fresh cubes of cottage cheese marinated in traditional 'Bhatti' spices and sizzled to perfection.",
         "veg": true
     },
     {
@@ -487,7 +487,7 @@ export const menuItems = [
         "category": "sizzling",
         "image": "/images/sizzling/Lamb Chops.jpeg",
         "hot": true,
-        "description": "Grilled lamb chops"
+        "description": "Premium lamb chops marinated overnight in a rich spice blend and grilled to a juicy, tender finish."
     },
     {
         "id": 47,
@@ -496,7 +496,7 @@ export const menuItems = [
         "category": "biryani",
         "image": "/images/Biriyani/Tarkari Biryani (Veg).png",
         "hot": false,
-        "description": "Vegetable biryani",
+        "description": "Fragrant basmati rice slow-cooked with a medley of fresh vegetables and aromatic spices.",
         "veg": true
     },
     {
@@ -506,7 +506,7 @@ export const menuItems = [
         "category": "biryani",
         "image": "/images/Biriyani/Purani Delhi Chicken Biryani.png",
         "hot": true,
-        "description": "Old Delhi chicken biryani"
+        "description": "Authentic Old Delhi style chicken biryani, layered with spice-marinated chicken and long-grain rice."
     },
     {
         "id": 49,
@@ -515,7 +515,7 @@ export const menuItems = [
         "category": "biryani",
         "image": "/images/Biriyani/Purani Delhi Goat Biryani.png",
         "hot": true,
-        "description": "Old Delhi goat biryani"
+        "description": "A royal treat of tender goat meat and aromatic rice, infused with traditional 'Purani Delhi' flavors."
     },
     {
         "id": 50,
@@ -524,7 +524,7 @@ export const menuItems = [
         "category": "curry",
         "image": "/images/Tadka Marke/Aloo Gobhi.png",
         "hot": false,
-        "description": "Potato and cauliflower curry"
+        "description": "A home-style favorite of potatoes and cauliflower tossed with turmeric, ginger, and cumin."
     },
     {
         "id": 51,
@@ -533,7 +533,7 @@ export const menuItems = [
         "category": "curry",
         "image": "/images/Tadka Marke/Pindi Chole.png",
         "hot": true,
-        "description": "Pindi-style chickpeas"
+        "description": "A dark, robust chickpea curry cooked with roasted spices and pomegranate seeds for a unique tangy flavor."
     },
     {
         "id": 52,
@@ -542,7 +542,7 @@ export const menuItems = [
         "category": "curry",
         "image": "/images/Tadka Marke/Daal Makhanwala.png",
         "hot": false,
-        "description": "Creamy black lentils"
+        "description": "Creamy black lentils slow-cooked overnight with tomatoes, butter, and cream for a rich, velvety texture."
     },
     {
         "id": 53,
@@ -551,7 +551,7 @@ export const menuItems = [
         "category": "curry",
         "image": "/images/Tadka Marke/Peeli Daal (Yellow Daal).png",
         "hot": false,
-        "description": "Yellow lentil curry"
+        "description": "Tempered yellow lentils cooked with garlic, cumin, and dried red chilies—a comforting Indian staple."
     },
     {
         "id": 54,
@@ -560,7 +560,7 @@ export const menuItems = [
         "category": "curry",
         "image": "/images/Tadka Marke/Paneer Makhanwala.png",
         "hot": true,
-        "description": "Paneer in butter gravy"
+        "description": "Soft paneer cubes simmered in a silky tomato-butter gravy, enriched with dried fenugreek leaves."
     },
     {
         "id": 55,
@@ -569,7 +569,7 @@ export const menuItems = [
         "category": "curry",
         "image": "/images/Tadka Marke/Palak Paneeer.png",
         "hot": false,
-        "description": "Spinach and paneer"
+        "description": "A nutritious blend of fresh spinach puree and cottage cheese cubes, tempered with garlic."
     },
     {
         "id": 56,
@@ -578,7 +578,7 @@ export const menuItems = [
         "category": "curry",
         "image": "/images/Tadka Marke/Kadai Paneer.png",
         "hot": false,
-        "description": "Paneer kadai style"
+        "description": "Paneer cubes sautéed with bell peppers and onions in a spicy, freshly ground 'Kadai' masala."
     },
     {
         "id": 57,
@@ -587,7 +587,7 @@ export const menuItems = [
         "category": "curry",
         "image": "/images/Tadka Marke/Malai Kofta.png",
         "hot": false,
-        "description": "Creamy kofta curry"
+        "description": "Delicate potato and cheese dumplings served in a rich, creamy cashew-based gravy."
     },
     {
         "id": 58,
@@ -635,7 +635,7 @@ export const menuItems = [
         "category": "curry",
         "image": "/images/Tadka Marke/Chicken Curry.png",
         "hot": true,
-        "description": "Traditional chicken curry"
+        "description": "Slow-cooked goat meat in a traditional spicy gravy, bursting with deep, earthy flavors."
     },
     {
         "id": 60,
@@ -644,7 +644,7 @@ export const menuItems = [
         "category": "curry",
         "image": "/images/Tadka Marke/Butter Chicken.png",
         "hot": true,
-        "description": "Butter chicken masala"
+        "description": "The legendary dish—tandoori chicken pieces in a rich, creamy, and slightly sweet tomato-butter sauce."
     },
     {
         "id": 61,
@@ -653,7 +653,7 @@ export const menuItems = [
         "category": "curry",
         "image": "/images/Tadka Marke/Goat Curry.png",
         "hot": true,
-        "description": "Spicy goat curry"
+        "description": "Slow-cooked goat meat in a traditional spicy gravy, bursting with deep, earthy flavors."
     },
     {
         "id": 62,
@@ -698,7 +698,7 @@ export const menuItems = [
         "category": "curry",
         "image": "/images/Tadka Marke/Kadai Chicken.png",
         "hot": true,
-        "description": "Spicy wok-cooked chicken"
+        "description": "Spicy wok-cooked chicken sautéed with fresh tomatoes, ginger, and aromatic spices."
     },
     {
         "id": 65,
@@ -707,7 +707,7 @@ export const menuItems = [
         "category": "rolls",
         "image": "/images/Rolls/Amritsar Soya Chaap Roll.png",
         "hot": false,
-        "description": "Soya chaap wrap"
+        "description": "Tender soya chaap pieces marinated in Amritsari spices, wrapped in a soft roomali roti."
     },
     {
         "id": 66,
@@ -716,7 +716,7 @@ export const menuItems = [
         "category": "rolls",
         "image": "/images/Rolls/Chatpata Aloo Roll.png",
         "hot": false,
-        "description": "Spicy potato roll"
+        "description": "Spicy mashed potatoes with onions and green chilies, wrapped in a flaky paratha."
     },
     {
         "id": 67,
@@ -725,7 +725,7 @@ export const menuItems = [
         "category": "rolls",
         "image": "/images/Rolls/Tawa Paneer Roll.png",
         "hot": false,
-        "description": "Grilled paneer roll"
+        "description": "Spicy paneer sautéed with peppers on a tawa, rolled into a fresh wrap with mint chutney."
     },
     {
         "id": 68,
@@ -743,7 +743,7 @@ export const menuItems = [
         "category": "rolls",
         "image": "/images/Rolls/Pudina Chicken Roll.png",
         "hot": true,
-        "description": "Mint chicken roll"
+        "description": "Succulent chicken tikka infused with fresh mint and cilantro, wrapped with pickled onions."
     },
     {
         "id": 70,
@@ -779,7 +779,7 @@ export const menuItems = [
         "category": "thali",
         "image": "/images/Thali's/C.P.D Kulcha Thali.png",
         "hot": false,
-        "description": "2 veg currys, kulcha, rice, salad, papad, raita, sweet",
+        "description": "A complete meal featuring two seasonal vegetable curries, freshly baked kulcha, rice, salad, and a sweet treat.",
         "veg": true
     },
     {
@@ -789,7 +789,7 @@ export const menuItems = [
         "category": "thali",
         "image": "/images/Thali's/C.P.D Veg Thali.png",
         "hot": true,
-        "description": "4 veg currys, pooris, rice, salad, papad, raita, sweet",
+        "description": "A royal spread of four distinct vegetable curries, fluffy pooris, aromatic rice, sides, and a traditional dessert.",
         "veg": true
     },
     {
