@@ -24,16 +24,27 @@ const WhatsAppEnquiryForm = ({ type = 'General Inquiry', dark = false }) => {
 
     return (
         <div className={`royal-contact-form-card ${dark ? 'dark-mode' : ''}`} style={{ maxWidth: '600px', margin: '0 auto' }}>
-            <h3 style={{ fontFamily: "'Playfair Display', serif", color: '#D4AF37', fontSize: '1.8rem', marginBottom: '0.5rem' }}>
+            <h3 style={{ fontFamily: "'Playfair Display', serif", color: '#D4AF37', fontSize: '2.2rem', marginBottom: '1rem' }}>
                 Enquire via WhatsApp
             </h3>
-            <p style={{ color: dark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.5)', marginBottom: '2rem', fontSize: '0.95rem' }}>
+            <p style={{ color: dark ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.7)', marginBottom: '2.5rem', fontSize: '1.1rem', lineHeight: '1.6' }}>
                 Fill in the details below and we'll chat on WhatsApp instantly!
             </p>
 
             <form onSubmit={handleSubmit} className="royal-form">
-                <div className="royal-form-group">
-                    <label className="royal-form-label" style={{ color: dark ? '#D4AF37' : '#0b0705' }}>Your Name</label>
+                <div className="royal-form-group" style={{ marginBottom: '1.5rem' }}>
+                    <label className="royal-form-label" style={{ 
+                        color: dark ? '#ffffff' : '#0b0705', 
+                        display: 'block', 
+                        marginBottom: '0.8rem',
+                        fontWeight: '700',
+                        textTransform: 'uppercase',
+                        letterSpacing: '2px',
+                        fontSize: '0.95rem',
+                        opacity: '1'
+                    }}>
+                        Your Name
+                    </label>
                     <input
                         type="text"
                         name="name"
@@ -41,26 +52,66 @@ const WhatsAppEnquiryForm = ({ type = 'General Inquiry', dark = false }) => {
                         onChange={handleChange}
                         placeholder="e.g. Rahul Sharma"
                         className="royal-form-input"
-                        style={{ background: dark ? 'rgba(255,255,255,0.05)' : '#fff', color: dark ? '#fff' : '#000' }}
+                        style={{ 
+                            background: dark ? 'rgba(255,255,255,0.15)' : '#fff', 
+                            color: dark ? '#fff' : '#000',
+                            border: dark ? '2px solid rgba(212,175,55,0.4)' : '1px solid #ccc',
+                            padding: '14px 18px',
+                            borderRadius: '10px',
+                            width: '100%',
+                            fontSize: '1rem',
+                            outline: 'none'
+                        }}
                         required
                     />
                 </div>
 
-                <div className="royal-form-row" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <div className="royal-form-row" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
                     <div className="royal-form-group" style={{ flex: 1, minWidth: '200px' }}>
-                        <label className="royal-form-label" style={{ color: dark ? '#D4AF37' : '#0b0705' }}>Event Date</label>
+                        <label className="royal-form-label" style={{ 
+                            color: dark ? '#ffffff' : '#0b0705', 
+                            display: 'block', 
+                            marginBottom: '0.8rem',
+                            fontWeight: '700',
+                            textTransform: 'uppercase',
+                            letterSpacing: '2px',
+                            fontSize: '0.95rem',
+                            opacity: '1'
+                        }}>
+                            Event Date
+                        </label>
                         <input
                             type="date"
                             name="date"
                             value={formData.date}
                             onChange={handleChange}
                             className="royal-form-input"
-                            style={{ background: dark ? 'rgba(255,255,255,0.05)' : '#fff', color: dark ? '#fff' : '#000' }}
+                            style={{ 
+                                background: dark ? 'rgba(255,255,255,0.15)' : '#fff', 
+                                color: dark ? '#fff' : '#000',
+                                border: dark ? '2px solid rgba(212,175,55,0.4)' : '1px solid #ccc',
+                                padding: '14px 18px',
+                                borderRadius: '10px',
+                                width: '100%',
+                                fontSize: '1rem',
+                                outline: 'none'
+                            }}
                             required
                         />
                     </div>
                     <div className="royal-form-group" style={{ flex: 1, minWidth: '200px' }}>
-                        <label className="royal-form-label" style={{ color: dark ? '#D4AF37' : '#0b0705' }}>Expected Guests</label>
+                        <label className="royal-form-label" style={{ 
+                            color: dark ? '#ffffff' : '#0b0705', 
+                            display: 'block', 
+                            marginBottom: '0.8rem',
+                            fontWeight: '700',
+                            textTransform: 'uppercase',
+                            letterSpacing: '2px',
+                            fontSize: '0.95rem',
+                            opacity: '1'
+                        }}>
+                            Expected Guests
+                        </label>
                         <input
                             type="number"
                             name="guests"
@@ -68,21 +119,50 @@ const WhatsAppEnquiryForm = ({ type = 'General Inquiry', dark = false }) => {
                             onChange={handleChange}
                             placeholder="e.g. 50"
                             className="royal-form-input"
-                            style={{ background: dark ? 'rgba(255,255,255,0.05)' : '#fff', color: dark ? '#fff' : '#000' }}
+                            style={{ 
+                                background: dark ? 'rgba(255,255,255,0.15)' : '#fff', 
+                                color: dark ? '#fff' : '#000',
+                                border: dark ? '2px solid rgba(212,175,55,0.4)' : '1px solid #ccc',
+                                padding: '14px 18px',
+                                borderRadius: '10px',
+                                width: '100%',
+                                fontSize: '1rem',
+                                outline: 'none'
+                            }}
                             required
                         />
                     </div>
                 </div>
 
-                <div className="royal-form-group">
-                    <label className="royal-form-label" style={{ color: dark ? '#D4AF37' : '#0b0705' }}>Your Message / Special Requests</label>
+                <div className="royal-form-group" style={{ marginBottom: '2.5rem' }}>
+                    <label className="royal-form-label" style={{ 
+                        color: dark ? '#ffffff' : '#0b0705', 
+                        display: 'block', 
+                        marginBottom: '0.8rem',
+                        fontWeight: '700',
+                        textTransform: 'uppercase',
+                        letterSpacing: '2px',
+                        fontSize: '0.95rem',
+                        opacity: '1'
+                    }}>
+                        Your Message / Special Requests
+                    </label>
                     <textarea
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
                         placeholder="Tell us more about your event..."
                         className="royal-form-input royal-form-textarea"
-                        style={{ background: dark ? 'rgba(255,255,255,0.05)' : '#fff', color: dark ? '#fff' : '#000' }}
+                        style={{ 
+                            background: dark ? 'rgba(255,255,255,0.15)' : '#fff', 
+                            color: dark ? '#fff' : '#000',
+                            border: dark ? '2px solid rgba(212,175,55,0.4)' : '1px solid #ccc',
+                            padding: '14px 18px',
+                            borderRadius: '10px',
+                            width: '100%',
+                            fontSize: '1rem',
+                            outline: 'none'
+                        }}
                         rows="4"
                     ></textarea>
                 </div>

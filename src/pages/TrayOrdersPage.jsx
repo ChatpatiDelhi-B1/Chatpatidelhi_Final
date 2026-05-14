@@ -142,12 +142,12 @@ const TrayOrdersPage = () => {
                         </div>
                     ))}
 
-                    <div style={{ marginTop: '5rem', background: 'white', padding: '4rem 2rem', borderRadius: '30px', boxShadow: '0 20px 40px rgba(0,0,0,0.05)' }}>
+                    <div style={{ marginTop: '5rem', background: 'var(--primary-maroon)', padding: '4rem 2rem', borderRadius: '30px', boxShadow: '0 20px 40px rgba(0,0,0,0.2)', border: '1px solid rgba(212,175,55,0.2)' }}>
                         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                            <span className="section-subtitle">Get a Custom Quote</span>
-                            <h2 style={{ color: 'var(--primary-maroon)' }}>Tray Order Enquiry</h2>
+                            <span className="section-subtitle" style={{ color: '#D4AF37' }}>Get a Custom Quote</span>
+                            <h2 style={{ color: '#ffffff', fontFamily: "'Playfair Display', serif" }}>Tray Order Enquiry</h2>
                         </div>
-                        <WhatsAppEnquiryForm type="Tray Order Enquiry" />
+                        <WhatsAppEnquiryForm type="Tray Order Enquiry" dark={true} />
                     </div>
                 </div>
             </section>
