@@ -387,7 +387,8 @@ function Home() {
                     <div className="menu-sections-wrapper">
                         {categories.filter(c => c.id !== 'all').map((cat) => {
                             const categoryItems = menuItems.filter(item => {
-                                const matchesCategory = item.category === cat.id;
+                                const itemCat = item.category === 'sizzling' ? 'tandoor' : item.category;
+                                const matchesCategory = itemCat === cat.id;
                                 const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                                     item.description.toLowerCase().includes(searchQuery.toLowerCase());
                                 

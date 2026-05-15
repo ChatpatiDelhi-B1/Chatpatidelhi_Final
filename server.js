@@ -85,6 +85,9 @@ app.get('/api/menu', async (req, res) => {
   }
 });
 
+
+
+
 app.post('/api/upload', upload.single('image'), (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
   res.json({ imageUrl: `/uploads/${req.file.filename}` });

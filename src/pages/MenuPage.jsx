@@ -180,7 +180,11 @@ function MenuPage() {
                 {/* Products Grouped by Category */}
                 <div className="menu-sections-wrapper">
                     {categories.filter(c => c.id !== 'all').map((cat) => {
-                        let categoryItems = filteredItems.filter(item => item.category === cat.id);
+                        let categoryItems = filteredItems.filter(item => {
+                            // If the item category is 'sizzling', treat it as 'tandoor'
+                            const itemCat = item.category === 'sizzling' ? 'tandoor' : item.category;
+                            return itemCat === cat.id;
+                        });
 
                         // Special filter for 'sizzling' category local toggle
                         if (cat.id === 'sizzling' && sizzlingFilter !== 'all') {
