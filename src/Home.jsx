@@ -59,7 +59,7 @@ function Home() {
         { id: 'mumbai', name: 'Mumbai Local', icon: '🚂' },
         { id: 'snacks', name: 'Snacks Ka Chaska', icon: '🍢' },
         { id: 'tandoor', name: 'The Tikkawala (Tandoor)', icon: '🔥' },
-        { id: 'sizzling', name: 'What\'s Sizzling', icon: '🍳' },
+
         { id: 'biryani', name: 'Biryani Ki Kahani', icon: '🍛' },
         { id: 'thali', name: 'C.P.D Special Thalis', icon: '🍱' },
         { id: 'curry-veg', name: 'Tadka Marke', icon: '🍲' },
@@ -121,13 +121,13 @@ function Home() {
         { id: 39, name: 'Chicken Malai', price: '$16.95', category: 'tandoor', image: '🍗', hot: false, description: 'A milder, creamy version of the classic chicken tikka. Boneless chicken chunks marinated in cream, cheese, and mild spices.' },
         { id: 40, name: 'Chicken Chatpati', price: '$16.95', category: 'tandoor', image: '🍗', hot: true, description: 'For those who like it hot and tangy! Boneless chicken marinated in a special Chatpati spice blend and grilled to charred perfection.' },
 
-        // What's Sizzling
-        { id: 41, name: 'Veg Cutlet Sizzler', price: '$11.95', category: 'sizzling', image: '🍳', hot: false, description: 'A delightful sizzler platter featuring crispy vegetable cutlets served on a bed of rice or noodles, with stir-fried vegetables and savory sauce.' },
-        { id: 42, name: 'Bhatti Paneer Sizzler', price: '$13.95', category: 'sizzling', image: '🔥', hot: true, description: 'Paneer like never before! Large cubes of paneer marinated in Bhatti spices and grilled, served sizzling with onions and capsicum.' },
-        { id: 43, name: 'Chaap Chaap Sizzler', price: '$12.95', category: 'sizzling', image: '🔥', hot: false, description: 'Delicious Soya Chaap marinated in tandoori spices, grilled and served sizzling with grilled onions and mint sauce.' },
-        { id: 44, name: 'Chicken Tikka Sizzler', price: '$16.95', category: 'sizzling', image: '🍗', hot: true, description: 'The ultimate platter for chicken lovers! An assortment of Malai Tikka, Haryali Tikka, and Classic Chicken Tikka served on a sizzling plate.' },
-        { id: 45, name: 'Lamb Chops', price: '$26.99', category: 'sizzling', image: '🍖', hot: true, description: 'Premium lamb chops marinated in a secret spice blend and grilled to juicy perfection. Served sizzling with grilled vegetables.' },
-        { id: 46, name: 'Fish Amritsari', price: '$14.95', category: 'sizzling', image: '🐟', hot: false, description: 'Crispy, golden-fried fish fillets marinated in traditional Amritsari spices and chickpea flour. A light and flavorful appetizer.' },
+
+        { id: 41, name: 'Veg Cutlet Sizzler', price: '$11.95', category: 'tandoor', image: '🍳', hot: false, description: 'A delightful sizzler platter featuring crispy vegetable cutlets served on a bed of rice or noodles, with stir-fried vegetables and savory sauce.' },
+        { id: 42, name: 'Bhatti Paneer Sizzler', price: '$13.95', category: 'tandoor', image: '🔥', hot: true, description: 'Paneer like never before! Large cubes of paneer marinated in Bhatti spices and grilled, served sizzling with onions and capsicum.' },
+        { id: 43, name: 'Chaap Chaap Sizzler', price: '$12.95', category: 'tandoor', image: '🔥', hot: false, description: 'Delicious Soya Chaap marinated in tandoori spices, grilled and served sizzling with grilled onions and mint sauce.' },
+        { id: 44, name: 'Chicken Tikka Sizzler', price: '$16.95', category: 'tandoor', image: '🍗', hot: true, description: 'The ultimate platter for chicken lovers! An assortment of Malai Tikka, Haryali Tikka, and Classic Chicken Tikka served on a sizzling plate.' },
+        { id: 45, name: 'Lamb Chops', price: '$26.99', category: 'tandoor', image: '🍖', hot: true, description: 'Premium lamb chops marinated in a secret spice blend and grilled to juicy perfection. Served sizzling with grilled vegetables.' },
+        { id: 46, name: 'Fish Amritsari', price: '$14.95', category: 'tandoor', image: '🐟', hot: false, description: 'Crispy, golden-fried fish fillets marinated in traditional Amritsari spices and chickpea flour. A light and flavorful appetizer.' },
 
         // Biryani Ki Kahani
         { id: 47, name: 'Tarkari Biryani (Veg)', price: '$14.95', category: 'biryani', image: '🍛', hot: false, description: 'A royal feast for vegetarians! Fragrant basmati rice layered with a rich medley of seasonal vegetables cooked in aromatic spices and saffron-infused milk.' },

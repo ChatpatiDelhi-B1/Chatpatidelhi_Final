@@ -24,11 +24,7 @@ export const categories = [
         "name": "The Tikkawala (Tandoor)",
         "icon": "🔥"
     },
-    {
-        "id": "sizzling",
-        "name": "What's Sizzling",
-        "icon": "🍳"
-    },
+
     {
         "id": "biryani",
         "name": "Biryani Ki Kahani",
@@ -414,7 +410,7 @@ export const menuItems = [
         "id": 37,
         "name": "Sutli Chicken",
         "price": "$16.95",
-        "category": "sizzling",
+        "category": "tandoor",
         "image": "/images/sizzling/Sutli Chicken.png",
         "hot": true,
         "description": "Unique tandoori chicken delicacies, meticulously tied with string to lock in juices and flavors during the grilling process."
@@ -423,7 +419,7 @@ export const menuItems = [
         "id": 38,
         "name": "Barrah Chicken",
         "price": "$16.95",
-        "category": "sizzling",
+        "category": "tandoor",
         "image": "/images/sizzling/Barrah Chicken.png",
         "hot": false,
         "description": "Tender chicken pieces marinated in a bold blend of spices and grilled to smoky perfection in the clay oven."
@@ -432,7 +428,7 @@ export const menuItems = [
         "id": 39,
         "name": "Chicken Malai",
         "price": "$16.95",
-        "category": "sizzling",
+        "category": "tandoor",
         "image": "/images/sizzling/Chicken Malai.png",
         "hot": false,
         "description": "Succulent chicken cubes marinated in a velvety cream and nut paste, grilled until lightly charred."
@@ -441,7 +437,7 @@ export const menuItems = [
         "id": 40,
         "name": "Chicken Chatpati",
         "price": "$16.95",
-        "category": "sizzling",
+        "category": "tandoor",
         "image": "/images/chicken chatpati.jpeg",
         "hot": true,
         "description": "Spicy and tangy tandoori chicken tossed in a secret blend of Chatpati Delhi spices."
@@ -450,7 +446,7 @@ export const menuItems = [
         "id": 41,
         "name": "Veg Cutlet Sizzler",
         "price": "$11.95",
-        "category": "sizzling",
+        "category": "tandoor",
         "image": "/images/sizzling/Veg Cutlet Sizzler.png",
         "hot": false,
         "description": "A delightful sizzler platter featuring crispy vegetable cutlets served on a bed of rice or noodles, with stir-fried vegetables and savory sauce. Served sizzling hot!",
@@ -460,7 +456,7 @@ export const menuItems = [
         "id": 42,
         "name": "Bhatti Paneer Sizzler",
         "price": "$13.95",
-        "category": "sizzling",
+        "category": "tandoor",
         "image": "/images/Bhatti Paneer Sizzler.png",
         "hot": true,
         "description": "Fresh cubes of cottage cheese marinated in traditional 'Bhatti' spices and sizzled to perfection.",
@@ -470,7 +466,7 @@ export const menuItems = [
         "id": 43,
         "name": "Soya Chaap Sizzler",
         "price": "$12.95",
-        "category": "sizzling",
+        "category": "tandoor",
         "image": "/images/sizzling/Chaap Chaap Sizzler.png",
         "hot": false,
         "description": "Delicious Soya Chaap marinated in tandoori spices, grilled and served sizzling with grilled onions and mint sauce. A vegetarian delight with a meaty texture.",
@@ -480,7 +476,7 @@ export const menuItems = [
         "id": 44,
         "name": "Mix Chicken Tikka Sizzler",
         "price": "$16.95",
-        "category": "sizzling",
+        "category": "tandoor",
         "image": "/images/sizzling/Mix Chicken Tikka Sizzler.png",
         "hot": true,
         "description": "The ultimate platter for chicken lovers! An assortment of Malai Tikka, Haryali Tikka, and Classic Chicken Tikka served on a sizzling plate with dip and salad."
@@ -489,7 +485,7 @@ export const menuItems = [
         "id": 45,
         "name": "Lamb Chops",
         "price": "$26.99",
-        "category": "sizzling",
+        "category": "tandoor",
         "image": "/images/sizzling/Lamb Chops.jpeg",
         "hot": true,
         "description": "Premium lamb chops marinated overnight in a rich spice blend and grilled to a juicy, tender finish."
