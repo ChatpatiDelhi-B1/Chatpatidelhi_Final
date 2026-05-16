@@ -307,7 +307,22 @@ function Home() {
                             <p className="hero-subtitle">{slide.subtitle}</p>
                             <div className="hero-buttons">
                                 <a href="#menu" className="btn btn-primary">View Menu</a>
-                                <a href="#contact" className="btn btn-secondary">Order Now</a>
+                                <a 
+                                    href="https://www.clover.com/online-ordering/chatpati-delhi-reston" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="btn btn-secondary"
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '8px',
+                                        background: 'rgba(255, 255, 255, 0.1)',
+                                        border: '2px solid var(--accent-gold)',
+                                        color: 'var(--accent-gold)'
+                                    }}
+                                >
+                                    🛵 Delivery & Pickup
+                                </a>
                             </div>
                         </div>
                     </div>
