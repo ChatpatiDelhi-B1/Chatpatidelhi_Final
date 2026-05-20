@@ -324,12 +324,11 @@ function HomePage() {
                         </div>
                     </div>
                 </div>
-                
+
                 <div style={{ textAlign: 'center', marginTop: '4rem' }}>
                     <Link to="/menu" className="royal-btn royal-btn-outline">View Full Menu</Link>
                 </div>
             </section>
-
 
             {/* --- MENU CATEGORIES --- */}
             <section className="royal-section" style={{ background: 'linear-gradient(to bottom, #0b0705, #110a07)' }}>
@@ -339,14 +338,7 @@ function HomePage() {
                     <div className="royal-title-divider"><span>✦</span></div>
                 </div>
 
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 1fr)',
-                    gap: '1.5rem',
-                    maxWidth: '1100px',
-                    margin: '0 auto',
-                    padding: '0 1.5rem'
-                }}>
+                <div className="menu-categories-grid">
                     {[
                         { name: 'Chatpati Chaat', items: '15+ Items', img: '/images/chats/Golgappe.png', tag: '🥗', desc: 'Golgappe, Bhalle, Tikki & more' },
                         { name: 'Biryani Ki Kahani', items: '3 Varieties', img: '/images/Biriyani/Purani Delhi Chicken Biryani.png', tag: '🍛', desc: 'Veg, Chicken & Goat Biryani' },
@@ -355,38 +347,15 @@ function HomePage() {
                         { name: 'Meethe Me', items: '8 Sweets', img: '/images/Sweets/Gulab Jamun.png', tag: '🍮', desc: 'Kulfi, Rasmalai, Gulab Jamun' },
                         { name: 'Snacks Ka Chaska', items: '7 Items', img: '/images/Snacks/Chole Bhature.png', tag: '🍢', desc: 'Chole Bhature, Pakode & more' },
                     ].map((cat, i) => (
-                        <Link to="/menu" key={i} style={{ textDecoration: 'none' }}>
-                            <div style={{
-                                position: 'relative',
-                                borderRadius: '16px',
-                                overflow: 'hidden',
-                                height: '220px',
-                                border: '1px solid rgba(212,175,55,0.2)',
-                                cursor: 'pointer',
-                                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                            }}
-                            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(212,175,55,0.2)'; }}
-                            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
-                            >
-                                <img src={cat.img} alt={cat.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                <div style={{
-                                    position: 'absolute', inset: 0,
-                                    background: 'linear-gradient(to top, rgba(5,3,2,0.95) 0%, rgba(5,3,2,0.4) 50%, transparent 100%)'
-                                }} />
-                                <div style={{
-                                    position: 'absolute', top: '12px', right: '12px',
-                                    background: 'rgba(212,175,55,0.9)', color: '#000',
-                                    fontSize: '0.7rem', fontWeight: '700', padding: '4px 10px',
-                                    borderRadius: '20px', letterSpacing: '0.5px'
-                                }}>{cat.items}</div>
-                                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.2rem' }}>
-                                    <div style={{ fontSize: '1.4rem', marginBottom: '4px' }}>{cat.tag}</div>
-                                    <h3 style={{
-                                        color: '#D4AF37', fontSize: '1.1rem', fontWeight: '700',
-                                        margin: '0 0 4px', fontFamily: 'Georgia, serif'
-                                    }}>{cat.name}</h3>
-                                    <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.8rem', margin: 0 }}>{cat.desc}</p>
-                                </div>
+                        <Link to="/menu" key={i} className="menu-category-card">
+                            <div className="menu-cat-img-wrap">
+                                <img src={cat.img} alt={cat.name} />
+                                <span className="menu-cat-badge">{cat.items}</span>
+                            </div>
+                            <div className="menu-cat-content">
+                                <span className="menu-cat-emoji">{cat.tag}</span>
+                                <h3 className="menu-cat-name">{cat.name}</h3>
+                                <p className="menu-cat-desc">{cat.desc}</p>
                             </div>
                         </Link>
                     ))}
@@ -405,16 +374,7 @@ function HomePage() {
                     <div className="royal-title-divider"><span>✦</span></div>
                 </div>
 
-                <div style={{
-                    display: 'flex',
-                    gap: '1.2rem',
-                    overflowX: 'auto',
-                    paddingBottom: '1.5rem',
-                    maxWidth: '1100px',
-                    margin: '0 auto',
-                    scrollbarWidth: 'thin',
-                    scrollbarColor: '#D4AF37 #1a0f0a',
-                }}>
+                <div className="popular-picks-strip">
                     {[
                         { name: 'Golgappe (12 Pcs)', price: '$13.95', img: '/images/chats/Golgappe.png', tag: '🔥 Bestseller' },
                         { name: 'Raj Kachori', price: '$9.95', img: '/images/Raj Kachori.png', tag: "👑 Chef's Pick" },
@@ -425,40 +385,16 @@ function HomePage() {
                         { name: 'Kulfi Falooda', price: '$6.95', img: '/images/Kulfi Falooda.png', tag: '🍨 Sweet Hit' },
                         { name: 'Tawa Paneer Roll', price: '$12.95', img: '/images/Rolls/Tawa Paneer Roll.png', tag: '❤️ Fan Fav' },
                     ].map((item, i) => (
-                        <Link to="/menu" key={i} style={{ textDecoration: 'none', flexShrink: 0 }}>
-                            <div style={{
-                                width: '200px',
-                                background: 'linear-gradient(145deg, #150d09, #1e120c)',
-                                borderRadius: '16px',
-                                overflow: 'hidden',
-                                border: '1px solid rgba(212,175,55,0.15)',
-                                transition: 'transform 0.3s, box-shadow 0.3s, border-color 0.3s',
-                            }}
-                            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.boxShadow = '0 15px 30px rgba(212,175,55,0.15)'; e.currentTarget.style.borderColor = 'rgba(212,175,55,0.5)'; }}
-                            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(212,175,55,0.15)'; }}
-                            >
-                                <div style={{ position: 'relative', height: '150px', overflow: 'hidden' }}>
-                                    <img src={item.img} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                    <div style={{
-                                        position: 'absolute', top: '8px', left: '8px',
-                                        background: 'rgba(0,0,0,0.75)', color: '#D4AF37',
-                                        fontSize: '0.65rem', fontWeight: '700', padding: '3px 8px',
-                                        borderRadius: '20px', backdropFilter: 'blur(4px)'
-                                    }}>{item.tag}</div>
-                                </div>
-                                <div style={{ padding: '0.9rem' }}>
-                                    <h4 style={{
-                                        color: '#fff', fontSize: '0.85rem', fontWeight: '600',
-                                        margin: '0 0 8px', lineHeight: '1.3'
-                                    }}>{item.name}</h4>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                        <span style={{ color: '#D4AF37', fontWeight: '700', fontSize: '0.95rem' }}>{item.price}</span>
-                                        <span style={{
-                                            color: '#000', background: '#D4AF37',
-                                            fontSize: '0.7rem', fontWeight: '700',
-                                            padding: '3px 10px', borderRadius: '20px'
-                                        }}>Order</span>
-                                    </div>
+                        <Link to="/menu" key={i} className="popular-pick-card">
+                            <div className="pick-img-wrap">
+                                <img src={item.img} alt={item.name} />
+                                <span className="pick-tag">{item.tag}</span>
+                            </div>
+                            <div className="pick-info">
+                                <h4 className="pick-name">{item.name}</h4>
+                                <div className="pick-footer">
+                                    <span className="pick-price">{item.price}</span>
+                                    <span className="pick-order-btn">Order</span>
                                 </div>
                             </div>
                         </Link>
@@ -537,7 +473,7 @@ function HomePage() {
                         </div>
                         <div className="visit-block">
                             <h3 className="visit-title">Contact Us</h3>
-                            <p>Phone: +1 (732) 499-9387<br />
+                            <p>Phone: +1 (732) 960 1887<br />
                             Email: info@chatpatidelhi.com</p>
                         </div>
                         <Link to="/contact" className="royal-btn">Get Directions</Link>

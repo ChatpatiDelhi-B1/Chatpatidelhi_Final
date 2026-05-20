@@ -143,6 +143,12 @@ h6 {
     list-style: none;
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .nav-links a {
     text-decoration: none;
     color: var(--white);
@@ -218,7 +224,7 @@ h6 {
     .nav-links {
         display: none;
         position: absolute;
-        top: 60px;
+        top: 64px;
         /* Matched to new header height */
         right: 0;
         left: 0;
@@ -233,6 +239,11 @@ h6 {
 
     .nav-links.open {
         display: flex;
+    }
+
+    /* Hide cart button if present (header-clean mobile layout) */
+    .cart-btn {
+        display: none !important;
     }
 
     .nav-links a {

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { getCartCount } from '../utils/cart';
-import CartPanel from './CartPanel';
+// Cart removed from header (mobile UX simplified)
 import '../index.css';
 
 function Header() {
@@ -16,22 +15,12 @@ function Header() {
         };
         window.addEventListener('scroll', handleScroll);
 
-        // initialize cart count
-        setCartCount(getCartCount());
-
-        const handleCartUpdate = (e) => {
-            setCartCount((e && e.detail && typeof e.detail.count === 'number') ? e.detail.count : getCartCount());
-        };
-
-        window.addEventListener('cartUpdated', handleCartUpdate);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('cartUpdated', handleCartUpdate);
-        };
+            return () => {
+                window.removeEventListener('scroll', handleScroll);
+            };
     }, []);
 
-    const [cartOpen, setCartOpen] = useState(false);
+    // cart removed from header UI
 
     return (
         <>
@@ -100,39 +89,7 @@ function Header() {
                             >
                                 🛵 Order Online
                             </a>
-                            <button
-                                className="cart-btn"
-                                onClick={() => setCartOpen(true)}
-                                style={{
-                                    background: 'none',
-                                    border: 'none',
-                                    fontSize: '1.5rem',
-                                    cursor: 'pointer',
-                                    position: 'relative',
-                                    padding: '5px'
-                                }}
-                            >
-                                🛒
-                                {cartCount > 0 && (
-                                    <span style={{
-                                        position: 'absolute',
-                                        top: '-5px',
-                                        right: '-5px',
-                                        background: 'var(--accent-gold)',
-                                        color: 'var(--primary-maroon)',
-                                        borderRadius: '50%',
-                                        width: '20px',
-                                        height: '20px',
-                                        fontSize: '0.75rem',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        fontWeight: 'bold'
-                                    }}>
-                                        {cartCount}
-                                    </span>
-                                )}
-                            </button>
+                            {/* Cart icon removed per request */}
                             <button
                                 className="mobile-menu-btn"
                                 aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
@@ -146,7 +103,7 @@ function Header() {
                 </div>
             </header>
 
-            <CartPanel open={cartOpen} onClose={() => setCartOpen(false)} />
+            {/* CartPanel intentionally not rendered in header-only UX */}
         </>
     );
 }
