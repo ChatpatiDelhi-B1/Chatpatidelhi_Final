@@ -1,3 +1,20 @@
+export const categories = [
+    { "id": "all", "name": "All", "icon": "\ud83c\udf7d\ufe0f" },
+    { "id": "chaat", "name": "The Chatpati Chaat", "icon": "🥗" },
+    { "id": "mumbai", "name": "Mumbai Local", "icon": "\ud83d\ude82" },
+    { "id": "snacks", "name": "Snacks Ka Chaska", "icon": "🍢" },
+    { "id": "tandoor", "name": "The Tikkawala (Tandoor)", "icon": "🔥" },
+    { "id": "biryani", "name": "Biryani Ki Kahani", "icon": "🍛" },
+    { "id": "thali", "name": "C.P.D Special Thalis", "icon": "🍱" },
+    { "id": "curry-veg", "name": "Tadka Marke", "icon": "🍲" },
+    { "id": "curry-nonveg", "name": "Curry Main Kya Hai", "icon": "🥘" },
+    { "id": "bread", "name": "Tandoori Daawat", "icon": "🥖" },
+    { "id": "parantha", "name": "Old School Paranthas", "icon": "🫓" },
+    { "id": "rolls", "name": "Roll Baby Roll", "icon": "🌯" },
+    { "id": "sweets", "name": "Meethe Me", "icon": "🍮" },
+    { "id": "drinks", "name": "Kya Piyoge", "icon": "🥤" }
+];
+
 export const menuItems = [
     {
         "id": 1,
