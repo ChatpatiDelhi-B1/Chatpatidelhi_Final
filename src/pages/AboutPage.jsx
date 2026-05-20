@@ -28,27 +28,8 @@ function AboutPage() {
                     </div>
                     
                     <div className="royal-about-text-content">
-                        <p className="royal-about-lead">
-                            Welcome to Chatpati Delhi, a premier culinary destination where the soul of Old Delhi meets modern sophistication. Inspired by the bold, vibrant, and unapologetic flavors of India’s capital, we were founded with a singular vision: to bring the true essence of Indian street food to the United States.
-                        </p>
-                        
-                        <div className="royal-founders-description">
-                            <p>
-                                <strong>Jimmy Poonawala</strong> leads the restaurant’s day-to-day activities and manages tray orders, meticulously ensuring that every guest receives seamless, world-class service through operational excellence.
-                            </p>
-                            <p>
-                                <strong>Hema Singh</strong> is the creative force behind the kitchen, our culinary visionary known for inventing the restaurant’s signature spices and handcrafted masalas that bring authentic Indian flavors to every dish.
-                            </p>
-                            <p>
-                                <strong>Pradeep Singh</strong> oversees the restaurant’s daily operations with a relentless focus on efficiency, consistency, and delivering an outstanding guest experience that honors our high standards.
-                            </p>
-                            <p>
-                                <strong>Abhijit Pingle</strong> manages live stations and premium catering services across the USA, creating interactive and memorable culinary experiences that celebrate tradition and innovation for events of all scales.
-                            </p>
-                        </div>
-                        
-                        <p className="royal-about-conclusion">
-                            Together, the founders of Chatpati Delhi are redefining modern Indian dining by blending tradition, innovation, and unparalleled hospitality in every meal served.
+                        <p className="royal-about-lead" style={{ lineHeight: '1.9', fontSize: '1.1rem' }}>
+                            Founded by Jimmy, Hema Singh, Pradeep Singh, and Abhijit Pingle, Chatpati Delhi was built with a shared vision of bringing authentic Indian cuisine, rich traditions, and heartfelt hospitality to every guest. Rooted in passion, dedication, and a commitment to excellence, the founders created a space where culture, flavor, and community come together to deliver a truly memorable dining experience. Every detail at Chatpati Delhi reflects their collective passion for quality, innovation, and serving food with warmth and authenticity.
                         </p>
                     </div>
                 </div>
