@@ -26,6 +26,56 @@ function Counter({ end, suffix = "", duration = 2000 }) {
 function HomePage() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [reviewSlide, setReviewSlide] = useState(0);
+    const [menuItems, setMenuItems] = useState([]);
+
+    useEffect(() => {
+        const fetchMenuItems = async () => {
+            try {
+                const response = await fetch('/api/menu');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data && data.length > 0) setMenuItems(data);
+                }
+            } catch (error) {
+                console.warn('Backend not running on Home, using fallback details:', error.message);
+            }
+        };
+        fetchMenuItems();
+    }, []);
+
+    // Find the signature items from the fetched menu items or use hardcoded fallbacks
+    const getSignatureItem = (id, fallbackName, fallbackPrice, fallbackImg, fallbackDesc) => {
+        const dbItem = menuItems.find(item => {
+            return item.id === id || item.name.toLowerCase().includes(fallbackName.toLowerCase());
+        });
+
+        if (dbItem) {
+            return {
+                id: dbItem.id,
+                name: dbItem.name,
+                price: dbItem.price,
+                image: dbItem.image,
+                description: dbItem.description,
+                veg: dbItem.veg !== undefined ? (dbItem.veg === true || dbItem.veg === 'true' || dbItem.veg === 1 || dbItem.veg === '1') : true,
+                hot: dbItem.hot === true || dbItem.hot === 'true' || dbItem.hot === 1
+            };
+        }
+
+        return {
+            id: id,
+            name: fallbackName,
+            price: fallbackPrice,
+            image: fallbackImg,
+            description: fallbackDesc,
+            veg: true,
+            hot: true
+        };
+    };
+
+    const choleBhature = getSignatureItem(30, "Chole Bhature", "$12.95", "/images/Snacks/Chole Bhature.png", "Spicy, flavorful chickpea curry served with two oversized, fluffy deep-fried leavened breads.");
+    const rajKachori = getSignatureItem(10, "Raj Kachori", "$9.95", "/images/Raj Kachori.png", "The ultimate 'King of Chaat'—a large, crispy shell overflowing with a royal medley of potatoes, sprouts, chutneys, and yogurt.");
+    const vadaPav = getSignatureItem(20, "Vada Pav", "$9.95", "/images/Mumbai Local/Karjat Vada Pav.png", "Bite into the heart of Mumbai with our authentic Karjat Vada Pav. Sandwiched inside a soft pav bun.");
+
 
     const heroSlides = [
         {
@@ -278,48 +328,84 @@ function HomePage() {
                         <span>✦</span>
                     </div>
                 </div>
-                <div className="royal-menu-grid">
-                    <div className="royal-menu-card">
-                        <div className="royal-menu-img-wrap">
-                            <img src="/images/Snacks/Chole Bhature.png" alt="Chole Bhature" />
+                <div className="royal-product-grid">
+                    {/* Royal Chole Bhature */}
+                    <div className="royal-product-card">
+                        <div style={{position: 'absolute', top: '15px', left: '15px', display: 'flex', gap: '5px', zIndex: 2}}>
+                            {choleBhature.hot && <span className="royal-badge-hot" style={{position: 'relative', top: 0, left: 0}}>Hot</span>}
                         </div>
-                        <div className="royal-menu-info">
-                            <div>
-                                <h3 className="royal-menu-title">Royal Chole Bhature</h3>
-                                <p className="royal-menu-desc">Golden, fluffy bhaturas served with a deeply spiced, rich chana masala. A timeless classic.</p>
-                            </div>
-                            <div className="royal-btn-group" style={{ marginTop: '1rem' }}>
-                                <Link to="/menu" className="royal-btn" style={{ padding: '10px 20px', fontSize: '0.9rem' }}>Discover</Link>
-                            </div>
+                        <div className={`royal-diet-symbol ${choleBhature.veg ? "veg" : "non-veg"}`}></div>
+                        
+                        <div className="royal-product-img-wrapper">
+                            {choleBhature.image && typeof choleBhature.image === 'string' && (choleBhature.image.startsWith('/') || choleBhature.image.startsWith('http') || choleBhature.image.startsWith('data:')) ? (
+                                <img src={choleBhature.image} alt={choleBhature.name} />
+                            ) : (
+                                <span className="royal-product-emoji">{choleBhature.image || '🥘'}</span>
+                            )}
                         </div>
-                    </div>
-                    
-                    <div className="royal-menu-card">
-                        <div className="royal-menu-img-wrap">
-                            <img src="/images/Raj Kachori.png" alt="Raj Kachori" />
-                        </div>
-                        <div className="royal-menu-info">
-                            <div>
-                                <h3 className="royal-menu-title">Majestic Raj Kachori</h3>
-                                <p className="royal-menu-desc">The undisputed king of chaats, adorned with sweet yogurt, zesty chutneys, and premium spices.</p>
-                            </div>
-                            <div className="royal-btn-group" style={{ marginTop: '1rem' }}>
-                                <Link to="/menu" className="royal-btn" style={{ padding: '10px 20px', fontSize: '0.9rem' }}>Discover</Link>
+                        
+                        <div className="royal-product-info">
+                            <h3 className="royal-product-title">{choleBhature.name}</h3>
+                            <p className="royal-product-desc" dangerouslySetInnerHTML={{ __html: choleBhature.description }}></p>
+                            <div className="royal-product-footer">
+                                <span className="royal-product-price">{choleBhature.price}</span>
+                                <Link to={`/product/${choleBhature.id}`} className="royal-product-btn">
+                                    Discover
+                                </Link>
                             </div>
                         </div>
                     </div>
                     
-                    <div className="royal-menu-card">
-                        <div className="royal-menu-img-wrap">
-                            <img src="/images/Biriyani/Purani Delhi Chicken Biryani.png" alt="Chicken Biryani" />
+                    {/* Majestic Raj Kachori */}
+                    <div className="royal-product-card">
+                        <div style={{position: 'absolute', top: '15px', left: '15px', display: 'flex', gap: '5px', zIndex: 2}}>
+                            {rajKachori.hot && <span className="royal-badge-hot" style={{position: 'relative', top: 0, left: 0}}>Hot</span>}
                         </div>
-                        <div className="royal-menu-info">
-                            <div>
-                                <h3 className="royal-menu-title">Nizami Chicken Biryani</h3>
-                                <p className="royal-menu-desc">Aromatic long-grain basmati rice slow-cooked with tender chicken and saffron-infused spices.</p>
+                        <div className={`royal-diet-symbol ${rajKachori.veg ? "veg" : "non-veg"}`}></div>
+                        
+                        <div className="royal-product-img-wrapper">
+                            {rajKachori.image && typeof rajKachori.image === 'string' && (rajKachori.image.startsWith('/') || rajKachori.image.startsWith('http') || rajKachori.image.startsWith('data:')) ? (
+                                <img src={rajKachori.image} alt={rajKachori.name} />
+                            ) : (
+                                <span className="royal-product-emoji">{rajKachori.image || '🥘'}</span>
+                            )}
+                        </div>
+                        
+                        <div className="royal-product-info">
+                            <h3 className="royal-product-title">{rajKachori.name}</h3>
+                            <p className="royal-product-desc" dangerouslySetInnerHTML={{ __html: rajKachori.description }}></p>
+                            <div className="royal-product-footer">
+                                <span className="royal-product-price">{rajKachori.price}</span>
+                                <Link to={`/product/${rajKachori.id}`} className="royal-product-btn">
+                                    Discover
+                                </Link>
                             </div>
-                            <div className="royal-btn-group" style={{ marginTop: '1rem' }}>
-                                <Link to="/menu" className="royal-btn" style={{ padding: '10px 20px', fontSize: '0.9rem' }}>Discover</Link>
+                        </div>
+                    </div>
+                    
+                    {/* Karjat Vada Pav */}
+                    <div className="royal-product-card">
+                        <div style={{position: 'absolute', top: '15px', left: '15px', display: 'flex', gap: '5px', zIndex: 2}}>
+                            {vadaPav.hot && <span className="royal-badge-hot" style={{position: 'relative', top: 0, left: 0}}>Hot</span>}
+                        </div>
+                        <div className={`royal-diet-symbol ${vadaPav.veg ? "veg" : "non-veg"}`}></div>
+                        
+                        <div className="royal-product-img-wrapper">
+                            {vadaPav.image && typeof vadaPav.image === 'string' && (vadaPav.image.startsWith('/') || vadaPav.image.startsWith('http') || vadaPav.image.startsWith('data:')) ? (
+                                <img src={vadaPav.image} alt={vadaPav.name} />
+                            ) : (
+                                <span className="royal-product-emoji">{vadaPav.image || '🥘'}</span>
+                            )}
+                        </div>
+                        
+                        <div className="royal-product-info">
+                            <h3 className="royal-product-title">{vadaPav.name}</h3>
+                            <p className="royal-product-desc" dangerouslySetInnerHTML={{ __html: vadaPav.description }}></p>
+                            <div className="royal-product-footer">
+                                <span className="royal-product-price">{vadaPav.price}</span>
+                                <Link to={`/product/${vadaPav.id}`} className="royal-product-btn">
+                                    Discover
+                                </Link>
                             </div>
                         </div>
                     </div>

@@ -1482,6 +1482,10 @@
     line-height: 1.5;
     margin-bottom: 1.5rem;
     flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .royal-product-footer {
