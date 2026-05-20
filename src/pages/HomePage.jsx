@@ -145,7 +145,7 @@ function HomePage() {
                                 <span>Explore Menu</span>
                                 <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </Link>
-                            <Link to="/contact" className="hero-btn-ghost">Book a Table</Link>
+                            <a href="https://www.clover.com/online-ordering/chatpati-delhi-reston" target="_blank" rel="noopener noreferrer" className="hero-btn-ghost">Online Order</a>
                         </div>
 
                         <div className="hero-dots">
@@ -330,23 +330,139 @@ function HomePage() {
                 </div>
             </section>
 
-            {/* --- ROYAL BANQUET / CATERING --- */}
-            <section className="royal-section">
-                <div className="royal-banquet">
-                    <div className="royal-banquet-img"></div>
-                    <div className="royal-banquet-content">
-                        <span className="royal-subtitle">Grand Celebrations</span>
-                        <h2 className="royal-title" style={{ fontSize: '2.5rem', marginBottom: '1.5rem', marginTop: '1rem' }}>Royal Banquets & Catering</h2>
-                        <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '2rem' }}>
-                            Elevate your special occasions with our premium catering services. From intimate gatherings to grand weddings, we bring the majestic flavors of Delhi's streets and palaces straight to your event, complete with live food stalls and bespoke menus.
-                        </p>
-                        <ul style={{ listStyle: 'none', color: '#D4AF37', marginBottom: '2.5rem', padding: 0 }}>
-                            <li style={{ marginBottom: '10px' }}>✦ Live Chaat Counters</li>
-                            <li style={{ marginBottom: '10px' }}>✦ Custom Thali Menus</li>
-                            <li style={{ marginBottom: '10px' }}>✦ Royal Sweets & Desserts</li>
-                        </ul>
-                        <Link to="/contact" className="royal-btn">Enquire Now</Link>
-                    </div>
+
+            {/* --- MENU CATEGORIES --- */}
+            <section className="royal-section" style={{ background: 'linear-gradient(to bottom, #0b0705, #110a07)' }}>
+                <div className="royal-title-container">
+                    <span className="royal-subtitle">Something For Everyone</span>
+                    <h2 className="royal-title">Explore Our Menu</h2>
+                    <div className="royal-title-divider"><span>✦</span></div>
+                </div>
+
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    gap: '1.5rem',
+                    maxWidth: '1100px',
+                    margin: '0 auto',
+                    padding: '0 1.5rem'
+                }}>
+                    {[
+                        { name: 'Chatpati Chaat', items: '15+ Items', img: '/images/chats/Golgappe.png', tag: '🥗', desc: 'Golgappe, Bhalle, Tikki & more' },
+                        { name: 'Biryani Ki Kahani', items: '3 Varieties', img: '/images/Biriyani/Purani Delhi Chicken Biryani.png', tag: '🍛', desc: 'Veg, Chicken & Goat Biryani' },
+                        { name: 'Mumbai Local', items: '9 Items', img: '/images/Kadak Pav Bhaji.png', tag: '🚂', desc: 'Vada Pav, Pav Bhaji & more' },
+                        { name: 'Roll Baby Roll', items: '6 Rolls', img: '/images/Rolls/Tawa Paneer Roll.png', tag: '🌯', desc: 'Paneer, Chicken, Egg Rolls' },
+                        { name: 'Meethe Me', items: '8 Sweets', img: '/images/Sweets/Gulab Jamun.png', tag: '🍮', desc: 'Kulfi, Rasmalai, Gulab Jamun' },
+                        { name: 'Snacks Ka Chaska', items: '7 Items', img: '/images/Snacks/Chole Bhature.png', tag: '🍢', desc: 'Chole Bhature, Pakode & more' },
+                    ].map((cat, i) => (
+                        <Link to="/menu" key={i} style={{ textDecoration: 'none' }}>
+                            <div style={{
+                                position: 'relative',
+                                borderRadius: '16px',
+                                overflow: 'hidden',
+                                height: '220px',
+                                border: '1px solid rgba(212,175,55,0.2)',
+                                cursor: 'pointer',
+                                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                            }}
+                            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(212,175,55,0.2)'; }}
+                            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+                            >
+                                <img src={cat.img} alt={cat.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                <div style={{
+                                    position: 'absolute', inset: 0,
+                                    background: 'linear-gradient(to top, rgba(5,3,2,0.95) 0%, rgba(5,3,2,0.4) 50%, transparent 100%)'
+                                }} />
+                                <div style={{
+                                    position: 'absolute', top: '12px', right: '12px',
+                                    background: 'rgba(212,175,55,0.9)', color: '#000',
+                                    fontSize: '0.7rem', fontWeight: '700', padding: '4px 10px',
+                                    borderRadius: '20px', letterSpacing: '0.5px'
+                                }}>{cat.items}</div>
+                                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.2rem' }}>
+                                    <div style={{ fontSize: '1.4rem', marginBottom: '4px' }}>{cat.tag}</div>
+                                    <h3 style={{
+                                        color: '#D4AF37', fontSize: '1.1rem', fontWeight: '700',
+                                        margin: '0 0 4px', fontFamily: 'Georgia, serif'
+                                    }}>{cat.name}</h3>
+                                    <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.8rem', margin: 0 }}>{cat.desc}</p>
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+
+                <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+                    <Link to="/menu" className="royal-btn royal-btn-outline">View Full Menu →</Link>
+                </div>
+            </section>
+
+            {/* --- POPULAR PICKS --- */}
+            <section className="royal-section" style={{ background: '#080503', padding: '5rem 1.5rem' }}>
+                <div className="royal-title-container">
+                    <span className="royal-subtitle">Customer Favourites</span>
+                    <h2 className="royal-title">Popular Picks</h2>
+                    <div className="royal-title-divider"><span>✦</span></div>
+                </div>
+
+                <div style={{
+                    display: 'flex',
+                    gap: '1.2rem',
+                    overflowX: 'auto',
+                    paddingBottom: '1.5rem',
+                    maxWidth: '1100px',
+                    margin: '0 auto',
+                    scrollbarWidth: 'thin',
+                    scrollbarColor: '#D4AF37 #1a0f0a',
+                }}>
+                    {[
+                        { name: 'Golgappe (12 Pcs)', price: '$13.95', img: '/images/chats/Golgappe.png', tag: '🔥 Bestseller' },
+                        { name: 'Raj Kachori', price: '$9.95', img: '/images/Raj Kachori.png', tag: "👑 Chef's Pick" },
+                        { name: 'Chicken Biryani', price: '$16.95', img: '/images/Biriyani/Purani Delhi Chicken Biryani.png', tag: '🔥 Bestseller' },
+                        { name: 'Chole Bhature', price: '$12.95', img: '/images/Snacks/Chole Bhature.png', tag: '❤️ Fan Fav' },
+                        { name: 'Chandni Chowk Ke Bhalle', price: '$8.95', img: '/images/Chandni Chowk Ke Bhalle.png', tag: '✨ Must Try' },
+                        { name: 'Kadak Pav Bhaji', price: '$11.95', img: '/images/Kadak Pav Bhaji.png', tag: '🔥 Spicy Hit' },
+                        { name: 'Kulfi Falooda', price: '$6.95', img: '/images/Kulfi Falooda.png', tag: '🍨 Sweet Hit' },
+                        { name: 'Tawa Paneer Roll', price: '$12.95', img: '/images/Rolls/Tawa Paneer Roll.png', tag: '❤️ Fan Fav' },
+                    ].map((item, i) => (
+                        <Link to="/menu" key={i} style={{ textDecoration: 'none', flexShrink: 0 }}>
+                            <div style={{
+                                width: '200px',
+                                background: 'linear-gradient(145deg, #150d09, #1e120c)',
+                                borderRadius: '16px',
+                                overflow: 'hidden',
+                                border: '1px solid rgba(212,175,55,0.15)',
+                                transition: 'transform 0.3s, box-shadow 0.3s, border-color 0.3s',
+                            }}
+                            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.boxShadow = '0 15px 30px rgba(212,175,55,0.15)'; e.currentTarget.style.borderColor = 'rgba(212,175,55,0.5)'; }}
+                            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(212,175,55,0.15)'; }}
+                            >
+                                <div style={{ position: 'relative', height: '150px', overflow: 'hidden' }}>
+                                    <img src={item.img} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    <div style={{
+                                        position: 'absolute', top: '8px', left: '8px',
+                                        background: 'rgba(0,0,0,0.75)', color: '#D4AF37',
+                                        fontSize: '0.65rem', fontWeight: '700', padding: '3px 8px',
+                                        borderRadius: '20px', backdropFilter: 'blur(4px)'
+                                    }}>{item.tag}</div>
+                                </div>
+                                <div style={{ padding: '0.9rem' }}>
+                                    <h4 style={{
+                                        color: '#fff', fontSize: '0.85rem', fontWeight: '600',
+                                        margin: '0 0 8px', lineHeight: '1.3'
+                                    }}>{item.name}</h4>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <span style={{ color: '#D4AF37', fontWeight: '700', fontSize: '0.95rem' }}>{item.price}</span>
+                                        <span style={{
+                                            color: '#000', background: '#D4AF37',
+                                            fontSize: '0.7rem', fontWeight: '700',
+                                            padding: '3px 10px', borderRadius: '20px'
+                                        }}>Order</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
                 </div>
             </section>
 
@@ -412,17 +528,17 @@ function HomePage() {
                     <div className="royal-visit-info">
                         <div className="visit-block">
                             <h3 className="visit-title">Location</h3>
-                            <p>123 Royal Spice Avenue, <br />Old Delhi Culinary District <br />New Delhi, 110006</p>
+                            <p>3201 NJ-27, <br />Franklin Park, NJ 08823</p>
                         </div>
                         <div className="visit-block">
                             <h3 className="visit-title">Opening Hours</h3>
-                            <p><strong>Mon - Fri:</strong> 11:00 AM - 10:30 PM<br />
-                            <strong>Sat - Sun:</strong> 10:00 AM - 11:30 PM</p>
+                            <p><strong>Mon - Fri:</strong> 11:00 AM - 10:00 PM<br />
+                            <strong>Sat - Sun:</strong> 10:00 AM - 11:00 PM</p>
                         </div>
                         <div className="visit-block">
-                            <h3 className="visit-title">Reservations</h3>
-                            <p>Phone: +91 98765 43210<br />
-                            Email: bookings@chatpatidelhi.com</p>
+                            <h3 className="visit-title">Contact Us</h3>
+                            <p>Phone: +1 (732) 499-9387<br />
+                            Email: info@chatpatidelhi.com</p>
                         </div>
                         <Link to="/contact" className="royal-btn">Get Directions</Link>
                     </div>
@@ -437,20 +553,7 @@ function HomePage() {
                 </div>
             </section>
 
-            {/* --- ROYAL NEWSLETTER --- */}
-            <section className="royal-section" style={{ paddingBottom: '8rem' }}>
-                <div className="royal-newsletter">
-                    <span className="royal-subtitle">Join The Court</span>
-                    <h2 className="royal-title" style={{ fontSize: '2.2rem', margin: '1rem 0' }}>The Royal Club</h2>
-                    <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem' }}>
-                        Subscribe to receive exclusive invitations to private tasting events, secret menu drops, and our monthly dispatch.
-                    </p>
-                    <div className="royal-input-group">
-                        <input type="email" placeholder="Enter your email address" className="royal-input" />
-                        <button className="royal-btn">Subscribe</button>
-                    </div>
-                </div>
-            </section>
+
         </div>
     );
 }
