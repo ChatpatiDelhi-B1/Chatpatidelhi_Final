@@ -439,6 +439,16 @@
     margin-bottom: 1.5rem;
 }
 
+/* Limit description to a few lines with ellipsis; full text available via "View Details" */
+.royal-menu-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* show 3 lines on larger screens */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: calc(1.6em * 3); /* line-height * lines as fallback */
+}
+
 .royal-menu-price {
     font-family: 'Playfair Display', serif;
     font-size: 1.4rem;
@@ -646,6 +656,12 @@
 
     .royal-review-text {
         font-size: 1.05rem;
+    }
+
+    /* On smaller screens, show only 2 lines to save space */
+    .royal-menu-desc {
+        -webkit-line-clamp: 2;
+        max-height: calc(1.6em * 2);
     }
 
     .royal-reviews-container {
@@ -1969,8 +1985,16 @@
     }
 
     .royal-product-desc {
-        display: none;
-        /* Hide description to keep it compact */
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 0.6rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* show 3 lines on desktop */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-height: calc(1.6em * 3);
     }
 
     .royal-product-footer {

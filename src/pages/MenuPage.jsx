@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { categories, menuItems as localMenuItems } from '../data/menuData';
 import '../index.css';
 import '../dietary.css';
 
 
 function MenuPage() {
+    const location = useLocation();
     const [menuItems, setMenuItems] = useState(localMenuItems);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false); // false: render local data immediately
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
     const [dietaryFilter, setDietaryFilter] = useState('all');
@@ -15,21 +16,16 @@ function MenuPage() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     useEffect(() => {
+        // Fetch from DB silently in background — update items without blocking render
         const fetchMenuItems = async () => {
             try {
                 const response = await fetch('/api/menu');
                 if (response.ok) {
                     const data = await response.json();
-                    setMenuItems(data);
-                } else {
-                    console.warn('API returned error, using local data');
-                    setMenuItems(localMenuItems);
+                    if (data && data.length > 0) setMenuItems(data);
                 }
             } catch (error) {
                 console.warn('Backend not running, using local menu data:', error.message);
-                setMenuItems(localMenuItems);
-            } finally {
-                setLoading(false);
             }
         };
 
@@ -61,6 +57,31 @@ function MenuPage() {
 
         return matchesSearch && matchesDietary;
     });
+
+
+    // Scroll to category section when navigated back with a hash
+    useEffect(() => {
+        const hash = location.hash;
+        if (!hash) return;
+
+        const categoryId = hash.replace('#category-section-', '');
+
+        const attemptScroll = (tries = 0) => {
+            const section = document.getElementById(`category-section-${categoryId}`);
+            if (section) {
+                const headerOffset = 110;
+                const top = section.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                window.scrollTo({ top, behavior: 'smooth' });
+                setSelectedCategory(categoryId);
+            } else if (tries < 15) {
+                setTimeout(() => attemptScroll(tries + 1), 30);
+            }
+        };
+
+        // Small delay to let React paint the DOM first
+        setTimeout(() => attemptScroll(), 30);
+    }, [location.hash]);
+
 
     const handleCategoryClick = (catId) => {
         setSelectedCategory(catId);

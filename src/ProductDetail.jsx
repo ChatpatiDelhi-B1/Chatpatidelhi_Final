@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { addToCart } from './utils/cart';
 import { menuItems } from './data/menuData';
@@ -1276,30 +1276,24 @@ export const richProductData = [
 function ProductDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [allMenuItems, setAllMenuItems] = useState(menuItems);
-    const [loading, setLoading] = useState(true);
+    const [allMenuItems, setAllMenuItems] = useState(menuItems); // render instantly with local data
 
     useEffect(() => {
+        // Fetch from DB silently in background — updates descriptions if they differ
         const fetchMenuItems = async () => {
             try {
                 const response = await fetch('/api/menu');
                 if (response.ok) {
                     const data = await response.json();
-                    setAllMenuItems(data);
-                } else {
-                    console.warn('API returned error, using local data');
-                    setAllMenuItems(menuItems);
+                    if (data && data.length > 0) setAllMenuItems(data);
                 }
             } catch (error) {
                 console.warn('Backend not running, using local menu data:', error.message);
-                setAllMenuItems(menuItems);
-            } finally {
-                setLoading(false);
             }
         };
 
         fetchMenuItems();
-    }, []);
+    }, [id]);
 
     // State management
     const [selectedVariant, setSelectedVariant] = useState(0);
@@ -1309,9 +1303,6 @@ function ProductDetail() {
         window.scrollTo(0, 0);
     }, []);
 
-    if (loading) {
-        return <div style={{ padding: '150px 20px', textAlign: 'center', fontSize: '1.2rem', color: '#8B1538' }}>Loading product details...</div>;
-    }
 
     // Use loose equality (==) to handle string vs number IDs returned from the API/DB
     const numericId = parseInt(id);
@@ -1365,7 +1356,14 @@ function ProductDetail() {
             <div className="container">
                 {/* Back Button */}
                 <button
-                    onClick={() => navigate(-1)}
+                    onClick={() => {
+                        const targetCategory = product && product.category ? product.category : null;
+                        if (targetCategory) {
+                            navigate(`/menu#category-section-${targetCategory}`);
+                        } else {
+                            navigate(-1);
+                        }
+                    }}
                     className="royal-back-btn"
                 >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1379,7 +1377,7 @@ function ProductDetail() {
                 <nav className="royal-breadcrumb">
                     <Link to="/">Home</Link>
                     <span className="royal-breadcrumb-separator">›</span>
-                    <Link to="/menu">Menu</Link>
+                    <Link to={product && product.category ? `/menu#category-section-${product.category}` : "/menu"}>Menu</Link>
                     <span className="royal-breadcrumb-separator">›</span>
                     <span style={{ textTransform: 'capitalize' }}>{product.category}</span>
                     <span className="royal-breadcrumb-separator">›</span>
@@ -1439,13 +1437,22 @@ function ProductDetail() {
                             </div>
                         </div>
 
-                        <div className="royal-detail-desc" dangerouslySetInnerHTML={{ __html: product.menuDescription }}>
+                        {/* Primary Description — from DB (5-6 lines full text) */}
+                        <div className="royal-detail-desc" style={{
+                            lineHeight: '1.85',
+                            color: 'rgba(255,255,255,0.9)',
+                            fontSize: '1.05rem',
+                            marginBottom: '0.5rem',
+                            whiteSpace: 'pre-line'
+                        }}>
+                            {product.menuDescription}
                         </div>
 
-                        {product.fullDescription && product.fullDescription !== stripHtml(product.menuDescription) && (
-                            <div className="royal-detail-section" style={{ borderTop: '1px solid rgba(212, 175, 55, 0.1)', marginTop: '2rem', paddingTop: '2rem' }}>
-                                <h3 className="royal-detail-section-title">Detailed Explanation</h3>
-                                <div className="royal-detail-full-desc" style={{ lineHeight: '1.8', color: 'rgba(255,255,255,0.9)', fontSize: '1.1rem' }}>
+                        {/* Secondary / Rich Description — from richProductData, only if it adds extra info */}
+                        {product.fullDescription && stripHtml(product.fullDescription).trim() !== stripHtml(product.menuDescription || '').trim() && (
+                            <div className="royal-detail-section" style={{ borderTop: '1px solid rgba(212, 175, 55, 0.1)', marginTop: '1.5rem', paddingTop: '1.5rem' }}>
+                                <h3 className="royal-detail-section-title">About this Dish</h3>
+                                <div className="royal-detail-full-desc" style={{ lineHeight: '1.85', color: 'rgba(255,255,255,0.85)', fontSize: '1.05rem' }}>
                                     {product.fullDescription}
                                 </div>
                             </div>
