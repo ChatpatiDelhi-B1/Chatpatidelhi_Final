@@ -10,8 +10,20 @@ function ContactPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSubmitted(true);
-        setTimeout(() => setSubmitted(false), 4000);
+        const waNumber = '14752988707';
+        const text = [
+            `👋 *New Message from Chatpati Delhi Contact Form*`,
+            ``,
+            `*Name:* ${formData.name}`,
+            formData.email ? `*Email:* ${formData.email}` : null,
+            formData.phone ? `*Phone:* ${formData.phone}` : null,
+            ``,
+            `*Message:*`,
+            formData.message,
+        ].filter(line => line !== null).join('\n');
+
+        const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
+        window.open(waUrl, '_blank', 'noopener,noreferrer');
         setFormData({ name: '', email: '', phone: '', message: '' });
     };
 
@@ -114,7 +126,7 @@ function ContactPage() {
                                 Send a Message
                             </h3>
                             <p style={{ color: 'rgba(255,255,255,0.45)', marginBottom: '2rem', fontSize: '0.95rem' }}>
-                                Fill in the form below and we'll get back to you within 24 hours.
+                                Fill in the form below and we'll reach you on WhatsApp instantly.
                             </p>
 
                             {submitted && (
@@ -138,7 +150,7 @@ function ContactPage() {
                                         />
                                     </div>
                                     <div className="royal-form-group">
-                                        <label className="royal-form-label">Email Address</label>
+                                        <label className="royal-form-label">Email Address <span style={{ color: 'rgba(255,255,255,0.35)', fontWeight: 400, fontSize: '0.8rem' }}>(Optional)</span></label>
                                         <input
                                             type="email"
                                             name="email"
@@ -146,7 +158,6 @@ function ContactPage() {
                                             onChange={handleChange}
                                             placeholder="you@example.com"
                                             className="royal-form-input"
-                                            required
                                         />
                                     </div>
                                 </div>
@@ -173,8 +184,9 @@ function ContactPage() {
                                         required
                                     ></textarea>
                                 </div>
-                                <button type="submit" className="royal-btn-primary" style={{ width: '100%', textAlign: 'center', padding: '1rem' }}>
-                                    Send Message ✦
+                                <button type="submit" className="royal-btn-primary" style={{ width: '100%', textAlign: 'center', padding: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem' }}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="currentColor"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.469 2.027 7.774L0 32l8.448-2.01A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 01-6.772-1.854l-.486-.289-5.013 1.193 1.22-4.882-.317-.5A13.244 13.244 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333z"/><path d="M23.2 19.467c-.378-.189-2.24-1.104-2.587-1.23-.347-.125-.6-.189-.852.19-.252.377-.977 1.23-1.197 1.482-.22.252-.441.284-.819.094-.378-.19-1.597-.588-3.042-1.878-1.124-1.003-1.883-2.24-2.103-2.619-.22-.378-.023-.582.166-.77.17-.17.378-.44.567-.661.189-.22.252-.377.378-.629.126-.252.063-.472-.031-.661-.095-.189-.852-2.054-1.167-2.813-.308-.74-.62-.64-.852-.651l-.725-.013c-.252 0-.661.095-.1.944-.347.284-.1.378.661 1.198.157.219 2.354 3.596 5.706 5.044.797.344 1.42.55 1.904.703.8.254 1.529.218 2.105.132.642-.095 1.977-.808 2.257-1.589.28-.78.28-1.449.196-1.588-.083-.138-.315-.22-.693-.41z"/></svg>
+                                    Send on WhatsApp
                                 </button>
                             </form>
                         </div>
