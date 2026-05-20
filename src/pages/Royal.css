@@ -1188,7 +1188,7 @@
     }
 
     .royal-visit-map {
-        min-height: 400px;
+        min-height: auto;
         border-left: none;
         border-top: 1px solid rgba(212, 175, 55, 0.2);
     }
@@ -1203,6 +1203,33 @@
 
     .royal-stat-card:last-child {
         border-bottom: none;
+    }
+
+    /* Ensure images display fully on mobile (no heavy cropping) */
+    .royal-visit-map .map-placeholder,
+    .royal-menu-img-wrap,
+    .royal-about-img,
+    .pick-img-wrap,
+    .hero-food-card-img img,
+    .map-placeholder img,
+    .royal-menu-img-wrap img,
+    .royal-about-img img,
+    .pick-img-wrap img {
+        width: 100%;
+        height: auto !important;
+        object-fit: contain !important;
+        display: block;
+    }
+
+    /* remove fixed heights that force cropping on mobile */
+    .royal-menu-img-wrap {
+        height: auto;
+        min-height: 180px;
+    }
+
+    .map-placeholder {
+        min-height: 220px;
+        height: auto;
     }
 }
 
