@@ -76,36 +76,7 @@ const SweetBoxPage = () => {
                         borderRadius: '2px',
                     }} />
 
-                    {/* Notify via WhatsApp */}
-                    <a
-                        href="https://wa.me/17329601887?text=Hi!%20I%20am%20interested%20in%20your%20Custom%20Sweet%20Boxes.%20Please%20let%20me%20know%20when%20it%20is%20available."
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.6rem',
-                            background: 'var(--primary-maroon)',
-                            color: 'white',
-                            padding: '0.85rem 2rem',
-                            borderRadius: '50px',
-                            fontWeight: '600',
-                            fontSize: '1rem',
-                            textDecoration: 'none',
-                            boxShadow: '0 8px 25px rgba(0,0,0,0.15)',
-                            transition: 'all 0.3s ease',
-                        }}
-                        onMouseEnter={e => {
-                            e.currentTarget.style.transform = 'translateY(-3px)';
-                            e.currentTarget.style.boxShadow = '0 14px 30px rgba(0,0,0,0.2)';
-                        }}
-                        onMouseLeave={e => {
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
-                        }}
-                    >
-                        💬 Get Notified on WhatsApp
-                    </a>
+
                 </div>
             </section>
 
