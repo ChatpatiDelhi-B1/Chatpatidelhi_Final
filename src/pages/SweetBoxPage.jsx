@@ -1,29 +1,10 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { addToCart } from '../utils/cart';
+import React from 'react';
 import '../index.css';
 
 const SweetBoxPage = () => {
-    const [selectedSweets, setSelectedSweets] = useState([]);
-
-    const toggleSweet = (sweetName) => {
-        setSelectedSweets(prev => 
-            prev.includes(sweetName) 
-                ? prev.filter(s => s !== sweetName) 
-                : [...prev, sweetName]
-        );
-    };
-
-    const handleInquiry = () => {
-        if (selectedSweets.length === 0) return;
-        const sweetList = selectedSweets.map(s => `• ${s}`).join('\n');
-        const message = `Namaste! I want to create a custom sweet box with the following selections:\n\n${sweetList}\n\nPlease let me know the pricing and options for a custom box.`;
-        const encodedMessage = encodeURIComponent(message);
-        window.open(`https://wa.me/17329601887?text=${encodedMessage}`, '_blank');
-    };
-
     return (
         <div className="sweet-box-page">
+            {/* Hero Section */}
             <section className="page-hero" style={{ backgroundImage: "url('/images/hero-sweets.png')" }}>
                 <div className="container">
                     <h1 className="page-hero-title">Custom Sweet Boxes</h1>
@@ -31,135 +12,111 @@ const SweetBoxPage = () => {
                 </div>
             </section>
 
-            {/* Detailed Sweets Menu Section */}
-            <section className="section sweets-list-section" style={{ background: 'var(--cream)', padding: '6rem 0', marginBottom: selectedSweets.length > 0 ? '100px' : '0' }}>
-                <div className="container">
-                    <div className="section-title">
-                        <span className="section-subtitle">Explore Our Range</span>
-                        <h2>Select Your Favorites</h2>
-                        <p style={{ maxWidth: '700px', margin: '1rem auto', color: 'var(--gray)' }}>
-                            Choose the sweets you'd like to include in your custom box and enquire for a quote.
-                        </p>
+            {/* Coming Soon Section */}
+            <section style={{
+                background: 'var(--cream)',
+                padding: '8rem 0',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '60vh',
+            }}>
+                <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto', padding: '0 2rem' }}>
+                    {/* Icon */}
+                    <div style={{
+                        fontSize: '5rem',
+                        marginBottom: '1.5rem',
+                        animation: 'float 3s ease-in-out infinite',
+                    }}>
+                        🍬
                     </div>
 
-                    <div className="sweets-menu-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
-                        {Object.entries(sweetMenuData).map(([category, items]) => (
-                            <div key={category} className="sweet-category-card" style={{ background: 'var(--white)', padding: '2rem', borderRadius: '12px', boxShadow: 'var(--shadow-sm)', borderTop: '4px solid var(--primary-maroon)' }}>
-                                <h3 style={{ color: 'var(--primary-maroon)', borderBottom: '1px solid var(--accent-gold)', paddingBottom: '0.75rem', marginBottom: '1.5rem', fontFamily: 'var(--font-heading)' }}>
-                                    {category}
-                                </h3>
-                                <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '0.75rem' }}>
-                                    {items.map((sweet, index) => {
-                                        const isSelected = selectedSweets.includes(sweet);
-                                        return (
-                                            <li 
-                                                key={index} 
-                                                style={{ 
-                                                    display: 'flex', 
-                                                    alignItems: 'center', 
-                                                    gap: '0.75rem', 
-                                                    color: isSelected ? 'var(--primary-maroon)' : 'var(--black)', 
-                                                    fontSize: '1rem',
-                                                    cursor: 'pointer',
-                                                    padding: '4px 0',
-                                                    transition: 'all 0.2s ease',
-                                                    fontWeight: isSelected ? '600' : '400'
-                                                }}
-                                                onClick={() => toggleSweet(sweet)}
-                                            >
-                                                <div style={{ 
-                                                    width: '22px', 
-                                                    height: '22px', 
-                                                    border: `2px solid ${isSelected ? 'var(--primary-maroon)' : 'var(--accent-gold)'}`, 
-                                                    borderRadius: '4px', 
-                                                    display: 'flex', 
-                                                    alignItems: 'center', 
-                                                    justifyContent: 'center',
-                                                    background: isSelected ? 'var(--primary-maroon)' : 'transparent',
-                                                    color: 'white',
-                                                    fontSize: '0.9rem',
-                                                    transition: 'all 0.2s ease',
-                                                    flexShrink: 0
-                                                }}>
-                                                    {isSelected ? '✓' : ''}
-                                                </div>
-                                                {sweet}
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
+                    {/* Badge */}
+                    <span style={{
+                        display: 'inline-block',
+                        background: 'var(--accent-gold)',
+                        color: 'var(--primary-maroon)',
+                        fontWeight: '700',
+                        fontSize: '0.8rem',
+                        letterSpacing: '0.15em',
+                        textTransform: 'uppercase',
+                        padding: '0.4rem 1.2rem',
+                        borderRadius: '50px',
+                        marginBottom: '1.5rem',
+                    }}>
+                        Coming Soon
+                    </span>
+
+                    <h2 style={{
+                        fontFamily: 'var(--font-heading)',
+                        color: 'var(--primary-maroon)',
+                        fontSize: 'clamp(2rem, 5vw, 3rem)',
+                        marginBottom: '1.25rem',
+                        lineHeight: '1.2',
+                    }}>
+                        Something Sweet<br />is on its Way!
+                    </h2>
+
+                    <p style={{
+                        color: 'var(--gray)',
+                        fontSize: '1.1rem',
+                        lineHeight: '1.8',
+                        marginBottom: '2.5rem',
+                    }}>
+                        We're crafting the perfect selection of handmade traditional sweets for you.
+                        Our custom sweet box builder will be available very soon. Stay tuned!
+                    </p>
+
+                    {/* Divider */}
+                    <div style={{
+                        width: '60px',
+                        height: '3px',
+                        background: 'var(--accent-gold)',
+                        margin: '0 auto 2.5rem',
+                        borderRadius: '2px',
+                    }} />
+
+                    {/* Notify via WhatsApp */}
+                    <a
+                        href="https://wa.me/17329601887?text=Hi!%20I%20am%20interested%20in%20your%20Custom%20Sweet%20Boxes.%20Please%20let%20me%20know%20when%20it%20is%20available."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.6rem',
+                            background: 'var(--primary-maroon)',
+                            color: 'white',
+                            padding: '0.85rem 2rem',
+                            borderRadius: '50px',
+                            fontWeight: '600',
+                            fontSize: '1rem',
+                            textDecoration: 'none',
+                            boxShadow: '0 8px 25px rgba(0,0,0,0.15)',
+                            transition: 'all 0.3s ease',
+                        }}
+                        onMouseEnter={e => {
+                            e.currentTarget.style.transform = 'translateY(-3px)';
+                            e.currentTarget.style.boxShadow = '0 14px 30px rgba(0,0,0,0.2)';
+                        }}
+                        onMouseLeave={e => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+                        }}
+                    >
+                        💬 Get Notified on WhatsApp
+                    </a>
                 </div>
             </section>
 
-            {/* Floating Inquiry Bar */}
-            {selectedSweets.length > 0 && (
-                <div style={{ 
-                    position: 'fixed', 
-                    bottom: '20px', 
-                    left: '50%', 
-                    transform: 'translateX(-50%)', 
-                    background: 'var(--primary-maroon)', 
-                    color: 'white', 
-                    padding: '1rem 2rem', 
-                    borderRadius: '50px', 
-                    boxShadow: '0 10px 25px rgba(0,0,0,0.3)', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    gap: '2rem', 
-                    zIndex: 1000,
-                    width: 'max-content',
-                    maxWidth: '90vw'
-                }}>
-                    <div style={{ fontSize: '1.1rem', fontWeight: '600' }}>
-                        {selectedSweets.length} Sweets Selected
-                    </div>
-                    <div style={{ display: 'flex', gap: '1rem' }}>
-                        <button 
-                            onClick={() => setSelectedSweets([])} 
-                            style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.3)', color: 'white', padding: '0.5rem 1rem', borderRadius: '25px', cursor: 'pointer' }}
-                        >
-                            Clear
-                        </button>
-                        <button 
-                            onClick={handleInquiry} 
-                            style={{ background: 'var(--accent-gold)', border: 'none', color: 'var(--primary-maroon)', padding: '0.5rem 1.5rem', borderRadius: '25px', fontWeight: 'bold', cursor: 'pointer' }}
-                        >
-                            Enquire Now
-                        </button>
-                    </div>
-                </div>
-            )}
+            <style>{`
+                @keyframes float {
+                    0%, 100% { transform: translateY(0px); }
+                    50% { transform: translateY(-12px); }
+                }
+            `}</style>
         </div>
     );
-};
-
-// Sweets Menu Data
-const sweetMenuData = {
-    "Bengali Sweets": [
-        "Malai Roll", "Pakiza", "Pista Sandwich", "Rose Sandwich",
-        "Pineapple Cham Cham", "Rose Cham Cham", "Yellow Cham Cham", "Malai Cham Cham",
-        "Malai Chop", "Pista Kali", "Badam Kali", "Badam Pista Kali",
-        "Anarkali", "Malai Jamun", "Kala Malai Jamun"
-    ],
-    "Dry Sweets": [
-        "Motichoor Laddu", "Dry Fruit Laddu", "Besan Laddu", "Milk Cake",
-        "Kalakand", "Anjeer Roll", "Anjeer Barfi", "Dodha Barfi",
-        "Rose Barfi", "Coconut Barfi", "Chocolate Barfi", "Koya Pista Barfi",
-        "Melon Ball", "Kaju Apple", "Kaju Katli", "Kaju Pista Roll",
-        "Kaju Kalash", "Indradhanush Barfi", "Kaju Paan", "Pista Paan",
-        "Malai", "Badam Masala", "Pista", "Kaju Masala"
-    ],
-    "Namkeen & Savories": [
-        "Namkeen Mixture", "Namak Para", "Shakar Para"
-    ],
-    "Desserts": [
-        "Moongdal Halwa", "Gajar Halwa", "Gulab Jamun", "Kala Gulab Jamun",
-        "Malpua Rabdi", "Brownie Rabdi", "Jalebi Rabdi", "Rasmalai",
-        "Chenna Pie", "Rajbhog", "Malai Kulfi", "Kulfi Falooda"
-    ]
 };
 
 export default SweetBoxPage;

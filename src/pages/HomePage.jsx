@@ -195,7 +195,7 @@ function HomePage() {
                                 <span>Explore Menu</span>
                                 <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </Link>
-                            <a href="https://www.clover.com/online-ordering/chatpati-delhi-reston" target="_blank" rel="noopener noreferrer" className="hero-btn-ghost">Online Order</a>
+                            <a href="https://www.clover.com/online-ordering/chatpati-delhi-reston" target="_blank" rel="noopener noreferrer" className="hero-btn-ghost" style={{display:'none'}}></a>
                         </div>
 
                         <div className="hero-dots">
@@ -554,8 +554,12 @@ function HomePage() {
                         </div>
                         <div className="visit-block">
                             <h3 className="visit-title">Opening Hours</h3>
-                            <p><strong>Mon - Fri:</strong> 11:00 AM - 10:00 PM<br />
-                            <strong>Sat - Sun:</strong> 10:00 AM - 11:00 PM</p>
+                            <p>
+                                <strong>Monday:</strong> Closed<br />
+                                <strong>Tue – Thu:</strong> 11:00 AM – 9:30 PM<br />
+                                <strong>Fri – Sat:</strong> 11:00 AM – 10:00 PM<br />
+                                <strong>Sunday:</strong> 11:00 AM – 9:30 PM
+                            </p>
                         </div>
                         <div className="visit-block">
                             <h3 className="visit-title">Contact Us</h3>

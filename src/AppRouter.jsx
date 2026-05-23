@@ -5,7 +5,6 @@ import HomePage from './pages/HomePage';
 import MenuPage from './pages/MenuPage';
 import AboutPage from './pages/AboutPage';
 import PressPage from './pages/PressPage';
-import CertificatesPage from './pages/CertificatesPage';
 import CateringPage from './pages/CateringPage';
 
 import ContactPage from './pages/ContactPage';
@@ -33,7 +32,6 @@ function AppRouter() {
                     <Route path="/menu" element={<MenuPage />} />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/articles" element={<PressPage />} />
-                    <Route path="/certificates" element={<CertificatesPage />} />
                     <Route path="/catering" element={<CateringPage />} />
 
                     <Route path="/sweet-box" element={<SweetBoxPage />} />
