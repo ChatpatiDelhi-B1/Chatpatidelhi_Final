@@ -14,6 +14,7 @@ const AdminPanel = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [notification, setNotification] = useState(null);
+  const [imageStats, setImageStats] = useState(null); // { originalKB, compressedKB }
   const [formData, setFormData] = useState({
     name: '',
     price: '',
@@ -151,7 +152,9 @@ const AdminPanel = () => {
     const file = e.target.files[0];
     if (!file) return;
 
-    showNotification('Compressing for fast upload...', 'info');
+    const originalKB = Math.round(file.size / 1024);
+    showNotification('⚙️ Compressing image...', 'info');
+    setImageStats(null);
 
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -161,18 +164,14 @@ const AdminPanel = () => {
         let width = img.width;
         let height = img.height;
 
-        // Aggressive compression for Vercel (800px max)
-        const MAX_SIZE = 800;
-        if (width > height) {
-          if (width > MAX_SIZE) {
-            height *= MAX_SIZE / width;
-            width = MAX_SIZE;
-          }
-        } else {
-          if (height > MAX_SIZE) {
-            width *= MAX_SIZE / height;
-            height = MAX_SIZE;
-          }
+        // Cap at 1000px on the longest side
+        const MAX_PX = 1000;
+        if (width > height && width > MAX_PX) {
+          height = Math.round(height * MAX_PX / width);
+          width = MAX_PX;
+        } else if (height >= width && height > MAX_PX) {
+          width = Math.round(width * MAX_PX / height);
+          height = MAX_PX;
         }
 
         canvas.width = width;
@@ -180,10 +179,21 @@ const AdminPanel = () => {
         const ctx = canvas.getContext('2d');
         ctx.drawImage(img, 0, 0, width, height);
 
-        // High compression (0.6 quality) to stay well under Vercel limits
-        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.6);
-        setFormData({ ...formData, image: compressedBase64 });
-        showNotification('Image ready!');
+        // Auto-reduce quality until file is under ~150 KB
+        const TARGET_KB = 150;
+        let quality = 0.82;
+        let compressedBase64;
+        do {
+          compressedBase64 = canvas.toDataURL('image/jpeg', quality);
+          const sizeKB = Math.round((compressedBase64.length * 3) / 4 / 1024);
+          if (sizeKB <= TARGET_KB || quality <= 0.35) break;
+          quality -= 0.08;
+        } while (true);
+
+        const compressedKB = Math.round((compressedBase64.length * 3) / 4 / 1024);
+        setFormData(prev => ({ ...prev, image: compressedBase64 }));
+        setImageStats({ originalKB, compressedKB });
+        showNotification(`✅ Compressed: ${originalKB} KB → ${compressedKB} KB`, 'success');
       };
       img.src = event.target.result;
     };
@@ -471,16 +481,27 @@ const AdminPanel = () => {
                       onChange={(e) => setFormData({...formData, image: e.target.value})} 
                     />
                     <div className="file-input-wrapper">
-                      <div className="file-input-btn">📁 Upload</div>
+                      <div className="file-input-btn">📁 Upload & Auto-Compress</div>
                       <input type="file" accept="image/*" onChange={handleFileUpload} />
                     </div>
                   </div>
                   {formData.image && (
-                    <div className="form-image-preview" style={{ marginTop: '10px', width: '80px', height: '80px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #ddd', display: 'flex', alignItems: 'center', justifyCenter: 'center', background: '#f9f9f9' }}>
-                      {(formData.image.startsWith('/') || formData.image.startsWith('http') || formData.image.startsWith('data:')) ? (
-                        <img src={formData.image} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                      ) : (
-                        <span style={{ fontSize: '2rem' }}>{formData.image}</span>
+                    <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div style={{ width: '80px', height: '80px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #ddd', flexShrink: 0, background: '#f9f9f9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        {(formData.image.startsWith('/') || formData.image.startsWith('http') || formData.image.startsWith('data:')) ? (
+                          <img src={formData.image} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        ) : (
+                          <span style={{ fontSize: '2rem' }}>{formData.image}</span>
+                        )}
+                      </div>
+                      {imageStats && (
+                        <div style={{ fontSize: '0.8rem', color: '#555', lineHeight: '1.6' }}>
+                          <div>📦 Original: <strong>{imageStats.originalKB} KB</strong></div>
+                          <div>✅ Compressed: <strong style={{ color: '#27ae60' }}>{imageStats.compressedKB} KB</strong></div>
+                          <div style={{ color: '#e67e22', fontWeight: 600 }}>
+                            -{Math.round((1 - imageStats.compressedKB / imageStats.originalKB) * 100)}% smaller
+                          </div>
+                        </div>
                       )}
                     </div>
                   )}
