@@ -42,7 +42,8 @@ const AdminPanel = () => {
     if (isAuthenticated) {
       refreshMenu();
     }
-  }, [isAuthenticated, refreshMenu]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticated]);
 
   const isVeg = (item) => {
     if (item.veg !== undefined && item.veg !== null && item.veg !== '') {
