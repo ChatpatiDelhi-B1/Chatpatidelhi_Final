@@ -17,7 +17,8 @@ export const MenuProvider = ({ children }) => {
 
         setLoading(true);
         try {
-            const response = await fetch('/api/menu');
+            const url = forceRefresh ? `/api/menu?t=${Date.now()}` : '/api/menu';
+            const response = await fetch(url);
             if (response.ok) {
                 const data = await response.json();
                 setMenuItems(data);
