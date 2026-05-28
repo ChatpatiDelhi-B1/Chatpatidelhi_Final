@@ -164,8 +164,8 @@ const AdminPanel = () => {
         let width = img.width;
         let height = img.height;
 
-        // Cap at 1000px on the longest side
-        const MAX_PX = 1000;
+        // Cap at 400px on the longest side to save database space
+        const MAX_PX = 400;
         if (width > height && width > MAX_PX) {
           height = Math.round(height * MAX_PX / width);
           width = MAX_PX;
@@ -179,15 +179,15 @@ const AdminPanel = () => {
         const ctx = canvas.getContext('2d');
         ctx.drawImage(img, 0, 0, width, height);
 
-        // Auto-reduce quality until file is under ~150 KB
-        const TARGET_KB = 150;
+        // Auto-reduce quality until file is under ~15 KB using WebP
+        const TARGET_KB = 15;
         let quality = 0.82;
         let compressedBase64;
         do {
-          compressedBase64 = canvas.toDataURL('image/jpeg', quality);
+          compressedBase64 = canvas.toDataURL('image/webp', quality);
           const sizeKB = Math.round((compressedBase64.length * 3) / 4 / 1024);
-          if (sizeKB <= TARGET_KB || quality <= 0.35) break;
-          quality -= 0.08;
+          if (sizeKB <= TARGET_KB || quality <= 0.15) break;
+          quality -= 0.1;
         } while (true);
 
         const compressedKB = Math.round((compressedBase64.length * 3) / 4 / 1024);

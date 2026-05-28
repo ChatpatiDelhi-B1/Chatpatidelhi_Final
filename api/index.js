@@ -39,8 +39,8 @@ const readJsonDb = async () => {
 
 // API Endpoints
 app.get('/api/menu', async (req, res) => {
-  // Cache the response at the edge for 5 minutes to prevent massive bandwidth spikes
-  res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=86400');
+  // Aggressive caching: cache in browser and edge for 24 hours to prevent bandwidth spikes
+  res.setHeader('Cache-Control', 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400');
   try {
     // Try Database first on Vercel
     const { rows } = await pool.query('SELECT * FROM menu_items ORDER BY id ASC');

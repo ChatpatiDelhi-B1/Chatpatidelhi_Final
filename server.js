@@ -7,6 +7,9 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs/promises';
 import multer from 'multer';
+import compression from 'compression';
+import rateLimit from 'express-rate-limit';
+import sharp from 'sharp';
 
 dotenv.config();
 
@@ -25,10 +28,26 @@ try {
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Compress all HTTP responses
+app.use(compression());
+
+// Apply rate limiting to all requests
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 200, // Limit each IP to 200 requests per `window` (here, per 15 minutes)
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+app.use(limiter);
+
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ limit: '100mb', extended: true }));
 app.use(cors());
-app.use('/uploads', express.static(join(__dirname, 'public/uploads')));
+
+// Cache static files for 30 days
+app.use('/uploads', express.static(join(__dirname, 'public/uploads'), {
+  maxAge: '30d' // 30 days cache for images
+}));
 
 // Configure Multer
 const storage = multer.diskStorage({
@@ -74,6 +93,7 @@ const writeJsonDb = async (data) => {
 
 // API Endpoints
 app.get('/api/menu', async (req, res) => {
+  res.setHeader('Cache-Control', 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400');
   console.log('GET /api/menu requested');
   try {
     const result = await pool.query('SELECT * FROM menu_items ORDER BY id ASC');
@@ -88,9 +108,28 @@ app.get('/api/menu', async (req, res) => {
 
 
 
-app.post('/api/upload', upload.single('image'), (req, res) => {
+app.post('/api/upload', upload.single('image'), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
-  res.json({ imageUrl: `/uploads/${req.file.filename}` });
+
+  try {
+    const originalPath = req.file.path;
+    const optimizedFilename = 'opt-' + req.file.filename + '.webp';
+    const optimizedPath = join(__dirname, 'public/uploads', optimizedFilename);
+    
+    // Optimize the image
+    await sharp(originalPath)
+      .resize(800, null, { withoutEnlargement: true }) // Resize width to max 800px
+      .webp({ quality: 80 }) // Convert to WebP format
+      .toFile(optimizedPath);
+      
+    // Delete the original uploaded file to save server space
+    await fs.unlink(originalPath);
+    
+    res.json({ imageUrl: `/uploads/${optimizedFilename}` });
+  } catch (error) {
+    console.error('Image processing error:', error);
+    res.status(500).json({ error: 'Error processing image' });
+  }
 });
 
 app.post('/api/menu', async (req, res) => {

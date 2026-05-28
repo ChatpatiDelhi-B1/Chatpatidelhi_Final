@@ -452,11 +452,12 @@ function Home() {
                                                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: isVeg(item) ? '#2ecc71' : '#e74c3c' }}></div>
                                                 </div>
                                                 <div className="product-image">
-                                                    {item.image && typeof item.image === 'string' && (item.image.startsWith('/') || item.image.startsWith('http') || item.image.startsWith('data:')) ? (
-                                                        <img src={item.image} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                                    {item.image && typeof item.image === 'string' && (item.image.trim().startsWith('/') || item.image.trim().startsWith('http') || item.image.trim().startsWith('data:')) ? (
+                                                        <img src={item.image.trim()} alt={item.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                                     ) : (
-                                                        <span className="product-emoji">{item.image || '🥘'}</span>
+                                                        <span className="product-emoji">{item.image ? item.image.trim() : '🥘'}</span>
                                                     )}
+                                                    <span className="product-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
                                                 </div>
                                                 <div className="product-info">
                                                     <h3 className="product-name">{item.name}</h3>

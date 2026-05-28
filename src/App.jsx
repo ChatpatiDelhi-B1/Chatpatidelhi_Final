@@ -204,11 +204,12 @@ function App() {
                             <div key={item.id} className="product-card">
                                 {item.hot && <span className="badge-hot">Hot</span>}
                                 <div className="product-image">
-                                    {typeof item.image === 'string' && (item.image.startsWith('/') || item.image.startsWith('http') || item.image.startsWith('data:')) ? (
-                                        <img src={item.image} alt={item.name} />
+                                    {typeof item.image === 'string' && (item.image.trim().startsWith('/') || item.image.trim().startsWith('http') || item.image.trim().startsWith('data:')) ? (
+                                        <img src={item.image.trim()} alt={item.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
                                     ) : (
-                                        <span className="product-emoji">{item.image || '🥘'}</span>
+                                        <span className="product-emoji">{item.image ? item.image.trim() : '🥘'}</span>
                                     )}
+                                    <span className="product-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
                                 </div>
                                 <div className="product-info">
                                     <h3 className="product-name">{item.name}</h3>
@@ -406,11 +407,12 @@ function App() {
 
                         <div className="modal-body">
                             <div className="modal-image">
-                                {typeof selectedProduct.image === 'string' && (selectedProduct.image.startsWith('/') || selectedProduct.image.startsWith('http') || selectedProduct.image.startsWith('data:')) ? (
-                                    <img src={selectedProduct.image} alt={selectedProduct.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                {typeof selectedProduct.image === 'string' && (selectedProduct.image.trim().startsWith('/') || selectedProduct.image.trim().startsWith('http') || selectedProduct.image.trim().startsWith('data:')) ? (
+                                    <img src={selectedProduct.image.trim()} alt={selectedProduct.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                 ) : (
-                                    <span className="modal-emoji">{selectedProduct.image || '🥘'}</span>
+                                    <span className="modal-emoji">{selectedProduct.image ? selectedProduct.image.trim() : '🥘'}</span>
                                 )}
+                                <span className="modal-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
                             </div>
 
                             <div className="modal-details">

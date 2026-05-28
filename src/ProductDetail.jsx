@@ -1345,9 +1345,9 @@ function ProductDetail() {
         .slice(0, 4);
 
     // Product images (for demo, using emoji variations or single image)
-    const imageVal = product.image || '🥘';
-    const productImages = (typeof imageVal === 'string' && (imageVal.startsWith('/') || imageVal.startsWith('http') || imageVal.startsWith('data:')))
-        ? [imageVal, imageVal, imageVal]
+    const imageVal = typeof product.image === 'string' ? product.image.trim() : (product.image || '🥘');
+    const productImages = (typeof imageVal === 'string' && (imageVal.trim().startsWith('/') || imageVal.trim().startsWith('http') || imageVal.trim().startsWith('data:')))
+        ? [imageVal.trim(), imageVal.trim(), imageVal.trim()]
         : [imageVal, '🥘', '🍽️'];
 
     return (
@@ -1388,11 +1388,12 @@ function ProductDetail() {
                     {/* Left: Product Image */}
                     <div className="royal-detail-image-section">
                         <div className="royal-detail-main-image">
-                            {productImages[selectedImage].startsWith('/') || productImages[selectedImage].startsWith('http') || productImages[selectedImage].startsWith('data:') ? (
-                                <img src={productImages[selectedImage]} alt={product.name} />
+                            {productImages[selectedImage] && typeof productImages[selectedImage] === 'string' && (productImages[selectedImage].trim().startsWith('/') || productImages[selectedImage].trim().startsWith('http') || productImages[selectedImage].trim().startsWith('data:')) ? (
+                                <img src={productImages[selectedImage]} alt={product.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
                             ) : (
-                                <span className="royal-detail-emoji">{productImages[selectedImage] || '🥘'}</span>
+                                <span className="royal-product-emoji-large">{productImages[selectedImage]}</span>
                             )}
+                            <span className="royal-product-emoji-large fallback-emoji" style={{ display: 'none' }}>🥘</span>
                             <div style={{position: 'absolute', top: '15px', left: '15px', display: 'flex', gap: '5px', zIndex: 2}}>
                                 {product.hot && <span className="royal-badge-hot" style={{position: 'relative', top: 0, left: 0}}>Spicy</span>}
                                 {(product.cold === true || product.cold === 'true' || product.cold === 1) && <span className="royal-badge-cold" style={{position: 'relative', top: 0, left: 0}}>Cold</span>}
@@ -1402,17 +1403,18 @@ function ProductDetail() {
                         {/* Functional Thumbnails */}
                         <div className="royal-detail-thumbnails">
                             {productImages.map((img, index) => (
-                                <div
+                                <button 
                                     key={index}
-                                    className={`royal-detail-thumbnail ${selectedImage === index ? 'active' : ''}`}
+                                    className={`royal-thumbnail-btn ${selectedImage === index ? 'active' : ''}`}
                                     onClick={() => setSelectedImage(index)}
                                 >
-                                    {img.startsWith('/') || img.startsWith('http') || img.startsWith('data:') ? (
-                                        <img src={img} alt={`${product.name} view ${index + 1}`} />
+                                    {img && typeof img === 'string' && (img.trim().startsWith('/') || img.trim().startsWith('http') || img.trim().startsWith('data:')) ? (
+                                        <img src={img} alt={`${product.name} ${index + 1}`} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
                                     ) : (
-                                        img || '🥘'
+                                        <span className="royal-thumbnail-emoji">{img}</span>
                                     )}
-                                </div>
+                                    <span className="royal-thumbnail-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
+                                </button>
                             ))}
                         </div>
                     </div>
@@ -1541,11 +1543,12 @@ function ProductDetail() {
                             {relatedProducts.map((item) => (
                                 <div key={item.id} className="royal-product-card">
                                     <div className="royal-product-img-wrapper">
-                                        {item.image.startsWith('/') || item.image.startsWith('http') || item.image.startsWith('data:') ? (
-                                            <img src={item.image} alt={item.name} />
+                                        {item.image && typeof item.image === 'string' && (item.image.trim().startsWith('/') || item.image.trim().startsWith('http') || item.image.trim().startsWith('data:')) ? (
+                                            <img src={item.image.trim()} alt={item.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
                                         ) : (
-                                            <span className="royal-product-emoji">{item.image || '🥘'}</span>
+                                            <span className="royal-product-emoji">{item.image ? item.image.trim() : '🥘'}</span>
                                         )}
+                                        <span className="royal-product-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
                                     </div>
                                     <div className="royal-product-info">
                                         <h3 className="royal-product-title">{item.name}</h3>

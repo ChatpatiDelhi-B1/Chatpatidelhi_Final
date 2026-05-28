@@ -267,11 +267,12 @@ function MenuPage() {
                                             <div className={`royal-diet-symbol ${isVeg(item) ? "veg" : "non-veg"}`}></div>
                                             
                                             <div className="royal-product-img-wrapper">
-                                                {item.image && typeof item.image === 'string' && (item.image.startsWith('/') || item.image.startsWith('http') || item.image.startsWith('data:')) ? (
-                                                    <img src={item.image} alt={item.name} />
+                                                {item.image && typeof item.image === 'string' && (item.image.trim().startsWith('/') || item.image.trim().startsWith('http') || item.image.trim().startsWith('data:')) ? (
+                                                    <img src={item.image.trim()} alt={item.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
                                                 ) : (
-                                                    <span className="royal-product-emoji">{item.image || '🥘'}</span>
+                                                    <span className="royal-product-emoji">{item.image ? item.image.trim() : '🥘'}</span>
                                                 )}
+                                                <span className="royal-product-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
                                             </div>
                                             
                                             <div className="royal-product-info">

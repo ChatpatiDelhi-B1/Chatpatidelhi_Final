@@ -122,11 +122,12 @@ export default function CartPanel({ open, onClose }) {
                         {items.map((it, index) => (
                             <div key={`${it.id}-${it.spiceLevel || 'none'}-${index}`} className="cart-item">
                                 <div className="ci-image">
-                                    {it.image && (it.image.startsWith('/') || it.image.startsWith('http') || it.image.startsWith('data:')) ? (
-                                        <img src={it.image} alt={it.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} />
+                                    {it.image && typeof it.image === 'string' && (it.image.trim().startsWith('/') || it.image.trim().startsWith('http') || it.image.trim().startsWith('data:')) ? (
+                                        <img src={it.image.trim()} alt={it.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} />
                                     ) : (
-                                        <span style={{ fontSize: '2rem' }}>{it.image || '🍽️'}</span>
+                                        <span style={{ fontSize: '2rem' }}>{it.image ? (typeof it.image === 'string' ? it.image.trim() : it.image) : '🍽️'}</span>
                                     )}
+                                    <span className="fallback-emoji" style={{ display: 'none', fontSize: '2rem' }}>🍽️</span>
                                 </div>
                                 <div className="ci-content">
                                     <div className="ci-details">

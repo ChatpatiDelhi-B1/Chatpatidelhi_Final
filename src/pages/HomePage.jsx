@@ -337,11 +337,12 @@ function HomePage() {
                         <div className={`royal-diet-symbol ${choleBhature.veg ? "veg" : "non-veg"}`}></div>
                         
                         <div className="royal-product-img-wrapper">
-                            {choleBhature.image && typeof choleBhature.image === 'string' && (choleBhature.image.startsWith('/') || choleBhature.image.startsWith('http') || choleBhature.image.startsWith('data:')) ? (
-                                <img src={choleBhature.image} alt={choleBhature.name} />
+                            {choleBhature.image && typeof choleBhature.image === 'string' && (choleBhature.image.trim().startsWith('/') || choleBhature.image.trim().startsWith('http') || choleBhature.image.trim().startsWith('data:')) ? (
+                                <img src={choleBhature.image.trim()} alt={choleBhature.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
                             ) : (
-                                <span className="royal-product-emoji">{choleBhature.image || '🥘'}</span>
+                                <span className="royal-product-emoji">{choleBhature.image ? choleBhature.image.trim() : '🥘'}</span>
                             )}
+                            <span className="royal-product-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
                         </div>
                         
                         <div className="royal-product-info">
@@ -364,11 +365,12 @@ function HomePage() {
                         <div className={`royal-diet-symbol ${rajKachori.veg ? "veg" : "non-veg"}`}></div>
                         
                         <div className="royal-product-img-wrapper">
-                            {rajKachori.image && typeof rajKachori.image === 'string' && (rajKachori.image.startsWith('/') || rajKachori.image.startsWith('http') || rajKachori.image.startsWith('data:')) ? (
-                                <img src={rajKachori.image} alt={rajKachori.name} />
+                            {rajKachori.image && typeof rajKachori.image === 'string' && (rajKachori.image.trim().startsWith('/') || rajKachori.image.trim().startsWith('http') || rajKachori.image.trim().startsWith('data:')) ? (
+                                <img src={rajKachori.image.trim()} alt={rajKachori.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
                             ) : (
-                                <span className="royal-product-emoji">{rajKachori.image || '🥘'}</span>
+                                <span className="royal-product-emoji">{rajKachori.image ? rajKachori.image.trim() : '🥘'}</span>
                             )}
+                            <span className="royal-product-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
                         </div>
                         
                         <div className="royal-product-info">
@@ -391,11 +393,12 @@ function HomePage() {
                         <div className={`royal-diet-symbol ${vadaPav.veg ? "veg" : "non-veg"}`}></div>
                         
                         <div className="royal-product-img-wrapper">
-                            {vadaPav.image && typeof vadaPav.image === 'string' && (vadaPav.image.startsWith('/') || vadaPav.image.startsWith('http') || vadaPav.image.startsWith('data:')) ? (
-                                <img src={vadaPav.image} alt={vadaPav.name} />
+                            {vadaPav.image && typeof vadaPav.image === 'string' && (vadaPav.image.trim().startsWith('/') || vadaPav.image.trim().startsWith('http') || vadaPav.image.trim().startsWith('data:')) ? (
+                                <img src={vadaPav.image.trim()} alt={vadaPav.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
                             ) : (
-                                <span className="royal-product-emoji">{vadaPav.image || '🥘'}</span>
+                                <span className="royal-product-emoji">{vadaPav.image ? vadaPav.image.trim() : '🥘'}</span>
                             )}
+                            <span className="royal-product-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
                         </div>
                         
                         <div className="royal-product-info">
