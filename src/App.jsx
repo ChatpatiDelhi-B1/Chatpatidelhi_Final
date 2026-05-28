@@ -4,6 +4,7 @@ import './index.css'
 import { addToCart } from './utils/cart'
 import { menuItems as localMenuItems } from './data/menuData'
 import { richProductData } from './ProductDetail'
+import { useMenu } from './context/MenuContext'
 
 function App() {
     const [scrolled, setScrolled] = useState(false);
@@ -71,27 +72,7 @@ function App() {
         { id: 'drinks', name: 'Drinks', icon: '🥤' },
     ];
 
-    const [menuItems, setMenuItems] = useState([]);
-
-    useEffect(() => {
-        const fetchMenuItems = async () => {
-            try {
-                const response = await fetch('/api/menu');
-                if (response.ok) {
-                    const data = await response.json();
-                    setMenuItems(data);
-                } else {
-                    console.warn('API error, using local menu data');
-                    setMenuItems(localMenuItems);
-                }
-            } catch (error) {
-                console.warn('Backend not running, using local menu data:', error.message);
-                setMenuItems(localMenuItems);
-            }
-        };
-
-        fetchMenuItems();
-    }, []);
+    const { menuItems, loading } = useMenu();
 
     const filteredItems = selectedCategory === 'all'
         ? menuItems

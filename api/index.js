@@ -60,11 +60,11 @@ app.get('/api/menu', async (req, res) => {
 });
 
 app.post('/api/menu', async (req, res) => {
-  const { name, price, category, image, hot, description, veg } = req.body;
+  const { name, price, category, image, hot, cold, description, veg, variants } = req.body;
   try {
     const { rows } = await pool.query(
-      'INSERT INTO menu_items (name, price, category, image, hot, description, veg) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-      [name, price, category, image, hot, description, veg]
+      'INSERT INTO menu_items (name, price, category, image, hot, cold, description, veg, variants) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
+      [name, price, category, image, hot, cold, description, veg, variants ? JSON.stringify(variants) : null]
     );
     res.json(rows[0]);
   } catch (err) {
@@ -74,11 +74,11 @@ app.post('/api/menu', async (req, res) => {
 
 app.put('/api/menu/:id', async (req, res) => {
   const { id } = req.params;
-  const { name, price, category, image, hot, description, veg } = req.body;
+  const { name, price, category, image, hot, cold, description, veg, variants } = req.body;
   try {
     const { rows } = await pool.query(
-      'UPDATE menu_items SET name = $1, price = $2, category = $3, image = $4, hot = $5, description = $6, veg = $7 WHERE id = $8 RETURNING *',
-      [name, price, category, image, hot, description, veg, id]
+      'UPDATE menu_items SET name = $1, price = $2, category = $3, image = $4, hot = $5, cold = $6, description = $7, veg = $8, variants = $9 WHERE id = $10 RETURNING *',
+      [name, price, category, image, hot, cold, description, veg, variants ? JSON.stringify(variants) : null, id]
     );
     if (rows.length > 0) {
       res.json(rows[0]);

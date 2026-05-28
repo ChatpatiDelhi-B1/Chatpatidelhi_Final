@@ -4,6 +4,7 @@ import { addToCart } from './utils/cart';
 import { menuItems } from './data/menuData';
 import './index.css';
 import './enhanced-styles.css';
+import { useMenu } from './context/MenuContext';
 
 // Rich data with detailed descriptions for specific items
 export const richProductData = [
@@ -1276,24 +1277,7 @@ export const richProductData = [
 function ProductDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [allMenuItems, setAllMenuItems] = useState(menuItems); // render instantly with local data
-
-    useEffect(() => {
-        // Fetch from DB silently in background — updates descriptions if they differ
-        const fetchMenuItems = async () => {
-            try {
-                const response = await fetch('/api/menu');
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data && data.length > 0) setAllMenuItems(data);
-                }
-            } catch (error) {
-                console.warn('Backend not running, using local menu data:', error.message);
-            }
-        };
-
-        fetchMenuItems();
-    }, [id]);
+    const { menuItems: allMenuItems } = useMenu();
 
     // State management
     const [selectedVariant, setSelectedVariant] = useState(0);

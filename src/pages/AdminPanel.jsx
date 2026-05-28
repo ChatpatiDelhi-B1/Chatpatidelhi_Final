@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './AdminPanel.css';
 import { menuItems as localMenuItems } from '../data/menuData';
+import { useMenu } from '../context/MenuContext';
 
 const categories = ['all', 'chaat', 'mumbai', 'snacks', 'sizzling', 'biryani', 'curry', 'bread', 'parantha', 'rolls', 'sweets', 'drinks'];
 
 const AdminPanel = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { menuItems, refreshMenu } = useMenu();
+  const items = menuItems; // alias for existing code
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [editingId, setEditingId] = useState(null);
@@ -36,9 +38,9 @@ const AdminPanel = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      fetchItems();
+      refreshMenu();
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, refreshMenu]);
 
   const isVeg = (item) => {
     if (item.veg !== undefined && item.veg !== null && item.veg !== '') {
@@ -54,23 +56,8 @@ const AdminPanel = () => {
 
   const fetchItems = async () => {
     setLoading(true);
-    try {
-      const res = await fetch('/api/menu');
-      if (res.ok) {
-        const data = await res.json();
-        setItems(data);
-      } else {
-        console.warn('API error, falling back to local data');
-        setItems(localMenuItems);
-        setError(null);
-      }
-    } catch (err) {
-      console.warn('Backend not running, using local data:', err.message);
-      setItems(localMenuItems);
-      setError(null);
-    } finally {
-      setLoading(false);
-    }
+    await refreshMenu();
+    setLoading(false);
   };
 
   const renderItemImage = (img) => {

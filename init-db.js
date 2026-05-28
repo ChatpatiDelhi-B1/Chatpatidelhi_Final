@@ -24,6 +24,7 @@ const createTableAndSeed = async () => {
         category VARCHAR(100) NOT NULL,
         image TEXT,
         hot BOOLEAN DEFAULT false,
+        cold BOOLEAN DEFAULT false,
         description TEXT,
         veg BOOLEAN,
         variants JSONB
@@ -36,9 +37,9 @@ const createTableAndSeed = async () => {
     console.log('Seeding data from local menuData.js...');
     for (const item of menuItems) {
       await pool.query(
-        `INSERT INTO menu_items (name, price, category, image, hot, description, veg, variants)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
-        [item.name, item.price, item.category, item.image, item.hot || false, item.description || '', item.veg !== undefined ? item.veg : null, item.variants ? JSON.stringify(item.variants) : null]
+        `INSERT INTO menu_items (name, price, category, image, hot, cold, description, veg, variants)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+        [item.name, item.price, item.category, item.image, item.hot || false, item.cold || false, item.description || '', item.veg !== undefined ? item.veg : null, item.variants ? JSON.stringify(item.variants) : null]
       );
     }
 

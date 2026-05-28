@@ -3,34 +3,17 @@ import { Link, useLocation } from 'react-router-dom';
 import { categories, menuItems as localMenuItems } from '../data/menuData';
 import '../index.css';
 import '../dietary.css';
+import { useMenu } from '../context/MenuContext';
 
 
 function MenuPage() {
     const location = useLocation();
-    const [menuItems, setMenuItems] = useState(localMenuItems);
-    const [loading, setLoading] = useState(false); // false: render local data immediately
+    const { menuItems } = useMenu();
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
     const [dietaryFilter, setDietaryFilter] = useState('all');
     const [sizzlingFilter, setSizzlingFilter] = useState('all');
     const [dropdownOpen, setDropdownOpen] = useState(false);
-
-    useEffect(() => {
-        // Fetch from DB silently in background — update items without blocking render
-        const fetchMenuItems = async () => {
-            try {
-                const response = await fetch('/api/menu');
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data && data.length > 0) setMenuItems(data);
-                }
-            } catch (error) {
-                console.warn('Backend not running, using local menu data:', error.message);
-            }
-        };
-
-        fetchMenuItems();
-    }, []);
 
     const isVeg = (item) => {
         if (item.veg !== undefined && item.veg !== null) {

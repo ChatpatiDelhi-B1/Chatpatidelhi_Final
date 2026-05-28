@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../index.css'; // Original styles for the hero section
 import './Royal.css'; // Import the new royal styling
+import { useMenu } from '../context/MenuContext';
 
 // Counter Component for animated numbers
 function Counter({ end, suffix = "", duration = 2000 }) {
@@ -26,22 +27,7 @@ function Counter({ end, suffix = "", duration = 2000 }) {
 function HomePage() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [reviewSlide, setReviewSlide] = useState(0);
-    const [menuItems, setMenuItems] = useState([]);
-
-    useEffect(() => {
-        const fetchMenuItems = async () => {
-            try {
-                const response = await fetch('/api/menu');
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data && data.length > 0) setMenuItems(data);
-                }
-            } catch (error) {
-                console.warn('Backend not running on Home, using fallback details:', error.message);
-            }
-        };
-        fetchMenuItems();
-    }, []);
+    const { menuItems } = useMenu();
 
     // Find the signature items from the fetched menu items or use hardcoded fallbacks
     const getSignatureItem = (id, fallbackName, fallbackPrice, fallbackImg, fallbackDesc) => {
