@@ -68,7 +68,7 @@ const AdminPanel = () => {
     if (sImg.startsWith('/') || sImg.startsWith('http') || sImg.startsWith('data:')) {
       return (
         <>
-          <img src={sImg} alt="" onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
+          <img src={sImg} alt="" onError={(e) => { e.target.style.display = 'none'; if (e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
           <span style={{ display: 'none' }}>🥘</span>
         </>
       );
@@ -116,19 +116,19 @@ const AdminPanel = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const method = editingId ? 'PUT' : 'POST';
-    const url = editingId 
-      ? `/api/menu/${editingId}` 
+    const url = editingId
+      ? `/api/menu/${editingId}`
       : '/api/menu';
-    
+
     try {
       showNotification('Saving changes...', 'info');
-      
+
       const res = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-      
+
       if (res.ok) {
         setShowModal(false);
         setEditingId(null);
@@ -199,8 +199,8 @@ const AdminPanel = () => {
   const filteredItems = items.filter(item => {
     const name = item.name || '';
     const category = item.category || '';
-    const matchesSearch = name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         category.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      category.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -216,7 +216,7 @@ const AdminPanel = () => {
             <div className="divider-gold"></div>
             <h3>Master Culinary Control</h3>
             <p>Welcome to the Royal Management Suite. Manage your menu, track statistics, and maintain the authentic flavors of Delhi from one central dashboard.</p>
-            
+
             <div className="feature-list">
               <div className="feature-item">
                 <span className="feature-icon">✨</span>
@@ -256,25 +256,25 @@ const AdminPanel = () => {
             }}>
               <div className="form-group">
                 <label>Email Address</label>
-                <input 
-                  type="text" 
-                  placeholder="admin@chatpatidelhi.com" 
+                <input
+                  type="text"
+                  placeholder="admin@chatpatidelhi.com"
                   value={formData.username}
-                  onChange={(e) => setFormData({...formData, username: e.target.value})} 
+                  onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                   required
                 />
               </div>
               <div className="form-group">
                 <label>Password</label>
-                <input 
-                  type="password" 
-                  placeholder="••••••••••••" 
+                <input
+                  type="password"
+                  placeholder="••••••••••••"
                   value={formData.password}
-                  onChange={(e) => setFormData({...formData, password: e.target.value})} 
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                   required
                 />
               </div>
-              
+
               <div className="form-options">
                 <label className="checkbox-label">
                   <input type="checkbox" /> Remember me
@@ -359,17 +359,17 @@ const AdminPanel = () => {
         <section className="management-controls">
           <div className="search-bar">
             <span className="search-icon">🔍</span>
-            <input 
-              type="text" 
-              placeholder="Search by name or category..." 
+            <input
+              type="text"
+              placeholder="Search by name or category..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
           <div className="category-filters">
             {categories.map(cat => (
-              <button 
-                key={cat} 
+              <button
+                key={cat}
                 className={`filter-chip ${selectedCategory === cat ? 'active' : ''}`}
                 onClick={() => setSelectedCategory(cat)}
               >
@@ -410,11 +410,11 @@ const AdminPanel = () => {
                     <td><span className={`badge-cat ${item.category}`}>{item.category}</span></td>
                     <td className="item-price">{item.price}</td>
                     <td>
-                       <div className="status-tags">
-                          {isVeg(item) ? <span className="tag-veg">🌿 Veg</span> : <span className="tag-nonveg">🍖 Non-Veg</span>}
-                          {isHot(item) && <span className="tag-hot">🔥 Hot</span>}
-                          {(item.cold === true || item.cold === 'true' || item.cold === 1) && <span className="tag-cold">❄️ Cold</span>}
-                        </div>
+                      <div className="status-tags">
+                        {isVeg(item) ? <span className="tag-veg">🌿 Veg</span> : <span className="tag-nonveg">🍖 Non-Veg</span>}
+                        {isHot(item) && <span className="tag-hot">🔥 Hot</span>}
+                        {(item.cold === true || item.cold === 'true' || item.cold === 1) && <span className="tag-cold">❄️ Cold</span>}
+                      </div>
                     </td>
                     <td className="actions-cell">
                       <button className="btn-icon edit" title="Edit" onClick={() => handleEdit(item)}>✏️</button>
@@ -444,29 +444,29 @@ const AdminPanel = () => {
               <div className="form-grid">
                 <div className="form-group full">
                   <label>Item Name</label>
-                  <input 
-                    type="text" 
-                    value={formData.name} 
-                    required 
+                  <input
+                    type="text"
+                    value={formData.name}
+                    required
                     placeholder="e.g. Special Samosa"
-                    onChange={(e) => setFormData({...formData, name: e.target.value})} 
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
                 </div>
                 <div className="form-group">
                   <label>Price</label>
-                  <input 
-                    type="text" 
-                    value={formData.price} 
-                    required 
+                  <input
+                    type="text"
+                    value={formData.price}
+                    required
                     placeholder="e.g. $8.95"
-                    onChange={(e) => setFormData({...formData, price: e.target.value})} 
+                    onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                   />
                 </div>
                 <div className="form-group">
                   <label>Category</label>
-                  <select 
-                    value={formData.category} 
-                    onChange={(e) => setFormData({...formData, category: e.target.value})}
+                  <select
+                    value={formData.category}
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                   >
                     {categories.filter(c => c !== 'all').map(c => <option key={c} value={c}>{c}</option>)}
                   </select>
@@ -474,11 +474,11 @@ const AdminPanel = () => {
                 <div className="form-group full">
                   <label>Image URL, Emoji, or Upload Local</label>
                   <div className="upload-group">
-                    <input 
-                      type="text" 
-                      value={formData.image} 
+                    <input
+                      type="text"
+                      value={formData.image}
                       placeholder="/images/dish.png or 🥘"
-                      onChange={(e) => setFormData({...formData, image: e.target.value})} 
+                      onChange={(e) => setFormData({ ...formData, image: e.target.value })}
                     />
                     <div className="file-input-wrapper">
                       <div className="file-input-btn">📁 Upload & Auto-Compress</div>
@@ -508,11 +508,11 @@ const AdminPanel = () => {
                 </div>
                 <div className="form-group full">
                   <label>Description</label>
-                  <textarea 
-                    value={formData.description} 
+                  <textarea
+                    value={formData.description}
                     rows="3"
                     placeholder="Describe the dish..."
-                    onChange={(e) => setFormData({...formData, description: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   ></textarea>
                 </div>
                 <div className="form-group full">
@@ -544,9 +544,9 @@ const AdminPanel = () => {
                   <label style={{ marginBottom: '0.6rem', display: 'block', fontWeight: 600, fontSize: '0.85rem', color: '#555' }}>Pricing Variants (Optional)</label>
                   {formData.variants && formData.variants.map((variant, index) => (
                     <div key={index} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
-                      <input 
-                        type="text" 
-                        placeholder="e.g. 6 pcs" 
+                      <input
+                        type="text"
+                        placeholder="e.g. 6 pcs"
                         value={variant.name}
                         onChange={(e) => {
                           const newVariants = [...formData.variants];
@@ -554,9 +554,9 @@ const AdminPanel = () => {
                           setFormData({ ...formData, variants: newVariants });
                         }}
                       />
-                      <input 
-                        type="text" 
-                        placeholder="e.g. $8.95" 
+                      <input
+                        type="text"
+                        placeholder="e.g. $8.95"
                         value={variant.price}
                         onChange={(e) => {
                           const newVariants = [...formData.variants];
@@ -570,8 +570,8 @@ const AdminPanel = () => {
                       }} style={{ background: '#ff4d4d', color: 'white', border: 'none', borderRadius: '8px', padding: '0 15px', cursor: 'pointer' }}>✕</button>
                     </div>
                   ))}
-                  <button 
-                    type="button" 
+                  <button
+                    type="button"
                     onClick={() => setFormData({ ...formData, variants: [...(formData.variants || []), { name: '', price: '' }] })}
                     style={{ background: '#eee', border: '1px dashed #ccc', padding: '8px 15px', borderRadius: '8px', cursor: 'pointer', fontSize: '0.85rem', width: 'fit-content' }}
                   >
