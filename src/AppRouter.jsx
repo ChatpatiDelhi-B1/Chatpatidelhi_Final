@@ -14,15 +14,17 @@ import TrayOrdersPage from './pages/TrayOrdersPage';
 import ProductDetail from './ProductDetail';
 import ScrollToTop from './components/ScrollToTop';
 import WelcomeScreen from './components/WelcomeScreen';
+import AdminPanel from './pages/AdminPanel';
 
 function AppRouter() {
     const location = useLocation();
+    const isAdminPage = location.pathname.startsWith('/admin');
 
     return (
         <div className="app">
-            <WelcomeScreen />
-            <ScrollToTop />
-            <Header />
+            {!isAdminPage && <WelcomeScreen />}
+            {!isAdminPage && <ScrollToTop />}
+            {!isAdminPage && <Header />}
             <main>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
@@ -36,11 +38,13 @@ function AppRouter() {
                     <Route path="/tray-orders" element={<TrayOrdersPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/product/:id" element={<ProductDetail />} />
+                    <Route path="/admin" element={<AdminPanel />} />
                 </Routes>
             </main>
-            <Footer />
+            {!isAdminPage && <Footer />}
         </div>
     );
 }
 
 export default AppRouter;
+
