@@ -6,7 +6,9 @@ import { useMenu } from '../context/MenuContext';
 const categories = ['all', 'chaat', 'mumbai', 'snacks', 'sizzling', 'biryani', 'curry', 'bread', 'parantha', 'rolls', 'sweets', 'drinks'];
 
 const AdminPanel = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem('adminAuth') === 'true';
+  });
   const { menuItems, refreshMenu } = useMenu();
   const items = menuItems; // alias for existing code
   const [loading, setLoading] = useState(false);
@@ -240,6 +242,7 @@ const AdminPanel = () => {
               e.preventDefault();
               if (formData.username === 'admin@chatpatidelhi.com' && formData.password === 'Chatpati@2026') {
                 setIsAuthenticated(true);
+                localStorage.setItem('adminAuth', 'true');
               } else {
                 showNotification('Invalid credentials provided', 'error');
               }
@@ -302,7 +305,10 @@ const AdminPanel = () => {
           <button className="nav-item">📊 Statistics</button>
           <button className="nav-item">⚙️ Settings</button>
           <div className="sidebar-divider"></div>
-          <button className="nav-item logout" onClick={() => setIsAuthenticated(false)}>🚪 Logout</button>
+          <button className="nav-item logout" onClick={() => {
+            setIsAuthenticated(false);
+            localStorage.removeItem('adminAuth');
+          }}>🚪 Logout</button>
         </nav>
       </aside>
 
