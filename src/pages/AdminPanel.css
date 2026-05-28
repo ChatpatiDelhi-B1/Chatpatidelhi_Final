@@ -16,8 +16,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 85vh;
-    background-color: var(--dark-bg);
+    min-height: 100vh !important;
+    background-color: #0C0C0C !important;
+    background-image: none !important;
+    box-sizing: border-box;
     padding: 20px;
 }
 
@@ -129,8 +131,10 @@
 
 /* Dashboard styles */
 .admin-dashboard-wrapper {
-    background-color: var(--dark-bg);
-    min-height: 90vh;
+    background-color: #0C0C0C !important;
+    background-image: none !important;
+    min-height: 100vh !important;
+    box-sizing: border-box;
     padding: 40px 0;
     color: var(--text-main);
 }
@@ -682,3 +686,25 @@
         justify-content: center;
     }
 }
+
+/* Database Seeder Button styling */
+.admin-seed-btn {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
+    color: #000;
+    font-weight: 700;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.admin-seed-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+

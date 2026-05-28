@@ -72,6 +72,38 @@ function AdminPanel() {
         }
     };
 
+    const handleSeedDatabase = async () => {
+        if (!window.confirm('Do you want to import all 160+ menu items from the local data into your live Supabase database?')) return;
+        try {
+            setLoading(true);
+            // Map static menu items to Supabase columns
+            const payload = menuItems.map(item => ({
+                name: item.name,
+                price: item.price,
+                description: item.description || '',
+                category: item.category,
+                image_url: typeof item.image === 'string' ? item.image : '',
+                veg: item.veg ?? true,
+                hot: item.hot ?? false,
+                cold: item.cold ?? false
+            }));
+
+            const { error } = await supabase
+                .from('menu_items')
+                .insert(payload);
+
+            if (error) throw error;
+            alert('Database seeded successfully! All 160+ menu items are now live! 🚀');
+            fetchDbItems();
+            refreshMenu();
+        } catch (error) {
+            alert('Seeding failed: ' + error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+
     // Login Handler
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -348,6 +380,14 @@ function AdminPanel() {
                         <div className="admin-spinner-box">
                             <div className="admin-spinner"></div>
                             <p>Querying Postgres Database...</p>
+                        </div>
+                    ) : items.length === 0 ? (
+                        <div className="admin-empty-state">
+                            <h3 style={{color: 'var(--gold-primary)', fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', marginBottom: '10px'}}>Welcome to your Menu Database! 🗄️</h3>
+                            <p style={{marginBottom: '20px', color: 'var(--text-muted)'}}>Your live PostgreSQL database on Supabase is currently empty.</p>
+                            <button className="admin-seed-btn" onClick={handleSeedDatabase}>
+                                ⚡ Import All 160+ Menu Items Instantly
+                            </button>
                         </div>
                     ) : filteredItems.length === 0 ? (
                         <div className="admin-empty-state">
