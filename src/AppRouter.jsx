@@ -23,7 +23,7 @@ function AppRouter() {
 
     return (
         <div className="app">
-            <WelcomeScreen />
+            {!isAdminPage && <WelcomeScreen />}
             <ScrollToTop />
             {!isAdminPage && <Header />}
             <main className={isAdminPage ? 'admin-main-wrapper' : ''}>
