@@ -96,13 +96,20 @@ const AdminPanel = () => {
 
   const confirmDelete = async () => {
     try {
-      await fetch(`/api/menu/${deleteTargetId}`, { method: 'DELETE' });
-      showNotification('Item deleted successfully');
-      setShowConfirmModal(false);
-      setDeleteTargetId(null);
-      fetchItems();
+      const res = await fetch(`/api/menu/${deleteTargetId}`, { method: 'DELETE' });
+      if (res.ok) {
+        showNotification('Item deleted successfully');
+        setShowConfirmModal(false);
+        setDeleteTargetId(null);
+        fetchItems();
+      } else {
+        const errData = await res.json();
+        showNotification(`Error: ${errData.details || errData.error || 'Failed to delete'}`, 'error');
+        setShowConfirmModal(false);
+      }
     } catch (err) {
-      showNotification('Failed to delete item', 'error');
+      showNotification('Failed to connect to server', 'error');
+      setShowConfirmModal(false);
     }
   };
 

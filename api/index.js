@@ -67,7 +67,8 @@ app.post('/api/menu', async (req, res) => {
     );
     res.json(rows[0]);
   } catch (err) {
-    res.status(500).json({ error: 'Database save failed' });
+    console.error('POST Error:', err.message);
+    res.status(500).json({ error: 'Database save failed', details: err.message });
   }
 });
 
@@ -85,7 +86,8 @@ app.put('/api/menu/:id', async (req, res) => {
       res.status(404).json({ error: 'Not found' });
     }
   } catch (err) {
-    res.status(500).json({ error: 'Update failed' });
+    console.error('PUT Error:', err.message);
+    res.status(500).json({ error: 'Update failed', details: err.message });
   }
 });
 
@@ -95,7 +97,8 @@ app.delete('/api/menu/:id', async (req, res) => {
     await pool.query('DELETE FROM menu_items WHERE id = $1', [id]);
     res.json({ message: 'Deleted' });
   } catch (err) {
-    res.status(500).json({ error: 'Delete failed' });
+    console.error('DELETE Error:', err.message);
+    res.status(500).json({ error: 'Delete failed', details: err.message });
   }
 });
 
