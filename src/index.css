@@ -771,12 +771,6 @@ h6 {
     flex-direction: column;
 }
 
-.admin-main-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
 /* Scroll indicator */
 .hero-scroll-indicator {
     position: absolute;

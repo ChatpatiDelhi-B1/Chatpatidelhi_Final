@@ -5,26 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "server": "node server.js",
-    "dev:full": "start cmd /k node server.js && vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "compression": "^1.8.1",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "express-rate-limit": "^8.5.2",
-    "multer": "^2.1.1",
-    "pg": "^8.20.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.13.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
-    "sharp": "^0.34.5",
     "vite": "^7.2.4"
   }
 }
