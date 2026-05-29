@@ -17,7 +17,44 @@ function AdminPanel() {
     const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('all');
+
+    // Custom toast notification state
+    const [toast, setToast] = useState({ show: false, message: '', type: 'success' });
     
+    // Custom confirmation dialog state
+    const [confirmDialog, setConfirmDialog] = useState({
+        show: false,
+        title: '',
+        message: '',
+        onConfirm: null
+    });
+
+    const showToast = (message, type = 'success') => {
+        setToast({ show: true, message, type });
+    };
+
+    const showConfirm = (title, message, onConfirm) => {
+        setConfirmDialog({
+            show: true,
+            title,
+            message,
+            onConfirm: () => {
+                onConfirm();
+                setConfirmDialog({ show: false, title: '', message: '', onConfirm: null });
+            }
+        });
+    };
+
+    // Auto-dismiss toast after 4 seconds
+    useEffect(() => {
+        if (toast.show) {
+            const timer = setTimeout(() => {
+                setToast(prev => ({ ...prev, show: false }));
+            }, 4000);
+            return () => clearTimeout(timer);
+        }
+    }, [toast.show]);
+
     // Modal & Form state
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingItem, setEditingItem] = useState(null);
@@ -72,35 +109,40 @@ function AdminPanel() {
         }
     };
 
-    const handleSeedDatabase = async () => {
-        if (!window.confirm('Do you want to import all 160+ menu items from the local data into your live Supabase database?')) return;
-        try {
-            setLoading(true);
-            // Map static menu items to Supabase columns
-            const payload = menuItems.map(item => ({
-                name: item.name,
-                price: item.price,
-                description: item.description || '',
-                category: item.category,
-                image_url: typeof item.image === 'string' ? item.image : '',
-                veg: item.veg ?? true,
-                hot: item.hot ?? false,
-                cold: item.cold ?? false
-            }));
+    const handleSeedDatabase = () => {
+        showConfirm(
+            'Import Menu Data',
+            'Do you want to import all 160+ menu items from the local data into your live Supabase database?',
+            async () => {
+                try {
+                    setLoading(true);
+                    // Map static menu items to Supabase columns
+                    const payload = menuItems.map(item => ({
+                        name: item.name,
+                        price: item.price,
+                        description: item.description || '',
+                        category: item.category,
+                        image_url: typeof item.image === 'string' ? item.image : '',
+                        veg: item.veg ?? true,
+                        hot: item.hot ?? false,
+                        cold: item.cold ?? false
+                    }));
 
-            const { error } = await supabase
-                .from('menu_items')
-                .insert(payload);
+                    const { error } = await supabase
+                        .from('menu_items')
+                        .insert(payload);
 
-            if (error) throw error;
-            alert('Database seeded successfully! All 160+ menu items are now live! 🚀');
-            fetchDbItems();
-            refreshMenu();
-        } catch (error) {
-            alert('Seeding failed: ' + error.message);
-        } finally {
-            setLoading(false);
-        }
+                    if (error) throw error;
+                    showToast('Database seeded successfully! All 160+ menu items are now live! 🚀', 'success');
+                    fetchDbItems();
+                    refreshMenu();
+                } catch (error) {
+                    showToast('Seeding failed: ' + error.message, 'error');
+                } finally {
+                    setLoading(false);
+                }
+            }
+        );
     };
 
 
@@ -162,37 +204,41 @@ function AdminPanel() {
     };
 
     // Delete Handler
-    const handleDeleteClick = async (id, imageUrl) => {
-        if (!window.confirm('Are you absolutely sure you want to delete this menu item?')) return;
+    const handleDeleteClick = (id, imageUrl) => {
+        showConfirm(
+            'Delete Menu Item',
+            'Are you absolutely sure you want to delete this menu item?',
+            async () => {
+                try {
+                    setLoading(true);
 
-        try {
-            setLoading(true);
+                    // 1. Delete from Supabase Database
+                    const { error: dbError } = await supabase
+                        .from('menu_items')
+                        .delete()
+                        .eq('id', id);
 
-            // 1. Delete from Supabase Database
-            const { error: dbError } = await supabase
-                .from('menu_items')
-                .delete()
-                .eq('id', id);
+                    if (dbError) throw dbError;
 
-            if (dbError) throw dbError;
+                    // 2. Try to clean up image from storage bucket if it exists and is ours
+                    if (imageUrl && imageUrl.includes('/storage/v1/object/public/product-images/')) {
+                        const pathParts = imageUrl.split('/product-images/');
+                        if (pathParts.length > 1) {
+                            const fileName = pathParts[1];
+                            await supabase.storage.from('product-images').remove([fileName]);
+                        }
+                    }
 
-            // 2. Try to clean up image from storage bucket if it exists and is ours
-            if (imageUrl && imageUrl.includes('/storage/v1/object/public/product-images/')) {
-                const pathParts = imageUrl.split('/product-images/');
-                if (pathParts.length > 1) {
-                    const fileName = pathParts[1];
-                    await supabase.storage.from('product-images').remove([fileName]);
+                    showToast('Menu item deleted successfully! ✅', 'success');
+                    fetchDbItems();
+                    refreshMenu();
+                } catch (error) {
+                    showToast('Delete failed: ' + error.message, 'error');
+                } finally {
+                    setLoading(false);
                 }
             }
-
-            alert('Menu item deleted successfully! ✅');
-            fetchDbItems();
-            refreshMenu();
-        } catch (error) {
-            alert('Delete failed: ' + error.message);
-        } finally {
-            setLoading(false);
-        }
+        );
     };
 
     // Form Change Handlers
@@ -257,7 +303,7 @@ function AdminPanel() {
                     .eq('id', editingItem.id);
 
                 if (error) throw error;
-                alert('Product updated successfully! 📝');
+                showToast('Product updated successfully! 📝', 'success');
             } else {
                 // Insert
                 const { error } = await supabase
@@ -265,7 +311,7 @@ function AdminPanel() {
                     .insert([itemPayload]);
 
                 if (error) throw error;
-                alert('New product added successfully! 🎉');
+                showToast('New product added successfully! 🎉', 'success');
             }
 
             setIsModalOpen(false);
@@ -565,6 +611,48 @@ function AdminPanel() {
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            )}
+
+            {/* Custom Premium Toast Notification */}
+            {toast.show && (
+                <div className={`custom-toast ${toast.type}`}>
+                    <div className="toast-icon">
+                        {toast.type === 'success' && '✅'}
+                        {toast.type === 'error' && '❌'}
+                        {toast.type === 'info' && 'ℹ️'}
+                    </div>
+                    <div className="toast-content">
+                        <p>{toast.message}</p>
+                    </div>
+                    <button className="toast-close" onClick={() => setToast({ show: false, message: '', type: 'success' })}>
+                        &times;
+                    </button>
+                </div>
+            )}
+
+            {/* Custom Premium Confirmation Dialog */}
+            {confirmDialog.show && (
+                <div className="admin-modal-overlay confirmation-overlay">
+                    <div className="admin-modal-card confirmation-card">
+                        <div className="admin-modal-header confirmation-header">
+                            <h3>{confirmDialog.title}</h3>
+                            <button className="admin-modal-close" onClick={() => setConfirmDialog({ show: false, title: '', message: '', onConfirm: null })}>
+                                &times;
+                            </button>
+                        </div>
+                        <div className="confirmation-body">
+                            <p>{confirmDialog.message}</p>
+                        </div>
+                        <div className="admin-modal-actions confirmation-actions">
+                            <button className="admin-cancel-btn" onClick={() => setConfirmDialog({ show: false, title: '', message: '', onConfirm: null })}>
+                                Cancel
+                            </button>
+                            <button className="admin-submit-btn delete-confirm-btn" onClick={confirmDialog.onConfirm}>
+                                Yes, Proceed
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}

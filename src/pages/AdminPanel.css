@@ -708,3 +708,134 @@
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
 
+/* Custom Premium Toast Styles */
+.custom-toast {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 2500;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(20, 20, 20, 0.95);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.05);
+    min-width: 320px;
+    max-width: 450px;
+    backdrop-filter: blur(10px);
+    animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(120%) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.custom-toast.success {
+    border-left: 4px solid #2ecc71;
+}
+
+.custom-toast.error {
+    border-left: 4px solid #e74c3c;
+}
+
+.custom-toast.info {
+    border-left: 4px solid var(--gold-primary);
+}
+
+.toast-icon {
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toast-content {
+    flex: 1;
+}
+
+.toast-content p {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0;
+    margin: 0;
+}
+
+.toast-close:hover {
+    color: var(--text-main);
+}
+
+/* Custom Premium Confirmation Dialog Styles */
+.confirmation-overlay {
+    background: rgba(0, 0, 0, 0.85) !important;
+    z-index: 2400;
+}
+
+.confirmation-card {
+    max-width: 440px !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.08) !important;
+    animation: modalPopUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalPopUp {
+    from {
+        transform: translateY(20px) scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.confirmation-header {
+    padding: 16px 20px !important;
+}
+
+.confirmation-body {
+    padding: 20px 25px;
+}
+
+.confirmation-body p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.confirmation-actions {
+    padding: 15px 20px !important;
+    background: #0A0A0A;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.delete-confirm-btn {
+    background: linear-gradient(135deg, #c0392b, #e74c3c) !important;
+    color: var(--text-main) !important;
+}
+
+.delete-confirm-btn:hover {
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3) !important;
+}
+
