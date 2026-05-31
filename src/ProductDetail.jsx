@@ -1331,7 +1331,7 @@ function ProductDetail() {
     // Product images (for demo, using emoji variations or single image)
     const imageVal = typeof product.image === 'string' ? product.image.trim() : (product.image || '🥘');
     const productImages = (typeof imageVal === 'string' && (imageVal.trim().startsWith('/') || imageVal.trim().startsWith('http') || imageVal.trim().startsWith('data:')))
-        ? [imageVal.trim(), imageVal.trim(), imageVal.trim()]
+        ? [imageVal.trim()]
         : [imageVal, '🥘', '🍽️'];
 
     return (
@@ -1385,22 +1385,24 @@ function ProductDetail() {
                         </div>
 
                         {/* Functional Thumbnails */}
-                        <div className="royal-detail-thumbnails">
-                            {productImages.map((img, index) => (
-                                <button 
-                                    key={index}
-                                    className={`royal-thumbnail-btn ${selectedImage === index ? 'active' : ''}`}
-                                    onClick={() => setSelectedImage(index)}
-                                >
-                                    {img && typeof img === 'string' && (img.trim().startsWith('/') || img.trim().startsWith('http') || img.trim().startsWith('data:')) ? (
-                                        <img src={img} alt={`${product.name} ${index + 1}`} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
-                                    ) : (
-                                        <span className="royal-thumbnail-emoji">{img}</span>
-                                    )}
-                                    <span className="royal-thumbnail-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
-                                </button>
-                            ))}
-                        </div>
+                        {productImages.length > 1 && (
+                            <div className="royal-detail-thumbnails">
+                                {productImages.map((img, index) => (
+                                    <button 
+                                        key={index}
+                                        className={`royal-detail-thumbnail ${selectedImage === index ? 'active' : ''}`}
+                                        onClick={() => setSelectedImage(index)}
+                                    >
+                                        {img && typeof img === 'string' && (img.trim().startsWith('/') || img.trim().startsWith('http') || img.trim().startsWith('data:')) ? (
+                                            <img src={img} alt={`${product.name} ${index + 1}`} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
+                                        ) : (
+                                            <span className="royal-thumbnail-emoji">{img}</span>
+                                        )}
+                                        <span className="royal-thumbnail-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                     {/* Right: Product Details */}
