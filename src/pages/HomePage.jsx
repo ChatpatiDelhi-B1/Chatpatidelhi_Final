@@ -58,9 +58,9 @@ function HomePage() {
         };
     };
 
-    const choleBhature = getSignatureItem(30, "Chole Bhature", "$12.95", "/images/Snacks/Chole Bhature.png", "Spicy, flavorful chickpea curry served with two oversized, fluffy deep-fried leavened breads.");
+    const choleBhature = getSignatureItem(32, "Chole Bhature", "$12.95", "/images/Snacks/Chole Bhature.png", "Spicy, flavorful chickpea curry served with two oversized, fluffy deep-fried leavened breads.");
     const rajKachori = getSignatureItem(10, "Raj Kachori", "$9.95", "/images/Raj Kachori.png", "The ultimate 'King of Chaat'—a large, crispy shell overflowing with a royal medley of potatoes, sprouts, chutneys, and yogurt.");
-    const vadaPav = getSignatureItem(20, "Vada Pav", "$9.95", "/images/Mumbai Local/Karjat Vada Pav.png", "Bite into the heart of Mumbai with our authentic Karjat Vada Pav. Sandwiched inside a soft pav bun.");
+    const vadaPav = getSignatureItem(22, "Vada Pav", "$9.95", "/images/Mumbai Local/Karjat Vada Pav.png", "Bite into the heart of Mumbai with our authentic Karjat Vada Pav. Sandwiched inside a soft pav bun.");
 
 
     const heroSlides = [
