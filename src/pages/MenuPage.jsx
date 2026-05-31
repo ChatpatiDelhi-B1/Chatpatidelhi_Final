@@ -9,7 +9,7 @@ import { useMenu } from '../context/MenuContext';
 function MenuPage() {
     const location = useLocation();
     const { menuItems } = useMenu();
-    const [selectedCategory, setSelectedCategory] = useState('chaat');
+    const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
     const [dietaryFilter, setDietaryFilter] = useState('all');
     const [sizzlingFilter, setSizzlingFilter] = useState('all');
@@ -119,7 +119,7 @@ function MenuPage() {
 
                 {/* Category Filters - Desktop */}
                 <div className="royal-filters-container desktop-categories" style={{ gap: '0.8rem', marginBottom: '4rem' }}>
-                    {categories.filter(c => c.id !== 'all').map((cat) => (
+                    {categories.map((cat) => (
                         <button
                             key={cat.id}
                             className={`royal-filter-btn ${selectedCategory === cat.id ? 'active' : ''}`}
@@ -140,14 +140,14 @@ function MenuPage() {
                         >
                             <span>
                                 {categories.find(c => c.id === selectedCategory)?.icon} &nbsp;
-                                {categories.find(c => c.id === selectedCategory)?.name || ''}
+                                {categories.find(c => c.id === selectedCategory)?.name || 'All'}
                             </span>
                             <span className={`royal-dropdown-arrow ${dropdownOpen ? 'open' : ''}`}>▼</span>
                         </button>
 
                         {dropdownOpen && (
                             <div className="royal-dropdown-menu">
-                                {categories.filter(c => c.id !== 'all').map((cat) => (
+                                {categories.map((cat) => (
                                     <button
                                         key={cat.id}
                                         className={`royal-dropdown-item ${selectedCategory === cat.id ? 'active' : ''}`}
@@ -167,7 +167,10 @@ function MenuPage() {
 
                 {/* Products Grouped by Category */}
                 <div className="menu-sections-wrapper">
-                    {categories.filter(c => c.id === selectedCategory).map((cat) => {
+                    {categories
+                        .filter(c => c.id !== 'all')
+                        .filter(cat => selectedCategory === 'all' || selectedCategory === cat.id)
+                        .map((cat) => {
                         let categoryItems = filteredItems.filter(item => {
                             // If the item category is 'sizzling', treat it as 'tandoor'
                             const itemCat = item.category === 'sizzling' ? 'tandoor' : item.category;
