@@ -20,7 +20,7 @@ function AdminPanel() {
 
     // Custom toast notification state
     const [toast, setToast] = useState({ show: false, message: '', type: 'success' });
-    
+
     // Custom confirmation dialog state
     const [confirmDialog, setConfirmDialog] = useState({
         show: false,
@@ -326,7 +326,7 @@ function AdminPanel() {
 
     // Filter items
     const filteredItems = items.filter(item => {
-        const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
             (item.description || '').toLowerCase().includes(searchQuery.toLowerCase());
         const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
         return matchesSearch && matchesCategory;
@@ -402,7 +402,7 @@ function AdminPanel() {
                         />
                     </div>
                     <div className="admin-category-selector">
-                        <button 
+                        <button
                             className={`admin-cat-btn ${selectedCategory === 'all' ? 'active' : ''}`}
                             onClick={() => setSelectedCategory('all')}
                         >
@@ -429,8 +429,8 @@ function AdminPanel() {
                         </div>
                     ) : items.length === 0 ? (
                         <div className="admin-empty-state">
-                            <h3 style={{color: 'var(--gold-primary)', fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', marginBottom: '10px'}}>Welcome to your Menu Database! 🗄️</h3>
-                            <p style={{marginBottom: '20px', color: 'var(--text-muted)'}}>Your live PostgreSQL database on Supabase is currently empty.</p>
+                            <h3 style={{ color: 'var(--gold-primary)', fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', marginBottom: '10px' }}>Welcome to your Menu Database! 🗄️</h3>
+                            <p style={{ marginBottom: '20px', color: 'var(--text-muted)' }}>Your live PostgreSQL database on Supabase is currently empty.</p>
                             <button className="admin-seed-btn" onClick={handleSeedDatabase}>
                                 ⚡ Import All 160+ Menu Items Instantly
                             </button>
@@ -503,29 +503,29 @@ function AdminPanel() {
                             <button className="admin-modal-close" onClick={() => setIsModalOpen(false)}>✕</button>
                         </div>
                         {formError && <div className="admin-modal-error">{formError}</div>}
-                        
+
                         <form onSubmit={handleFormSubmit} className="admin-form">
                             <div className="admin-form-row">
                                 <div className="admin-form-group">
                                     <label>Product Name <span className="required">*</span></label>
-                                    <input 
-                                        type="text" 
-                                        name="name" 
-                                        value={formData.name} 
-                                        onChange={handleInputChange} 
-                                        placeholder="e.g. Aloo Paratha" 
-                                        required 
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleInputChange}
+                                        placeholder="e.g. Aloo Paratha"
+                                        required
                                     />
                                 </div>
                                 <div className="admin-form-group">
                                     <label>Price <span className="required">*</span></label>
-                                    <input 
-                                        type="text" 
-                                        name="price" 
-                                        value={formData.price} 
-                                        onChange={handleInputChange} 
-                                        placeholder="e.g. $11.95" 
-                                        required 
+                                    <input
+                                        type="text"
+                                        name="price"
+                                        value={formData.price}
+                                        onChange={handleInputChange}
+                                        placeholder="e.g. $11.95"
+                                        required
                                     />
                                 </div>
                             </div>
@@ -541,10 +541,10 @@ function AdminPanel() {
                                 </div>
                                 <div className="admin-form-group">
                                     <label>Upload Product Image (Recommended)</label>
-                                    <input 
-                                        type="file" 
-                                        accept="image/*" 
-                                        onChange={handleFileChange} 
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={handleFileChange}
                                     />
                                     <p className="admin-input-tip">Upload an image file (.png, .jpg, .webp). It goes straight to the Supabase Storage CDN.</p>
                                 </div>
@@ -552,51 +552,51 @@ function AdminPanel() {
 
                             <div className="admin-form-group">
                                 <label>Or Provide Image URL Link (Fallback)</label>
-                                <input 
-                                    type="text" 
-                                    name="image_url" 
-                                    value={formData.image_url} 
-                                    onChange={handleInputChange} 
-                                    placeholder="e.g. /images/paranthas/Aloo Paratha.png" 
+                                <input
+                                    type="text"
+                                    name="image_url"
+                                    value={formData.image_url}
+                                    onChange={handleInputChange}
+                                    placeholder="e.g. /images/paranthas/Aloo Paratha.png"
                                 />
                             </div>
 
                             <div className="admin-form-group">
                                 <label>Description</label>
-                                <textarea 
-                                    name="description" 
-                                    value={formData.description} 
-                                    onChange={handleInputChange} 
-                                    placeholder="Enter description..." 
+                                <textarea
+                                    name="description"
+                                    value={formData.description}
+                                    onChange={handleInputChange}
+                                    placeholder="Enter description..."
                                     rows="3"
                                 />
                             </div>
 
                             <div className="admin-form-group-checkboxes">
                                 <label className="admin-checkbox-label">
-                                    <input 
-                                        type="checkbox" 
-                                        name="veg" 
-                                        checked={formData.veg} 
-                                        onChange={handleInputChange} 
+                                    <input
+                                        type="checkbox"
+                                        name="veg"
+                                        checked={formData.veg}
+                                        onChange={handleInputChange}
                                     />
                                     Is Vegetarian? (Green Dot)
                                 </label>
                                 <label className="admin-checkbox-label">
-                                    <input 
-                                        type="checkbox" 
-                                        name="hot" 
-                                        checked={formData.hot} 
-                                        onChange={handleInputChange} 
+                                    <input
+                                        type="checkbox"
+                                        name="hot"
+                                        checked={formData.hot}
+                                        onChange={handleInputChange}
                                     />
                                     Is Spicy / Hot? (Spicy Badge)
                                 </label>
                                 <label className="admin-checkbox-label">
-                                    <input 
-                                        type="checkbox" 
-                                        name="cold" 
-                                        checked={formData.cold} 
-                                        onChange={handleInputChange} 
+                                    <input
+                                        type="checkbox"
+                                        name="cold"
+                                        checked={formData.cold}
+                                        onChange={handleInputChange}
                                     />
                                     Is Cold? (Cold Badge)
                                 </label>
