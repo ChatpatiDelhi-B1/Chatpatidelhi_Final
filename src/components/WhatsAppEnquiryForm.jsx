@@ -14,10 +14,10 @@ const WhatsAppEnquiryForm = ({ type = 'General Inquiry', dark = false }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        const phoneNumber = '17329601887';
+
+        const phoneNumber = '17329860129';
         const text = `Namaste Chatpati Delhi! 🙏\n\nI would like to enquire about a *${type}*.\n\n*Details:*\n👤 Name: ${formData.name}\n📅 Date: ${formData.date}\n👥 Guests: ${formData.guests}\n💬 Message: ${formData.message}\n\nThank you!`;
-        
+
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
         window.open(whatsappUrl, '_blank');
     };
@@ -33,9 +33,9 @@ const WhatsAppEnquiryForm = ({ type = 'General Inquiry', dark = false }) => {
 
             <form onSubmit={handleSubmit} className="royal-form">
                 <div className="royal-form-group" style={{ marginBottom: '1.5rem' }}>
-                    <label className="royal-form-label" style={{ 
-                        color: dark ? '#ffffff' : '#0b0705', 
-                        display: 'block', 
+                    <label className="royal-form-label" style={{
+                        color: dark ? '#ffffff' : '#0b0705',
+                        display: 'block',
                         marginBottom: '0.8rem',
                         fontWeight: '700',
                         textTransform: 'uppercase',
@@ -52,8 +52,8 @@ const WhatsAppEnquiryForm = ({ type = 'General Inquiry', dark = false }) => {
                         onChange={handleChange}
                         placeholder="e.g. Rahul Sharma"
                         className="royal-form-input"
-                        style={{ 
-                            background: dark ? 'rgba(255,255,255,0.15)' : '#fff', 
+                        style={{
+                            background: dark ? 'rgba(255,255,255,0.15)' : '#fff',
                             color: dark ? '#fff' : '#000',
                             border: dark ? '2px solid rgba(212,175,55,0.4)' : '1px solid #ccc',
                             padding: '14px 18px',
@@ -68,9 +68,9 @@ const WhatsAppEnquiryForm = ({ type = 'General Inquiry', dark = false }) => {
 
                 <div className="royal-form-row" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
                     <div className="royal-form-group" style={{ flex: 1, minWidth: '200px' }}>
-                        <label className="royal-form-label" style={{ 
-                            color: dark ? '#ffffff' : '#0b0705', 
-                            display: 'block', 
+                        <label className="royal-form-label" style={{
+                            color: dark ? '#ffffff' : '#0b0705',
+                            display: 'block',
                             marginBottom: '0.8rem',
                             fontWeight: '700',
                             textTransform: 'uppercase',
@@ -86,8 +86,8 @@ const WhatsAppEnquiryForm = ({ type = 'General Inquiry', dark = false }) => {
                             value={formData.date}
                             onChange={handleChange}
                             className="royal-form-input"
-                            style={{ 
-                                background: dark ? 'rgba(255,255,255,0.15)' : '#fff', 
+                            style={{
+                                background: dark ? 'rgba(255,255,255,0.15)' : '#fff',
                                 color: dark ? '#fff' : '#000',
                                 border: dark ? '2px solid rgba(212,175,55,0.4)' : '1px solid #ccc',
                                 padding: '14px 18px',
@@ -100,9 +100,9 @@ const WhatsAppEnquiryForm = ({ type = 'General Inquiry', dark = false }) => {
                         />
                     </div>
                     <div className="royal-form-group" style={{ flex: 1, minWidth: '200px' }}>
-                        <label className="royal-form-label" style={{ 
-                            color: dark ? '#ffffff' : '#0b0705', 
-                            display: 'block', 
+                        <label className="royal-form-label" style={{
+                            color: dark ? '#ffffff' : '#0b0705',
+                            display: 'block',
                             marginBottom: '0.8rem',
                             fontWeight: '700',
                             textTransform: 'uppercase',
@@ -119,8 +119,8 @@ const WhatsAppEnquiryForm = ({ type = 'General Inquiry', dark = false }) => {
                             onChange={handleChange}
                             placeholder="e.g. 50"
                             className="royal-form-input"
-                            style={{ 
-                                background: dark ? 'rgba(255,255,255,0.15)' : '#fff', 
+                            style={{
+                                background: dark ? 'rgba(255,255,255,0.15)' : '#fff',
                                 color: dark ? '#fff' : '#000',
                                 border: dark ? '2px solid rgba(212,175,55,0.4)' : '1px solid #ccc',
                                 padding: '14px 18px',
@@ -135,9 +135,9 @@ const WhatsAppEnquiryForm = ({ type = 'General Inquiry', dark = false }) => {
                 </div>
 
                 <div className="royal-form-group" style={{ marginBottom: '2.5rem' }}>
-                    <label className="royal-form-label" style={{ 
-                        color: dark ? '#ffffff' : '#0b0705', 
-                        display: 'block', 
+                    <label className="royal-form-label" style={{
+                        color: dark ? '#ffffff' : '#0b0705',
+                        display: 'block',
                         marginBottom: '0.8rem',
                         fontWeight: '700',
                         textTransform: 'uppercase',
@@ -153,8 +153,8 @@ const WhatsAppEnquiryForm = ({ type = 'General Inquiry', dark = false }) => {
                         onChange={handleChange}
                         placeholder="Tell us more about your event..."
                         className="royal-form-input royal-form-textarea"
-                        style={{ 
-                            background: dark ? 'rgba(255,255,255,0.15)' : '#fff', 
+                        style={{
+                            background: dark ? 'rgba(255,255,255,0.15)' : '#fff',
                             color: dark ? '#fff' : '#000',
                             border: dark ? '2px solid rgba(212,175,55,0.4)' : '1px solid #ccc',
                             padding: '14px 18px',
@@ -167,13 +167,13 @@ const WhatsAppEnquiryForm = ({ type = 'General Inquiry', dark = false }) => {
                     ></textarea>
                 </div>
 
-                <button type="submit" className="royal-btn-primary" style={{ 
-                    width: '100%', 
-                    textAlign: 'center', 
-                    padding: '1.2rem', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center', 
+                <button type="submit" className="royal-btn-primary" style={{
+                    width: '100%',
+                    textAlign: 'center',
+                    padding: '1.2rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     gap: '10px',
                     fontSize: '1.1rem',
                     background: '#25D366',

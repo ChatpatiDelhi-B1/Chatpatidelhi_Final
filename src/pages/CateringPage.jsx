@@ -43,7 +43,7 @@ const CateringPage = () => {
         const itemList = selectedItems.map(item => `• ${item.name}`).join('\n');
         const message = `Namaste! I am interested in catering services for an event.\n\nHere are the items I've selected from your menu:\n${itemList}\n\nPlease provide a quote and availability for these items. Thank you!`;
         const encodedMessage = encodeURIComponent(message);
-        window.open(`https://wa.me/17329601887?text=${encodedMessage}`, '_blank');
+        window.open(`https://wa.me/17329860129?text=${encodedMessage}`, '_blank');
     };
 
     const filteredItems = menuItems.filter(item => {

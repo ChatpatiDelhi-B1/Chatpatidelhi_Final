@@ -48,7 +48,7 @@ export default function CartPanel({ open, onClose }) {
     };
 
     const sendToWhatsApp = () => {
-        const adminNumber = "14752988707"; // Updated Admin Number (USA)
+        const adminNumber = "17329860129"; // Updated Admin Number (USA)
 
         // Get and increment order number from localStorage
         const lastOrderNum = parseInt(localStorage.getItem('cpd_order_id') || '0');
@@ -123,7 +123,7 @@ export default function CartPanel({ open, onClose }) {
                             <div key={`${it.id}-${it.spiceLevel || 'none'}-${index}`} className="cart-item">
                                 <div className="ci-image">
                                     {it.image && typeof it.image === 'string' && (it.image.trim().startsWith('/') || it.image.trim().startsWith('http') || it.image.trim().startsWith('data:')) ? (
-                                        <img src={it.image.trim()} alt={it.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} />
+                                        <img src={it.image.trim()} alt={it.name} onError={(e) => { e.target.style.display = 'none'; if (e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} />
                                     ) : (
                                         <span style={{ fontSize: '2rem' }}>{it.image ? (typeof it.image === 'string' ? it.image.trim() : it.image) : '🍽️'}</span>
                                     )}

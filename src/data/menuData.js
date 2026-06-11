@@ -12,7 +12,8 @@ export const categories = [
     { "id": "parantha", "name": "Old School Paranthas", "icon": "🫓" },
     { "id": "rolls", "name": "Roll Baby Roll", "icon": "🌯" },
     { "id": "sweets", "name": "Meethe Me", "icon": "🍮" },
-    { "id": "drinks", "name": "Kya Piyoge", "icon": "🥤" }
+    { "id": "drinks", "name": "Kya Piyoge", "icon": "🥤" },
+    { "id": "bachaa", "name": "Bachaa Party Special", "icon": "🎉" }
 ];
 
 export const menuItems = [
@@ -1176,5 +1177,45 @@ export const menuItems = [
         "image": "/images/Drinks/Masala Soda.jpg",
         "hot": false,
         "description": "A spicy twist to regular soda! Carbonated water mixed with special masala, lemon, and black salt. A zesty refresher."
+    },
+    {
+        "id": 200,
+        "name": "Veg Cheese Burger (Combo)",
+        "price": "$10.95",
+        "category": "bachaa",
+        "image": "/images/Snacks/Veg Cheese Burger.png",
+        "hot": false,
+        "veg": true,
+        "description": "A kids' favorite! A desi-style veg cheese burger with a crispy potato patty, melted cheese, fresh veggies, and our special sauce — served as a combo meal perfect for little ones."
+    },
+    {
+        "id": 201,
+        "name": "Baccha Maggi",
+        "price": "$8.95",
+        "category": "bachaa",
+        "image": "/images/chats/Ghungaraale Fries.png",
+        "hot": false,
+        "veg": true,
+        "description": "Everyone's childhood favorite! Soft, perfectly cooked Maggi noodles tossed with mild spices and veggies — just the way kids love it. Quick, yummy, and satisfying."
+    },
+    {
+        "id": 202,
+        "name": "Fries",
+        "price": "$7.95",
+        "category": "bachaa",
+        "image": "/images/chats/Ghungaraale Fries.png",
+        "hot": false,
+        "veg": true,
+        "description": "Crispy golden fries seasoned lightly — a timeless kids' classic that pairs perfectly with any meal. Served hot and crunchy!"
+    },
+    {
+        "id": 203,
+        "name": "Bacha Combo",
+        "price": "$13.95",
+        "category": "bachaa",
+        "image": "/images/Snacks/Veg Cheese Burger.png",
+        "hot": false,
+        "veg": true,
+        "description": "The ultimate kids' combo meal! Includes a Chote Cheese Burger, crispy Fries & a refreshing Mango Lassi — everything a little one needs for a perfect party meal."
     }
 ];
