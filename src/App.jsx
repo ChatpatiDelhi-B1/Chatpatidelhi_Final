@@ -364,8 +364,10 @@ function App() {
                         </div>
                         <div className="footer-section">
                             <h3>Hours</h3>
-                            <p>Monday - Friday<br />11:00 AM - 10:00 PM</p>
-                            <p>Saturday - Sunday<br />10:00 AM - 11:00 PM</p>
+                            <p>Monday: Closed</p>
+                            <p>Tue – Thu: 11:00 AM – 9:30 PM</p>
+                            <p>Fri – Sat: 11:00 AM – 10:00 PM</p>
+                            <p>Sunday: 11:00 AM – 9:30 PM</p>
                         </div>
                         <div className="footer-section">
                             <h3>Contact</h3>

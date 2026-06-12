@@ -10,7 +10,7 @@ function ContactPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const waNumber = '17329860129';
+        const waNumber = '17329601887';
         const text = [
             `👋 *New Message from Chatpati Delhi Contact Form*`,
             ``,
@@ -31,8 +31,8 @@ function ContactPage() {
         {
             icon: '📞',
             label: 'Call Us',
-            value: '+1 (732) 986-0129',
-            link: 'tel:+17329860129'
+            value: '+1 (732) 960-1887',
+            link: 'tel:+17329601887'
         },
         {
             icon: '📧',
@@ -49,7 +49,7 @@ function ContactPage() {
         {
             icon: '🕐',
             label: 'Hours',
-            value: 'Mon–Sun: 11:30 AM – 10:00 PM',
+            value: 'Mon: Closed | Tue–Thu: 11 AM–9:30 PM | Fri–Sat: 11 AM–10 PM | Sun: 11 AM–9:30 PM',
             link: null
         }
     ];
@@ -206,17 +206,17 @@ function ContactPage() {
                                 Prefer to reach us directly?
                             </p>
                             <div style={{ display: 'flex', gap: '0.9rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-                                <a href="tel:+17329860129" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(212,175,55,0.2)', borderRadius: '50px', padding: '0.55rem 1.1rem', textDecoration: 'none', color: '#fff', fontSize: '0.85rem', transition: 'all 0.2s' }}>
-                                    <span style={{ fontSize: '1rem' }}>📞</span> +1 (732) 986-0129
+                                <a href="tel:+17329601887" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(212,175,55,0.2)', borderRadius: '50px', padding: '0.55rem 1.1rem', textDecoration: 'none', color: '#fff', fontSize: '0.85rem', transition: 'all 0.2s' }}>
+                                    <span style={{ fontSize: '1rem' }}>📞</span> +1 (732) 960-1887
                                 </a>
-                                <a href="https://wa.me/17329860129" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.1)', border: '1px solid rgba(37,211,102,0.3)', borderRadius: '50px', padding: '0.55rem 1.1rem', textDecoration: 'none', color: '#25D366', fontSize: '0.85rem', fontWeight: 600, transition: 'all 0.2s' }}>
+                                <a href="https://wa.me/17329601887" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.1)', border: '1px solid rgba(37,211,102,0.3)', borderRadius: '50px', padding: '0.55rem 1.1rem', textDecoration: 'none', color: '#25D366', fontSize: '0.85rem', fontWeight: 600, transition: 'all 0.2s' }}>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="16" height="16"><circle cx="24" cy="24" r="24" fill="#25D366"/><path fill="#fff" d="M24 10.5C16.544 10.5 10.5 16.544 10.5 24c0 2.384.638 4.617 1.752 6.55L10.5 37.5l7.197-1.726A13.418 13.418 0 0024 37.5c7.456 0 13.5-6.044 13.5-13.5S31.456 10.5 24 10.5zm6.52 18.458c-.273.766-1.588 1.463-2.176 1.558-.555.09-1.257.127-2.028-.127-.468-.152-1.07-.354-1.84-.693-3.238-1.395-5.348-4.636-5.51-4.852-.163-.216-1.328-1.763-1.328-3.364s.841-2.386 1.14-2.71c.298-.324.65-.405.867-.405l.624.012c.2.009.468-.076.732.558.273.653.928 2.258 1.009 2.421.082.163.136.353.027.569-.108.217-.163.352-.325.541-.163.19-.343.424-.49.569-.163.163-.333.34-.143.665.19.325.843 1.39 1.81 2.252 1.244 1.108 2.293 1.45 2.618 1.613.325.162.514.135.703-.081.19-.217.814-.951 1.031-1.276.216-.325.433-.271.731-.163.298.108 1.895.893 2.22 1.056.325.163.541.244.623.38.082.135.082.78-.19 1.546z"/></svg>
                                     WhatsApp Us
                                 </a>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1.2rem', flexWrap: 'wrap' }}>
                                 <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '4px' }}>⚡ Instant WhatsApp reply</span>
-                                <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '4px' }}>🕐 Open Mon–Sun 11:30 AM–10 PM</span>
+                                <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '4px' }}>🕐 Mon: Closed | Tue–Thu: 11 AM–9:30 PM | Fri–Sat: 11 AM–10 PM | Sun: 11 AM–9:30 PM</span>
                                 <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '4px' }}>⭐ 5.0 Google Rating</span>
                             </div>
                         </div>

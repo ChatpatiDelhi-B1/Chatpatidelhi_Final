@@ -45,7 +45,7 @@ function Footer() {
                     <div className="footer-section">
                         <h3>Contact</h3>
                         <p>📍 3201 NJ-27, Franklin Park,<br />NJ 08823</p>
-                        <p>📞 +1 (732) 986-0129</p>
+                        <p>📞 +1 (732) 960 1887</p>
                         <p></p>
                     </div>
                 </div>
