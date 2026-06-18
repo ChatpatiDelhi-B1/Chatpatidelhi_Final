@@ -371,16 +371,42 @@ const TrayOrdersPage = () => {
                     <p style={{ color:'rgba(255,255,255,0.85)', fontSize:'clamp(1rem,2vw,1.25rem)', fontFamily:"'Inter',sans-serif", maxWidth:'520px', margin:'0 auto 2.4rem', lineHeight:1.75, animation:'fadeUp 1s 0.2s ease both' }}>
                         Authentic Delhi street flavours, perfectly portioned &amp; beautifully presented for your group.
                     </p>
-                    <button
-                        onClick={() => setModalOpen(true)}
-                        className="tray-enquiry-btn"
-                        style={{ animation:'fadeUp 1.1s 0.3s ease both' }}
+                    {/* Speak with Jimmy */}
+                    <a
+                        href="tel:7329860129"
+                        style={{
+                            display: 'inline-flex', alignItems: 'center', gap: '1rem',
+                            background: 'rgba(255,255,255,0.1)',
+                            backdropFilter: 'blur(10px)',
+                            border: '1px solid rgba(212,175,55,0.45)',
+                            borderRadius: '100px',
+                            padding: '0.85rem 2rem 0.85rem 0.85rem',
+                            textDecoration: 'none',
+                            animation: 'fadeUp 1.1s 0.3s ease both',
+                            transition: 'background 0.3s, border-color 0.3s, transform 0.3s',
+                        }}
+                        onMouseOver={e => { e.currentTarget.style.background='rgba(212,175,55,0.18)'; e.currentTarget.style.transform='translateY(-3px)'; }}
+                        onMouseOut={e => { e.currentTarget.style.background='rgba(255,255,255,0.1)'; e.currentTarget.style.transform='translateY(0)'; }}
                     >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.483 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.308 1.656zm6.757-4.242c1.472.873 3.123 1.335 4.814 1.336 5.203 0 9.437-4.234 9.44-9.438.002-2.52-.981-4.89-2.767-6.678s-4.159-2.77-6.679-2.772c-5.204 0-9.438 4.234-9.44 9.439-.001 1.747.48 3.447 1.391 4.969l-.913 3.336 3.414-.896zm12.367-9.032c-.327-.164-1.93-.953-2.23-1.062-.3-.109-.518-.164-.736.164-.218.327-.845 1.062-1.036 1.281-.19.219-.382.246-.708.082-.328-.164-1.383-.51-2.635-1.627-1.003-.895-1.681-2.001-1.876-2.328-.196-.328-.021-.505.143-.668.148-.147.328-.382.491-.574.164-.19.219-.328.328-.546.109-.219.055-.409-.027-.573-.082-.164-.736-1.775-1.009-2.43-.265-.639-.536-.554-.736-.564l-.627-.012c-.218 0-.573.082-.873.409-.3.327-1.145 1.118-1.145 2.727s1.173 3.164 1.336 3.382c.164.218 2.303 3.516 5.577 4.925.779.335 1.386.535 1.859.686.781.249 1.492.214 2.054.131.627-.093 1.93-.791 2.196-1.52.266-.728.266-1.352.186-1.482-.08-.13-.306-.213-.633-.377z"/>
-                        </svg>
-                        Request a Tray Quote
-                    </button>
+                        {/* avatar circle */}
+                        <div style={{
+                            width: '46px', height: '46px', borderRadius: '50%',
+                            background: 'linear-gradient(135deg,#D4AF37,#b8962e)',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            fontSize: '1.25rem', flexShrink: 0,
+                            animation: 'ringPulse 2.4s ease-out infinite',
+                        }}>
+                            📞
+                        </div>
+                        <div style={{ textAlign: 'left' }}>
+                            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', fontFamily: "'Inter',sans-serif", margin: '0 0 2px 0' }}>
+                                Speak with Jimmy
+                            </p>
+                            <p style={{ color: '#D4AF37', fontSize: '1.25rem', fontWeight: 800, fontFamily: "'Playfair Display',serif", margin: 0, letterSpacing: '0.5px' }}>
+                                732 986 0129
+                            </p>
+                        </div>
+                    </a>
                 </div>
             </section>
 
@@ -437,25 +463,7 @@ const TrayOrdersPage = () => {
             <section style={{ background:'var(--cream,#FDF8F0)', padding:'7rem 1.5rem' }}>
                 <div style={{ maxWidth:'900px', margin:'0 auto' }}>
 
-                    {/* direct contact strip */}
-                    <div ref={refContact} className="tray-reveal tray-contact-banner" style={{ marginBottom:'3rem' }}>
-                        <div className="tray-contact-banner-left" style={{ display:'flex', alignItems:'center', gap:'1.2rem', flex:'1 1 200px', minWidth:0 }}>
-                            <div className="tray-phone-pulse" style={{ flexShrink:0 }}>
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                </svg>
-                            </div>
-                            <div style={{ minWidth:0 }}>
-                                <p style={{ color:'#D4AF37', fontSize:'0.72rem', fontWeight:700, letterSpacing:'3px', textTransform:'uppercase', fontFamily:"'Inter',sans-serif", marginBottom:'0.2rem' }}>Direct Contact</p>
-                                <h3 style={{ fontFamily:"'Playfair Display',serif", fontSize:'clamp(1.3rem,3vw,1.9rem)', color:'var(--primary-maroon,#8B1538)', marginBottom:'0.2rem', lineHeight:1.2 }}>Speak with Jimmy</h3>
-                                <p style={{ color:'#777', fontSize:'0.88rem', fontFamily:"'Inter',sans-serif", lineHeight:1.5 }}>Our specialist is ready to craft your perfect tray package.</p>
-                            </div>
-                        </div>
-                        <div className="tray-contact-banner-right" style={{ flexShrink:0 }}>
-                            <a href="tel:7329860129" className="tray-phone-num">732 986 0129</a>
-                            <p style={{ color:'#aaa', fontSize:'0.78rem', fontFamily:"'Inter',sans-serif", marginTop:'3px' }}>Tap to call</p>
-                        </div>
-                    </div>
+
 
                     {/* CTA card */}
                     <div ref={refCta} className="tray-reveal" style={{ background:'var(--primary-maroon,#8B1538)', borderRadius:'24px', padding:'4rem 3rem', textAlign:'center', position:'relative', overflow:'hidden', boxShadow:'0 30px 70px rgba(139,21,56,0.22)' }}>

@@ -334,13 +334,41 @@ const LiveStationsPage = () => {
                     <p style={{ color:'rgba(255,255,255,0.85)', fontSize:'clamp(1rem,2vw,1.25rem)', fontFamily:"'Inter',sans-serif", maxWidth:'520px', margin:'0 auto 2.4rem', lineHeight:1.75, animation:'lsFadeUp 1s 0.2s ease both' }}>
                         Bring the vibrant street markets of Delhi to your event — live, fresh &amp; unforgettable.
                     </p>
-                    <button
-                        onClick={() => setModalOpen(true)}
-                        className="ls-enquiry-btn"
-                        style={{ animation:'lsFadeUp 1.1s 0.3s ease both' }}
+                    {/* Speak with Abhijit */}
+                    <a
+                        href="tel:7325168407"
+                        style={{
+                            display: 'inline-flex', alignItems: 'center', gap: '1rem',
+                            background: 'rgba(255,255,255,0.1)',
+                            backdropFilter: 'blur(10px)',
+                            border: '1px solid rgba(212,175,55,0.45)',
+                            borderRadius: '100px',
+                            padding: '0.85rem 2rem 0.85rem 0.85rem',
+                            textDecoration: 'none',
+                            animation: 'lsFadeUp 1.1s 0.3s ease both',
+                            transition: 'background 0.3s, border-color 0.3s, transform 0.3s',
+                        }}
+                        onMouseOver={e => { e.currentTarget.style.background='rgba(212,175,55,0.18)'; e.currentTarget.style.transform='translateY(-3px)'; }}
+                        onMouseOut={e => { e.currentTarget.style.background='rgba(255,255,255,0.1)'; e.currentTarget.style.transform='translateY(0)'; }}
                     >
-                        <WaIcon size={18} /> Book a Live Station
-                    </button>
+                        <div style={{
+                            width: '46px', height: '46px', borderRadius: '50%',
+                            background: 'linear-gradient(135deg,#D4AF37,#b8962e)',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            fontSize: '1.25rem', flexShrink: 0,
+                            animation: 'lsRingPulse 2.4s ease-out infinite',
+                        }}>
+                            📞
+                        </div>
+                        <div style={{ textAlign: 'left' }}>
+                            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', fontFamily: "'Inter',sans-serif", margin: '0 0 2px 0' }}>
+                                Speak with Abhijit
+                            </p>
+                            <p style={{ color: '#D4AF37', fontSize: '1.25rem', fontWeight: 800, fontFamily: "'Playfair Display',serif", margin: 0, letterSpacing: '0.5px' }}>
+                                732 516 8407
+                            </p>
+                        </div>
+                    </a>
                 </div>
             </section>
 
@@ -386,25 +414,6 @@ const LiveStationsPage = () => {
             <section style={{ background:'#fff', padding:'6rem 1.5rem' }}>
                 <div style={{ maxWidth:'900px', margin:'0 auto' }}>
 
-                    {/* contact strip */}
-                    <div ref={refContact} className="ls-reveal ls-contact-banner" style={{ marginBottom:'3rem' }}>
-                        <div style={{ display:'flex', alignItems:'center', gap:'1.2rem', flex:'1 1 200px', minWidth:0 }}>
-                            <div className="ls-phone-pulse" style={{ flexShrink:0 }}>
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                </svg>
-                            </div>
-                            <div style={{ minWidth:0 }}>
-                                <p style={{ color:'#D4AF37', fontSize:'0.72rem', fontWeight:700, letterSpacing:'3px', textTransform:'uppercase', fontFamily:"'Inter',sans-serif", marginBottom:'0.2rem' }}>Direct Contact</p>
-                                <h3 style={{ fontFamily:"'Playfair Display',serif", fontSize:'clamp(1.3rem,3vw,1.9rem)', color:'var(--primary-maroon,#8B1538)', marginBottom:'0.2rem', lineHeight:1.2 }}>Speak with Abhijit</h3>
-                                <p style={{ color:'#777', fontSize:'0.88rem', fontFamily:"'Inter',sans-serif", lineHeight:1.5 }}>Our live station specialist is ready to plan your perfect event experience.</p>
-                            </div>
-                        </div>
-                        <div style={{ flexShrink:0 }}>
-                            <a href="tel:7325168407" className="ls-phone-num">732 516 8407</a>
-                            <p style={{ color:'#aaa', fontSize:'0.78rem', fontFamily:"'Inter',sans-serif", marginTop:'3px' }}>Tap to call</p>
-                        </div>
-                    </div>
 
                     {/* CTA card */}
                     <div ref={refCta} className="ls-reveal" style={{ background:'var(--primary-maroon,#8B1538)', borderRadius:'24px', padding:'4rem 3rem', textAlign:'center', position:'relative', overflow:'hidden', boxShadow:'0 30px 70px rgba(139,21,56,0.22)' }}>
