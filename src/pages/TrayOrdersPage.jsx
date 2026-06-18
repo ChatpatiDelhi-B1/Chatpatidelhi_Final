@@ -229,13 +229,13 @@ function useReveal() {
 const traySizes = [
     {
         id: 'small', icon: '🍱',
-        name: 'Small Tray', capacity: '15 – 18 Guests', price: 'Starting ₹1,999',
+        name: 'Small Tray', capacity: '15 – 18 Guests', 
         description: 'Perfect for intimate family gatherings, kitty parties, and small office lunches.',
         tags: ['Family Friendly', 'Budget Pick'],
     },
     {
         id: 'large', icon: '🥘',
-        name: 'Large Tray', capacity: '30 – 35 Guests', price: 'Starting ₹3,499',
+        name: 'Large Tray', capacity: '30 – 35 Guests',
         description: 'Ideal for weddings, big celebrations, corporate banquets, and cultural events.',
         tags: ['Most Popular', 'Best Value'],
     },
