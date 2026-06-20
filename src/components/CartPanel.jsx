@@ -48,7 +48,7 @@ export default function CartPanel({ open, onClose }) {
     };
 
     const sendToWhatsApp = () => {
-        const adminNumber = "17329601887"; // Admin Number (USA)
+        const adminNumber = "17329860129"; // Admin Number (USA)
 
         // Get and increment order number from localStorage
         const lastOrderNum = parseInt(localStorage.getItem('cpd_order_id') || '0');

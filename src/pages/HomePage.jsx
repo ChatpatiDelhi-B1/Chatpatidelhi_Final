@@ -552,7 +552,7 @@ function HomePage() {
                         </div>
                         <div className="visit-block">
                             <h3 className="visit-title">Contact Us</h3>
-                            <p>Phone: <span className="nowrap">+1 (732) 960 1887</span><br />
+                            <p>Phone: <span className="nowrap">+1 732 986 0129</span><br />
                             Email: <span className="nowrap">info@chatpatidelhi.com</span></p>
                         </div>
                         <Link to="/contact" className="royal-btn">Get Directions</Link>
