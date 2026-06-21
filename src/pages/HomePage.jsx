@@ -139,7 +139,7 @@ function HomePage() {
 
     return (
         <div className="royal-page">
-            
+
             {/* --- HERO SECTION (Original Split Layout) --- */}
             <section className="hero-section">
                 {/* Background images with Ken Burns effect */}
@@ -179,9 +179,9 @@ function HomePage() {
                         <div className="hero-cta-row">
                             <Link to="/menu" className="hero-btn-primary">
                                 <span>Explore Menu</span>
-                                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                             </Link>
-                            <a href="https://www.clover.com/online-ordering/chatpati-delhi-reston" target="_blank" rel="noopener noreferrer" className="hero-btn-ghost" style={{display:'none'}}></a>
+                            <a href="https://www.clover.com/online-ordering/chatpati-delhi-reston" target="_blank" rel="noopener noreferrer" className="hero-btn-ghost" style={{ display: 'none' }}></a>
                         </div>
 
                         <div className="hero-dots">
@@ -317,20 +317,20 @@ function HomePage() {
                 <div className="royal-product-grid">
                     {/* Royal Chole Bhature */}
                     <div className="royal-product-card">
-                        <div style={{position: 'absolute', top: '15px', left: '15px', display: 'flex', gap: '5px', zIndex: 2}}>
-                            {choleBhature.hot && <span className="royal-badge-hot" style={{position: 'relative', top: 0, left: 0}}>Hot</span>}
+                        <div style={{ position: 'absolute', top: '15px', left: '15px', display: 'flex', gap: '5px', zIndex: 2 }}>
+                            {choleBhature.hot && <span className="royal-badge-hot" style={{ position: 'relative', top: 0, left: 0 }}>Hot</span>}
                         </div>
                         <div className={`royal-diet-symbol ${choleBhature.veg ? "veg" : "non-veg"}`}></div>
-                        
+
                         <div className="royal-product-img-wrapper">
                             {choleBhature.image && typeof choleBhature.image === 'string' && (choleBhature.image.trim().startsWith('/') || choleBhature.image.trim().startsWith('http') || choleBhature.image.trim().startsWith('data:')) ? (
-                                <img src={choleBhature.image.trim()} alt={choleBhature.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
+                                <img src={choleBhature.image.trim()} alt={choleBhature.name} onError={(e) => { e.target.style.display = 'none'; if (e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
                             ) : (
                                 <span className="royal-product-emoji">{choleBhature.image ? choleBhature.image.trim() : '🥘'}</span>
                             )}
                             <span className="royal-product-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
                         </div>
-                        
+
                         <div className="royal-product-info">
                             <h3 className="royal-product-title">{choleBhature.name}</h3>
                             <p className="royal-product-desc" dangerouslySetInnerHTML={{ __html: choleBhature.description }}></p>
@@ -342,23 +342,23 @@ function HomePage() {
                             </div>
                         </div>
                     </div>
-                    
+
                     {/* Majestic Raj Kachori */}
                     <div className="royal-product-card">
-                        <div style={{position: 'absolute', top: '15px', left: '15px', display: 'flex', gap: '5px', zIndex: 2}}>
-                            {rajKachori.hot && <span className="royal-badge-hot" style={{position: 'relative', top: 0, left: 0}}>Hot</span>}
+                        <div style={{ position: 'absolute', top: '15px', left: '15px', display: 'flex', gap: '5px', zIndex: 2 }}>
+                            {rajKachori.hot && <span className="royal-badge-hot" style={{ position: 'relative', top: 0, left: 0 }}>Hot</span>}
                         </div>
                         <div className={`royal-diet-symbol ${rajKachori.veg ? "veg" : "non-veg"}`}></div>
-                        
+
                         <div className="royal-product-img-wrapper">
                             {rajKachori.image && typeof rajKachori.image === 'string' && (rajKachori.image.trim().startsWith('/') || rajKachori.image.trim().startsWith('http') || rajKachori.image.trim().startsWith('data:')) ? (
-                                <img src={rajKachori.image.trim()} alt={rajKachori.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
+                                <img src={rajKachori.image.trim()} alt={rajKachori.name} onError={(e) => { e.target.style.display = 'none'; if (e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
                             ) : (
                                 <span className="royal-product-emoji">{rajKachori.image ? rajKachori.image.trim() : '🥘'}</span>
                             )}
                             <span className="royal-product-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
                         </div>
-                        
+
                         <div className="royal-product-info">
                             <h3 className="royal-product-title">{rajKachori.name}</h3>
                             <p className="royal-product-desc" dangerouslySetInnerHTML={{ __html: rajKachori.description }}></p>
@@ -370,23 +370,23 @@ function HomePage() {
                             </div>
                         </div>
                     </div>
-                    
+
                     {/* Karjat Vada Pav */}
                     <div className="royal-product-card">
-                        <div style={{position: 'absolute', top: '15px', left: '15px', display: 'flex', gap: '5px', zIndex: 2}}>
-                            {vadaPav.hot && <span className="royal-badge-hot" style={{position: 'relative', top: 0, left: 0}}>Hot</span>}
+                        <div style={{ position: 'absolute', top: '15px', left: '15px', display: 'flex', gap: '5px', zIndex: 2 }}>
+                            {vadaPav.hot && <span className="royal-badge-hot" style={{ position: 'relative', top: 0, left: 0 }}>Hot</span>}
                         </div>
                         <div className={`royal-diet-symbol ${vadaPav.veg ? "veg" : "non-veg"}`}></div>
-                        
+
                         <div className="royal-product-img-wrapper">
                             {vadaPav.image && typeof vadaPav.image === 'string' && (vadaPav.image.trim().startsWith('/') || vadaPav.image.trim().startsWith('http') || vadaPav.image.trim().startsWith('data:')) ? (
-                                <img src={vadaPav.image.trim()} alt={vadaPav.name} onError={(e) => { e.target.style.display = 'none'; if(e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
+                                <img src={vadaPav.image.trim()} alt={vadaPav.name} onError={(e) => { e.target.style.display = 'none'; if (e.target.nextSibling) e.target.nextSibling.style.display = 'inline'; }} />
                             ) : (
                                 <span className="royal-product-emoji">{vadaPav.image ? vadaPav.image.trim() : '🥘'}</span>
                             )}
                             <span className="royal-product-emoji fallback-emoji" style={{ display: 'none' }}>🥘</span>
                         </div>
-                        
+
                         <div className="royal-product-info">
                             <h3 className="royal-product-title">{vadaPav.name}</h3>
                             <p className="royal-product-desc" dangerouslySetInnerHTML={{ __html: vadaPav.description }}></p>
@@ -480,7 +480,7 @@ function HomePage() {
             {/* --- TESTIMONIALS --- */}
             <section className="royal-section" style={{ background: 'url("/images/hero-2.png") center/cover fixed' }}>
                 <div style={{ position: 'absolute', inset: 0, background: 'rgba(11, 7, 5, 0.9)' }} />
-                
+
                 <div className="royal-title-container">
                     <span className="royal-subtitle">Words of Praise</span>
                     <h2 className="royal-title">Guest Experiences</h2>
@@ -488,12 +488,12 @@ function HomePage() {
                         <span>✦</span>
                     </div>
                 </div>
-                
+
                 <div className="royal-reviews">
                     <div className="royal-reviews-container">
                         {realReviews.map((review, index) => (
-                            <div 
-                                key={index} 
+                            <div
+                                key={index}
                                 className={`royal-review-slide ${index === reviewSlide ? 'active' : ''}`}
                             >
                                 <div className="royal-review-card">
@@ -534,7 +534,7 @@ function HomePage() {
                         <span>✦</span>
                     </div>
                 </div>
-                
+
                 <div className="royal-visit-container">
                     <div className="royal-visit-info">
                         <div className="visit-block">
@@ -552,8 +552,8 @@ function HomePage() {
                         </div>
                         <div className="visit-block">
                             <h3 className="visit-title">Contact Us</h3>
-                            <p>Phone: <span className="nowrap">+1 732 986 0129</span><br />
-                            Email: <span className="nowrap">info@chatpatidelhi.com</span></p>
+                            <p>Phone: <span className="nowrap">+1 732 960 1887</span><br />
+                                Email: <span className="nowrap">info@chatpatidelhi.com</span></p>
                         </div>
                         <Link to="/contact" className="royal-btn">Get Directions</Link>
                     </div>
