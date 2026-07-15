@@ -1438,8 +1438,6 @@ function ProductDetail() {
 
                         {/* Secondary / Rich Description section removed per user request */}
 
-
-
                         {/* Ingredients Section */}
                         {product.ingredients && product.ingredients.length > 0 && (
                             <div className="royal-detail-section">
