@@ -1436,15 +1436,7 @@ function ProductDetail() {
                             {product.menuDescription}
                         </div>
 
-                        {/* Secondary / Rich Description — from richProductData, only if it adds extra info */}
-                        {product.fullDescription && stripHtml(product.fullDescription).trim() !== stripHtml(product.menuDescription || '').trim() && (
-                            <div className="royal-detail-section" style={{ borderTop: '1px solid rgba(212, 175, 55, 0.1)', marginTop: '1.5rem', paddingTop: '1.5rem' }}>
-                                <h3 className="royal-detail-section-title">About this Dish</h3>
-                                <div className="royal-detail-full-desc" style={{ lineHeight: '1.85', color: 'rgba(255,255,255,0.85)', fontSize: '1.05rem' }}>
-                                    {product.fullDescription}
-                                </div>
-                            </div>
-                        )}
+                        {/* Secondary / Rich Description section removed per user request */}
 
 
 
