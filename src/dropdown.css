@@ -97,6 +97,10 @@
     /* Subtle slide interaction */
 }
 
+.mobile-catering-link {
+    display: none;
+}
+
 /* Mobile Dropdown Styles */
 @media (max-width: 900px) {
     .dropdown-container {
@@ -195,7 +199,4 @@
     .dropdown-container.expanded .mobile-catering-link a {
         color: var(--accent-gold) !important;
     }
-}
-.mobile-catering-link {
-    display: none;
 }
