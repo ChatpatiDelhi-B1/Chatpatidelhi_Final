@@ -7,6 +7,7 @@ function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [showNotes, setShowNotes] = useState(false);
+    const [cateringExpanded, setCateringExpanded] = useState(false);
 
     const [cartCount, setCartCount] = useState(0);
 
@@ -46,10 +47,27 @@ function Header() {
                             <li><NavLink to="/menu" onClick={() => setMobileOpen(false)}>Menu</NavLink></li>
                             <li><NavLink to="/about" onClick={() => setMobileOpen(false)}>About</NavLink></li>
                             <li><NavLink to="/articles" onClick={() => setMobileOpen(false)}>Articles</NavLink></li>
-                            <li className="dropdown-container">
-                                <NavLink to="/catering" onClick={() => setMobileOpen(false)}>
+                            <li className={`dropdown-container ${cateringExpanded ? 'expanded' : ''}`}>
+                                {/* Desktop Link */}
+                                <NavLink to="/catering" className="desktop-catering-link" onClick={() => setMobileOpen(false)}>
                                     Caterings <span className="arrow-icon">▼</span>
                                 </NavLink>
+                                {/* Mobile Link */}
+                                <div className="mobile-catering-link">
+                                    <NavLink to="/catering" onClick={() => setMobileOpen(false)}>
+                                        Caterings
+                                    </NavLink>
+                                    <span 
+                                        className="mobile-toggle-icon"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            setCateringExpanded(!cateringExpanded);
+                                        }}
+                                    >
+                                        ▼
+                                    </span>
+                                </div>
                                 <ul className="dropdown-menu">
                                     <li><NavLink to="/sweet-box" onClick={() => setMobileOpen(false)}>Sweet Box</NavLink></li>
                                     <li><NavLink to="/live-stations" onClick={() => setMobileOpen(false)}>Live Stations</NavLink></li>
