@@ -167,6 +167,34 @@ function AdminPanel() {
         setSession(null);
     };
 
+    // Auto-logout after 10 minutes of inactivity
+    useEffect(() => {
+        let timeoutId;
+
+        const resetTimer = () => {
+            if (timeoutId) clearTimeout(timeoutId);
+            if (session) {
+                // 10 minutes = 600,000 ms
+                timeoutId = setTimeout(async () => {
+                    await supabase.auth.signOut();
+                    setSession(null);
+                    alert('You have been logged out due to 10 minutes of inactivity.');
+                }, 600000);
+            }
+        };
+
+        const events = ['mousemove', 'keydown', 'scroll', 'click'];
+        if (session) {
+            resetTimer(); // Initialize timer
+            events.forEach(event => window.addEventListener(event, resetTimer));
+        }
+
+        return () => {
+            if (timeoutId) clearTimeout(timeoutId);
+            events.forEach(event => window.removeEventListener(event, resetTimer));
+        };
+    }, [session]);
+
     // Open Modal for Add
     const handleAddClick = () => {
         setEditingItem(null);
