@@ -23,17 +23,30 @@ export const MenuProvider = ({ children }) => {
                 setMenuItems(staticMenuItems);
             } else if (data && data.length > 0) {
                 // Map the Supabase data back to the structure expected by the app
-                const formattedItems = data.map(item => ({
-                    id: parseInt(item.id),
-                    name: item.name,
-                    price: item.price,
-                    category: item.category,
-                    image: item.image_url || '🥘',
-                    description: item.description,
-                    veg: item.veg,
-                    hot: item.hot,
-                    cold: item.cold
-                }));
+                const formattedItems = data.map(item => {
+                    let isVeg = item.veg;
+                    
+                    // Supabase sync fallback might have set all undefined veg items to true
+                    // Force items with non-veg keywords to false
+                    const nonVegKeywords = ['chicken', 'goat', 'lamb', 'fish', 'egg', 'keema', 'mutton', 'prawn', 'non veg', 'non-veg'];
+                    const lowerName = (item.name || '').toLowerCase();
+                    const lowerDesc = (item.description || '').toLowerCase();
+                    if (nonVegKeywords.some(keyword => lowerName.includes(keyword) || lowerDesc.includes(keyword))) {
+                        isVeg = false;
+                    }
+
+                    return {
+                        id: parseInt(item.id),
+                        name: item.name,
+                        price: item.price,
+                        category: item.category,
+                        image: item.image_url || '🥘',
+                        description: item.description,
+                        veg: isVeg,
+                        hot: item.hot,
+                        cold: item.cold
+                    };
+                });
                 setMenuItems(formattedItems);
             } else {
                 // If database is empty, fall back to static list

@@ -123,7 +123,7 @@ function AdminPanel() {
                         description: item.description || '',
                         category: item.category,
                         image_url: typeof item.image === 'string' ? item.image : '',
-                        veg: item.veg ?? true,
+                        veg: item.veg !== undefined ? item.veg : !['chicken', 'goat', 'lamb', 'fish', 'egg', 'keema', 'mutton', 'prawn', 'non veg', 'non-veg'].some(k => (item.name || '').toLowerCase().includes(k)),
                         hot: item.hot ?? false,
                         cold: item.cold ?? false
                     }));
@@ -194,7 +194,7 @@ function AdminPanel() {
             description: item.description || '',
             category: item.category,
             image_url: item.image_url || '',
-            veg: item.veg ?? true,
+            veg: item.veg !== undefined ? item.veg : !['chicken', 'goat', 'lamb', 'fish', 'egg', 'keema', 'mutton', 'prawn', 'non veg', 'non-veg'].some(k => (item.name || '').toLowerCase().includes(k)),
             hot: item.hot ?? false,
             cold: item.cold ?? false
         });

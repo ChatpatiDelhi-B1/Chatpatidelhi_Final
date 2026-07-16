@@ -73,8 +73,11 @@
 
 .non-veg-symbol::after {
     content: '';
-    width: 8px;
-    height: 8px;
-    background-color: #e74c3c;
-    border-radius: 50%;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 7px solid #e74c3c;
+    background-color: transparent;
+    border-radius: 0;
 }
